@@ -1,0 +1,504 @@
+               Card Name	500+rk	300-rk	RankDif
+          Writing Boards	67	288	221
+              Wholesaler	99	301	202
+         Field Caretaker	107	302	195
+        District Manager	296	491	195
+               Stockyard	69	261	192
+               Collector	26	214	188
+          Stable Cleaner	137	324	187
+                 Seducer	198	383	185
+             Hide Farmer	204	389	185
+           Estate Worker	143	326	183
+      Established Person	149	323	174
+           Second Spouse	255	429	174
+           Debt Security	265	437	172
+             Foreign Aid	113	283	170
+           Chimney Sweep	35	204	169
+               Storeroom	177	346	169
+               Ropemaker	213	375	162
+         Stock Protector	264	425	161
+             Plow Driver	42	199	157
+     Shifting Cultivator	285	435	150
+                 Midwife	209	355	146
+          Recycled Brick	231	376	145
+            Chick Stable	75	216	141
+         Private Teacher	115	254	139
+        Livestock Feeder	311	449	138
+         Education Bonus	2	137	135
+              Sheep Well	225	360	135
+              Steam Plow	91	221	130
+        Gardener's Knife	331	461	130
+          Fodder Chamber	299	426	127
+            Stone Carver	332	459	127
+        Nutrition Expert	371	498	127
+              Tree Guard	150	273	123
+          Organic Farmer	164	287	123
+             Beating Rod	182	305	123
+              Manservant	325	448	123
+        Potato Harvester	214	335	121
+         Seasonal Worker	141	255	114
+                 Cowherd	351	464	113
+    Shifting Cultivation	147	258	111
+           Pattern Maker	295	406	111
+                Haydryer	48	158	110
+                Feedyard	329	439	110
+             Roof Ladder	118	227	109
+              Beer Table	98	203	105
+             Gift Basket	105	210	105
+          Roof Ballaster	212	316	104
+           House Steward	54	156	102
+                  Butler	341	441	100
+            Small Basket	175	274	99
+             Bellfounder	263	362	99
+                 Scholar	215	313	98
+                  Manger	258	356	98
+           Rocky Terrain	309	404	95
+     Wooden Hut Extender	18	111	93
+        Clay Hut Builder	136	229	93
+                Emissary	378	471	93
+               Puppeteer	249	341	92
+            Stall Holder	400	492	92
+                Bonehead	14	105	91
+            Mini Pasture	29	120	91
+           Retail Dealer	81	172	91
+     Straw-Thatched Roof	152	242	90
+           Roof Examiner	330	417	87
+                  Scales	102	188	86
+             Clay Warden	196	281	85
+        Adoptive Parents	226	310	84
+             Seed Seller	279	363	84
+            Sheep Keeper	385	469	84
+        Whisky Distiller	328	411	83
+    Material Deliveryman	357	440	83
+           Dwelling Plan	379	462	83
+             Full Farmer	22	104	82
+                   Baker	288	370	82
+               Reed Pond	68	148	80
+                   Groom	352	432	80
+                Pond Hut	77	155	78
+              Club House	111	189	78
+                Overhaul	178	253	75
+            Clay Carrier	303	378	75
+                 Soldier	393	468	75
+               Plow Hero	142	215	73
+            Case Builder	382	454	72
+                Loam Pit	41	112	71
+               Constable	151	222	71
+      Earthenware Potter	406	477	71
+           Animal Feeder	245	315	70
+       Wood Slide Hammer	92	161	69
+           Basket Weaver	127	196	69
+              Consultant	235	304	69
+           Farm Building	298	367	69
+      Seaweed Fertilizer	173	241	68
+         Agrarian Fences	123	190	67
+              Lumberjack	327	394	67
+          Turnwrest Plow	79	145	66
+           Steam Machine	216	282	66
+             Rammed Clay	13	78	65
+          Animal Teacher	131	194	63
+                 Knapper	389	450	61
+             Stable Yard	414	475	61
+        Food Distributor	44	103	59
+               Harpooner	103	162	59
+              Remodeling	154	213	59
+            New Purchase	187	245	58
+              Farm Store	227	285	58
+        Housebook Master	253	311	58
+      Mushroom Collector	362	420	58
+         Patch Caretaker	358	415	57
+                  Patron	43	98	55
+       Upscale Lifestyle	191	246	55
+           Acorns Basket	237	292	55
+            Wood Carrier	76	130	54
+                   Mason	36	89	53
+      Firewood Collector	218	270	52
+             Home Brewer	342	393	51
+            Writing Desk	30	80	50
+            Forest Owner	281	331	50
+            Treegardener	50	99	49
+Inner Districts Director	323	372	49
+              Portmonger	247	295	48
+             Forest Well	74	121	47
+          Private Forest	55	100	45
+            Wall Builder	394	438	44
+       Cookery Outfitter	440	484	44
+          Moldboard Plow	51	94	43
+      Schnapps Distiller	282	325	43
+ Eternal Rye Cultivation	360	403	43
+          Hunting Trophy	233	275	42
+          Hoof Caregiver	312	354	42
+            Clay Kneader	267	306	39
+          Clearing Spade	388	427	39
+               Mole Plow	78	115	37
+             Lumber Mill	186	223	37
+                  Salter	396	433	37
+               Pig Owner	121	157	36
+         Patch Caregiver	356	392	36
+            Christianity	134	169	35
+                   Hutch	195	230	35
+         Forest Guardian	307	342	35
+      Wooden Whey Bucket	56	90	34
+           Shovel Bearer	266	300	34
+              Field Clay	409	443	34
+            Storage Barn	423	457	34
+  Recreational Carpenter	19	52	33
+                    Wage	112	144	32
+    Night-School Student	132	164	32
+                Merchant	434	465	31
+                Beer Keg	58	88	30
+               Hawktower	116	146	30
+        Strawberry Patch	222	252	30
+               Reed Belt	302	332	30
+            Small Trader	392	422	30
+          Heart of Stone	451	481	30
+           Harvest House	28	57	29
+      Interior Decorator	443	472	29
+              Pet Broker	97	125	28
+         Ravenous Hunger	455	483	28
+               Childless	5	32	27
+            Stork's Nest	122	149	27
+                 Tumbrel	126	152	26
+             Cattle Farm	461	487	26
+            Brewery Pond	11	36	25
+            Value Assets	33	58	25
+                  Basket	463	488	25
+                  Credit	114	138	24
+         Clay Embankment	383	407	24
+            Early Cattle	449	473	24
+               Blueprint	125	147	22
+          Clay Plasterer	268	290	22
+           Casual Worker	269	291	22
+                  Pavior	6	27	21
+               Junk Room	158	178	20
+         Sheep Whisperer	431	451	20
+            Field Fences	12	31	19
+          Hard Porcelain	248	267	19
+              Churchyard	369	388	19
+                 Trellis	38	56	18
+               Wood Cart	45	63	18
+           Barrow Pusher	108	126	18
+         Interim Storage	428	446	18
+               Excavator	106	123	17
+     Store of Experience	181	198	17
+           Greening Plan	223	240	17
+                 Tasting	321	338	17
+              Game Trade	407	424	17
+           Milking Stool	60	75	15
+          Animal Catcher	148	163	15
+           Bale of Straw	221	236	15
+            Pellet Press	419	434	15
+           Wool Blankets	464	479	15
+           Lettuce Patch	34	48	14
+           Ranch Provost	120	134	14
+                 Ebonist	167	181	14
+           Frame Builder	377	391	14
+               Muck Rake	416	430	14
+          Field Watchman	15	28	13
+              Garden Hoe	367	380	13
+              Silokeeper	472	485	13
+                    Loom	23	35	12
+        Winter Caretaker	84	96	12
+          Moral Crusader	239	251	12
+              Fern Seeds	260	272	12
+        Plant Fertilizer	435	447	12
+      Large-Scale Farmer	448	460	12
+    Family Friendly Home	64	74	10
+        Stable Architect	343	353	10
+         Potter Ceramics	109	118	9
+            Game Catcher	192	201	9
+                Thresher	275	284	9
+             Mantlepiece	350	359	9
+                     Cob	436	445	9
+          Tree Inspector	485	494	9
+            Growing Farm	491	500	9
+          Teacher's Desk	4	12	8
+             Forest Plow	65	73	8
+        Forestry Studies	168	176	8
+               Sculpture	481	489	8
+               Pan Baker	456	463	7
+               Paymaster	490	497	7
+                Huntsman	494	501	7
+         Forest Reviewer	1	7	6
+      Small-scale Farmer	153	159	6
+   Journeyman Bricklayer	306	312	6
+                Minstrel	487	493	6
+                 Granary	165	170	5
+                  Stable	171	175	4
+        Horse-Drawn Boat	229	233	4
+          Asparagus Gift	354	358	4
+               Freemason	380	384	4
+           Shoreforester	130	133	3
+            Trap Builder	273	276	3
+          Fodder Planter	345	348	3
+             Grain Sieve	361	364	3
+         Sowing Director	439	442	3
+         Facades Carving	492	495	3
+          Basket Carrier	7	9	2
+               Informant	8	10	2
+         Threshing Board	172	174	2
+          Stone Clearing	375	377	2
+            Sequestrator	501	503	2
+               Pet Lover	32	33	1
+               Cordmaker	46	47	1
+              Hook Knife	313	314	1
+Corn Schnapps Distillery	466	467	1
+           Wood Barterer	72	72	0
+            Market Stall	397	397	0
+        Forest Scientist	499	499	0
+              Swing Plow	16	15	-1
+  Automatic Water Trough	304	303	-1
+            Bean Counter	445	444	-1
+                 Catcher	503	502	-1
+                   Lover	3	1	-2
+            Feed Pellets	27	25	-2
+         Furniture Maker	47	45	-2
+              Forest Inn	404	402	-2
+      Skillful Renovator	37	34	-3
+            Young Farmer	53	50	-3
+            Market Crier	340	337	-3
+       Resource Recycler	348	345	-3
+             Roughcaster	479	476	-3
+          Hardware Store	9	5	-4
+               Furnisher	10	6	-4
+              Cow Prince	20	16	-4
+        Assistant Tiller	25	21	-4
+     German Heath Keeper	338	334	-4
+            Brick Hammer	391	387	-4
+           Perennial Rye	500	496	-4
+          Stable Planner	96	91	-5
+           Brewing Water	322	317	-5
+     Renovation Preparer	386	381	-5
+                 Cesspit	24	18	-6
+        Sculpture Course	174	168	-6
+           Fellow Grazer	190	184	-6
+                Cottager	244	238	-6
+     Young Animal Market	415	409	-6
+               Loudmouth	496	490	-6
+            Hedge Keeper	93	86	-7
+                  Grocer	21	13	-8
+                     Hod	52	44	-8
+      Carpenter's Parlor	17	8	-9
+             Wealthy Man	495	486	-9
+                Bookcase	49	39	-10
+          Mineral Feeder	242	232	-10
+             Housemaster	272	262	-10
+              Clay Firer	339	329	-10
+         Animal Activist	71	60	-11
+             Paper Maker	276	265	-11
+         Social Benefits	493	482	-11
+                  Grange	205	193	-12
+                Stockman	256	244	-12
+                   Tutor	135	122	-13
+          Milking Parlor	284	271	-13
+              Feed Fence	146	132	-14
+       Master Bricklayer	220	206	-14
+         Building Expert	467	453	-14
+            Mineralogist	429	414	-15
+       Riverine Shepherd	473	458	-15
+               Beanfield	100	83	-17
+                  Trowel	145	128	-17
+         Village Peasant	197	180	-17
+     Elephantgrass Plant	483	466	-17
+             Cube Cutter	387	369	-18
+          Dwelling Mound	488	470	-18
+             Fishing Net	179	160	-19
+              Claw Knife	474	455	-19
+               Bookshelf	39	19	-20
+             Wood Cutter	156	136	-20
+      Cooperative Plower	498	478	-20
+ Gardening Head Official	59	38	-21
+             Food Basket	83	62	-21
+         Forest Lake Hut	129	108	-21
+             Supply Boat	228	207	-21
+                Bohemian	287	266	-21
+          Truffle Slicer	314	293	-21
+              Hand Truck	88	66	-22
+             Clay Supply	104	82	-22
+           Potato Digger	157	135	-22
+              Transactor	432	410	-22
+             Sugar Baker	502	480	-22
+              Plow Maker	82	59	-23
+            Cattle Buyer	405	382	-23
+                Outrider	442	419	-23
+    Small Animal Breeder	497	474	-23
+           Mining Hammer	61	37	-24
+            Throwing Axe	133	109	-24
+                 Collier	138	114	-24
+          Drift-Net Boat	280	256	-24
+          Brotherly Love	476	452	-24
+          Dutch Windmill	480	456	-24
+            Thick Forest	293	268	-25
+              Baseboards	90	64	-26
+            Crack Weeder	333	307	-26
+             Pig Breeder	376	350	-26
+          Wood Collector	95	68	-27
+               Woodcraft	232	205	-27
+        Wildlife Reserve	261	234	-27
+           Clay Supports	31	3	-28
+                   Flail	224	195	-29
+           Lantern House	286	257	-29
+           Milking Place	368	339	-29
+ Excursion to the Quarry	140	110	-30
+           Forest Trader	277	247	-30
+             Stone Buyer	370	340	-30
+    Little Stick Knitter	80	49	-31
+          Soil Scientist	359	328	-31
+                   Brook	452	421	-31
+       Pioneering Spirit	468	436	-32
+             Tree Cutter	366	333	-33
+               Reap Hook	57	23	-34
+               Confidant	110	76	-34
+           Animal Dealer	211	177	-34
+                Beer Tap	259	225	-34
+              Woolgrower	408	373	-35
+            Blade Shears	425	390	-35
+               Chophouse	166	129	-37
+       Storehouse Keeper	326	289	-37
+               Oven Site	438	401	-37
+              Wheel Plow	40	2	-38
+            Animal Reeve	62	24	-38
+            Water Worker	162	124	-38
+    Fire Protection Pond	324	286	-38
+          Wood Harvester	403	365	-38
+          Lawn Fertilzer	289	249	-40
+            Feeding Dish	305	264	-41
+      Outskirts Director	335	294	-41
+               Wood Rake	159	117	-42
+         Lumber Virtuoso	454	412	-42
+                  Porter	63	20	-43
+             Chain Float	73	29	-44
+     Brushwood Collector	163	119	-44
+                 Plowman	124	79	-45
+                Sculptor	450	405	-45
+         Drinking Trough	412	366	-46
+             Herring Pot	420	374	-46
+                 Hauberg	89	42	-47
+                    Stew	160	113	-47
+          Master Builder	200	153	-47
+              New Market	297	250	-47
+           Hollow Warden	398	351	-47
+        Small Greenhouse	199	151	-48
+        Clay Deliveryman	230	182	-48
+          Swimming Class	257	208	-49
+               Pub Owner	411	361	-50
+             Garden Claw	478	428	-50
+     Calcium Fertilizers	262	211	-51
+             Wood Worker	482	431	-51
+                Conjurer	254	200	-54
+        Riparian Builder	477	423	-54
+     Maintenance Premium	252	197	-55
+        Luxurious Hostel	334	277	-57
+            Full Peasant	465	408	-57
+            Sheep Walker	119	61	-58
+              Cultivator	70	11	-59
+             Fish Farmer	355	296	-59
+           Turnip Farmer	475	416	-59
+           Carrot Museum	101	41	-60
+          Sheep Provider	201	141	-60
+            House Artist	87	26	-61
+            Task Artisan	66	4	-62
+                  Angler	433	371	-62
+              Mill Wheel	460	398	-62
+         Charcoal Burner	85	22	-63
+                Layabout	203	140	-63
+           Potato Ridger	410	347	-63
+      Storehouse Steward	458	395	-63
+           Muddy Puddles	94	30	-64
+            Pure Breeder	417	352	-65
+       Joiner of the Sea	444	379	-65
+         Carpenter's Axe	161	95	-66
+             Wood Expert	193	127	-66
+                 Furrows	365	299	-66
+     Reed Roof Renovator	484	418	-66
+             Conservator	183	116	-67
+        Truffle Searcher	424	357	-67
+          Pasture Master	453	386	-67
+               Nest Site	155	87	-68
+              Wood Field	86	17	-69
+          Chief Forester	413	343	-70
+               Trellises	470	400	-70
+               Wood Pile	349	278	-71
+              Millwright	390	319	-71
+           Cattle Feeder	399	327	-72
+               Stagehand	471	399	-72
+            Clay Puncher	290	217	-73
+               Mandoline	353	280	-73
+                   Lasso	240	165	-75
+      Fisherman's Friend	384	308	-76
+             Abort Oriel	489	413	-76
+                Milk Jug	128	51	-77
+              Trout Pool	337	259	-78
+                 Gritter	427	349	-78
+           Junior Artist	144	65	-79
+            Bread Paddle	270	191	-79
+           Scythe Worker	315	235	-80
+                 Trident	184	102	-82
+                   Canoe	236	154	-82
+              Corn Scoop	310	228	-82
+        Wholesale Market	402	320	-82
+         Sleeping Corner	169	85	-84
+         Oven Firing Boy	363	279	-84
+             Ale-Benches	381	297	-84
+         Building Tycoon	469	385	-84
+                   Buyer	251	166	-85
+             Stone Tongs	421	336	-85
+                Lutenist	395	309	-86
+      Newly-Plowed Field	189	101	-88
+             Greengrocer	219	131	-88
+           Stable Master	271	183	-88
+  Craftsmanship Promoter	457	368	-89
+           Canal Boatman	486	396	-90
+             Stonecutter	283	192	-91
+             Seed Trader	319	226	-93
+      Basketmaker's Wife	139	43	-96
+                 Swagman	316	220	-96
+               Pitchfork	344	248	-96
+                  Pastor	318	219	-99
+        Cattle Whisperer	418	318	-100
+                 Plumber	274	173	-101
+            Forest Stone	117	14	-103
+        Large Greenhouse	346	243	-103
+      Renovation Company	210	106	-104
+         Party Organizer	291	186	-105
+              Stone Cart	336	231	-105
+        Reed-Hatted Toad	176	70	-106
+              Food Chest	292	185	-107
+          Petrified Wood	437	330	-107
+            Animal Tamer	185	77	-108
+    Three-Field Rotation	250	142	-108
+                  Priest	180	71	-109
+            Civic Facade	430	321	-109
+          Potters Market	373	263	-110
+            Chicken Coop	208	97	-111
+                Scullery	278	167	-111
+            Baking Sheet	320	209	-111
+                 Bottles	194	81	-113
+              Stablehand	459	344	-115
+      Domestician Expert	308	187	-121
+                 Bucksaw	207	84	-123
+     Schnapps Distillery	347	224	-123
+            Green Grocer	422	298	-124
+                    Corf	446	322	-124
+              Bricklayer	170	40	-130
+       Lord of the Manor	188	55	-133
+                Handplow	202	67	-135
+                Pigswill	372	237	-135
+               Geologist	374	239	-135
+  Bed in the Grain Field	243	107	-136
+               Sack Cart	317	179	-138
+                  Rustic	294	150	-144
+          Potato Planter	364	218	-146
+               Carpenter	241	92	-149
+        Tree Farm Joiner	206	53	-153
+                Equipper	246	93	-153
+                Chairman	300	143	-157
+        Shepherd's Crook	301	139	-162
+     Half-Timbered House	217	54	-163
+            Butter Churn	238	69	-169
+             Rolling Pin	447	269	-178
+            Clay Deposit	441	260	-181
+                Claypipe	234	46	-188
+          Master Workman	426	202	-224
+              Beer Stein	401	171	-230
+           Digging Spade	462	212	-250
