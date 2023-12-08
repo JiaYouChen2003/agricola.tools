@@ -1,6 +1,7 @@
 import openpyxl
+import scrape
 
-def get_values(sheet):
+def getValuesFromSheet(sheet):
     arr = []
     for row in sheet:
         arr2 = []
@@ -9,26 +10,44 @@ def get_values(sheet):
         arr.append(arr2)
     return arr
 
-wb = openpyxl.load_workbook('Agricola_2307.xlsx')
+def getItemIndexByNameFromArray(itemName, arr, column4name, column4index):
+    for row in arr:
+        if row[column4name] == itemName:
+            return row[column4index]
 
-names = wb.sheetnames
-s1 = wb['Ranking']
-s2 = wb['Difference']
+class SearchMachine():
+    def __init__(self):
+        self.xlsx_name = 'Agricola_2307.xlsx'
+        self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
+    
+    def getCardRank(self, card_name):
+        workbook_list = self.workbook_list
+        
+        arr_rank = getValuesFromSheet(workbook_list['Ranking'])
+        card_rank = getItemIndexByNameFromArray(card_name, arr_rank, 1, 0)
+        return card_rank
 
-rank = get_values(s1)
-diff = get_values(s2)
+    def getCardDiff(self, card_name):
+        workbook_list = self.workbook_list
 
-while True:
-    card = input() # implement by using mouse
-    print(rank[0])
-    for row in rank:
-        if row[1] == card:
-            print(row)
-            break
-    print(diff[0])
-    for row in diff:
-        if row[0] == card:
-            print(row)
-            break
+        arr_diff = getValuesFromSheet(workbook_list['Difference'])
+        card_diff = getItemIndexByNameFromArray(card_name, arr_diff, 0, 3)
+        return card_diff
+
+
+if __name__ == '__main__':
+    machine_search = SearchMachine()
+    machine_scrape = scrape.ScrapeMachine()
+
+    xlsx_name = machine_search.xlsx_name
+    card_name_list = machine_scrape.getCardListFromBGA()
+    
     print()
+    print("Name".rjust(20), "Rank".rjust(5), "Diff".rjust(5))
+    for card in card_name_list:
+        card_name = card.text
+        card_rank = machine_search.getCardRank(card_name=card_name)
+        card_diff = machine_search.getCardDiff(card_name=card_name)
+
+        print(card_name.rjust(20), str(card_rank).rjust(5), str(card_diff).rjust(5))
     
