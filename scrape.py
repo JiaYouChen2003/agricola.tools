@@ -7,15 +7,12 @@ from webdriver_manager.chrome import ChromeDriverManager
 class ScrapeMachine(): 
     def __init__(self):
         self.url_en_front = 'https://en.'
-        self.url = ''
 
-    def getCardListFromBGA(self):
-        if self.url == '':
-            self.url = input('Enter the URL:')
-            
-            url = self.url
-            url_en_backstartnum = url.find('boardgamearena.com')
-            url_en = self.url_en_front + url[url_en_backstartnum:]
+    def getCardListFromBGA(self, url=''):
+        if url == '':
+            url = input('Enter the URL:')
+        url_en_backstartnum = url.find('boardgamearena.com')
+        url_en = self.url_en_front + url[url_en_backstartnum:]
 
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
