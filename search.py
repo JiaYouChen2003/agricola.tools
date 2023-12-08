@@ -25,10 +25,10 @@ class SearchMachine():
     # Functions that can be called
     def getCardInfoArr(self, url, game_type):
         card_info_arr = []
-
+        
         machine_scrape = scrape.ScrapeMachine()
         card_name_list = machine_scrape.getCardListFromBGA(url=url)
-    
+        
         for card in card_name_list:
             card_name = card.text
             card_rank = self.getCardRank(card_name=card_name, game_type=game_type)
@@ -47,7 +47,7 @@ class SearchMachine():
 
     def getCardDiff(self, card_name):
         workbook_list = self.workbook_list
-
+        
         arr_diff = self.__getValuesFromSheet(workbook_list['Diff'])
         card_diff = self.__getItemIndexByNameFromArray(card_name, arr_diff, 0, 3)
         return card_diff
@@ -56,7 +56,7 @@ class SearchMachine():
 if __name__ == '__main__':
     machine_search = SearchMachine()
     machine_scrape = scrape.ScrapeMachine()
-
+    
     card_name_list = machine_scrape.getCardListFromBGA()
     
     print()
@@ -65,6 +65,5 @@ if __name__ == '__main__':
         card_name = card.text
         card_rank = machine_search.getCardRank(card_name=card_name)
         card_diff = machine_search.getCardDiff(card_name=card_name)
-
+        
         print(card_name.rjust(20), str(card_rank).rjust(5), str(card_diff).rjust(5))
-    
