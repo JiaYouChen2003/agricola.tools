@@ -1,6 +1,7 @@
 import openpyxl
+import scrape
 
-def get_values(sheet):
+def getValuesFromSheet(sheet):
     arr = []
     for row in sheet:
         arr2 = []
@@ -9,26 +10,21 @@ def get_values(sheet):
         arr.append(arr2)
     return arr
 
-wb = openpyxl.load_workbook('Agricola_2307.xlsx')
+def getItemIndexByNameFromArray(itemName, arr, column4name, column4index):
+    for row in arr:
+        if row[column4name] == itemName:
+            return row[column4index]
 
-names = wb.sheetnames
-s1 = wb['Ranking']
-s2 = wb['Difference']
+if __name__ == '__main__':
+    workbook_list = openpyxl.load_workbook('Agricola_2307.xlsx')
 
-rank = get_values(s1)
-diff = get_values(s2)
+    rank = getValuesFromSheet(workbook_list['Ranking'])
+    diff = getValuesFromSheet(workbook_list['Difference'])
 
-while True:
-    card = input() # implement by using mouse
-    print(rank[0])
-    for row in rank:
-        if row[1] == card:
-            print(row)
-            break
-    print(diff[0])
-    for row in diff:
-        if row[0] == card:
-            print(row)
-            break
-    print()
+    card_name_list = scrape.Scrape().getCardListFromBGA()
+    for card in card_name_list:
+        card_name = card.text
+        card_rank = getItemIndexByNameFromArray(card_name, rank, 1, 0)
+        card_diff = getItemIndexByNameFromArray(card_name, diff, 0, 3)
+        print(card_name, card_rank, card_diff)
     
