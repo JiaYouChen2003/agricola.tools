@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-class Scrape(): 
+class ScrapeMachine(): 
     def __init__(self):
         self.url_en_front = 'https://en.'
         self.url = ''
