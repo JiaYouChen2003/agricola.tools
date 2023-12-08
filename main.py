@@ -9,29 +9,43 @@ class GUI(QWidget):
         super().__init__()
         self.setWindowTitle('agricola.tools')
         self.setWindowIcon(QIcon('raw_asset/agricola-en.jpg'))
+        
         self.label1_1 = QLabel('URL or')
         self.label1_2 = QLabel('Card Name:')
-        self.line_edit = QLineEdit()
         self.label2 = QLabel('Results:')
+        
+        self.line_edit = QLineEdit()
         self.table = QTableWidget()
         self.button = QPushButton()
+        
         self.button.setText('search')
-        self.cmb = QComboBox()
-        self.cmb.setStyle(QStyleFactory.create('Fusion'))
+        self.cmb1 = QComboBox()
+        self.cmb1.setStyle(QStyleFactory.create('Fusion'))
         self.game_type_list = ['4player_default', '4player_withAAS', '4player_banlist_500+', '4player_banlist_300-']
-        self.cmb.addItem(self.game_type_list[0])
-        self.cmb.addItem(self.game_type_list[1])
-        self.cmb.addItem(self.game_type_list[2])
-        self.cmb.addItem(self.game_type_list[3])
+        self.cmb1.addItem(self.game_type_list[0])
+        self.cmb1.addItem(self.game_type_list[1])
+        self.cmb1.addItem(self.game_type_list[2])
+        self.cmb1.addItem(self.game_type_list[3])
+        self.label3 = QLabel('Auto Refresh:')
+        self.cmb2 = QComboBox()
+        self.cmb2.setStyle(QStyleFactory.create('Fusion'))
+        self.autorefresh_type_list = ['on', 'off']
+        self.cmb2.addItem(self.autorefresh_type_list[0])
+        self.cmb2.addItem(self.autorefresh_type_list[1])
+        
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
         self.grid.addWidget(self.label1_1, 1, 0)
-        self.grid.addWidget(self.label1_2, 2, 0)
-        self.grid.addWidget(self.line_edit, 1, 1, 2, 35)
-        self.grid.addWidget(self.button, 1, 36)
-        self.grid.addWidget(self.label2, 3, 0)
-        self.grid.addWidget(self.table, 3, 1, 3, 35)
-        self.grid.addWidget(self.cmb, 2, 36)
+        self.grid.addWidget(self.label1_2, 1, 0, 3, 0)
+        self.grid.addWidget(self.label2, 5, 0)
+        
+        self.grid.addWidget(self.line_edit, 1, 3, 3, 33)
+        self.grid.addWidget(self.table, 4, 1, 30, 35)
+        
+        self.grid.addWidget(self.button, 1, 36, 3, 1)
+        self.grid.addWidget(self.cmb1, 30, 36)
+        self.grid.addWidget(self.label3, 31, 36)
+        self.grid.addWidget(self.cmb2, 32, 36)
         self.setLayout(self.grid)
         self.resize(640, 810)
         self.button.clicked.connect(self.inquiry)
@@ -63,7 +77,7 @@ class GUI(QWidget):
 
     def getGameType(self):
         # 4player_default
-        game_type = self.game_type_list[self.cmb.currentIndex()]
+        game_type = self.game_type_list[self.cmb1.currentIndex()]
         return game_type
 
     def setTableByArr(self, arr, arr_label):
