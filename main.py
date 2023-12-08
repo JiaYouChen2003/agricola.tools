@@ -1,6 +1,8 @@
-import sys
 from PySide2.QtWidgets import QWidget, QLabel, QLineEdit, QTextEdit, QPushButton, QComboBox, QStyleFactory, QGridLayout, QMessageBox, QApplication
 from PySide2.QtGui import QIcon
+
+import sys
+import search
 
 class GUI(QWidget):
 	def __init__(self, parent=None):
@@ -15,7 +17,10 @@ class GUI(QWidget):
 		self.button.setText('scrape')
 		self.cmb = QComboBox()
 		self.cmb.setStyle(QStyleFactory.create('Fusion'))
-		self.cmb.addItem('匹配度: 100%')
+		self.cmb.addItem('4player_default')
+		self.cmb.addItem('Default2')
+		self.cmb.addItem('Default3')
+		self.cmb.addItem('Default4')
 		self.grid = QGridLayout()
 		self.grid.setSpacing(12)
 		self.grid.addWidget(self.label1, 1, 0)
@@ -29,22 +34,25 @@ class GUI(QWidget):
 		self.button.clicked.connect(self.inquiry)
 		
 	def inquiry(self):
-		sentence = self.line_edit.text()
-		matched = []
-		score_thresh = self.getScoreThresh()
-		if not sentence:
-			QMessageBox.warning(self, "Warning", '请先输入需要查询的鲁迅名言')
-		else:
-			for p in self.paragraphs:
-				score = fuzz.partial_ratio(p, sentence)
-				if score >= score_thresh and len(sentence) <= len(p):
-					matched.append([score, p])
-			infos = []
-			for match in matched:
-				infos.append('[匹配度]: %d\n[内容]: %s\n' % (match[0], match[1]))
-			if not infos:
-				infos.append('未匹配到任何相似度大于%d的句子.\n' % score_thresh)
-			self.text.setText('\n\n\n'.join(infos)[:-1])
+		machine_search = search.SearchMachine()
+
+		url = self.line_edit.text()
+		game_type = self.getGameType()
+		cards_info_arr = machine_search.getCardInfoList(url, game_type)
+		self.text.setText('')
+		for cards_info in cards_info_arr:
+			self.text.append(cards_info[0].rjust(20) + ' ' +  ' '.join(cards_info[1:].rjust(5)))
+
+
+	def getGameType(self):
+		if self.cmb.currentIndex() == 0:
+			return '4player_default'
+		elif self.cmb.currentIndex() == 1:
+			return '2'
+		elif self.cmb.currentIndex() == 2:
+			return '3'
+		elif self.cmb.currentIndex() == 3:
+			return '4'
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
