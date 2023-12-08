@@ -8,7 +8,7 @@ class SearchMachine():
         self.xlsx_name = PATH
         self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
 
-    def __getValuesFromSheet(sheet):
+    def __getValuesFromSheet(self, sheet):
         arr = []
         for row in sheet:
             list = []
@@ -17,7 +17,7 @@ class SearchMachine():
             arr.append(list)
         return arr
 
-    def __getItemIndexByNameFromArray(itemName, arr, column4name, column4index):
+    def __getItemIndexByNameFromArray(self, itemName, arr, column4name, column4index):
         for row in arr:
             if row[column4name] == itemName:
                 return row[column4index]
@@ -31,11 +31,12 @@ class SearchMachine():
     
         for card in card_name_list:
             card_name = card.text
-            card_rank = machine_search.getCardRank(card_name=card_name, game_type=game_type)
-            card_diff = machine_search.getCardDiff(card_name=card_name)
+            card_rank = self.getCardRank(card_name=card_name, game_type=game_type)
+            card_diff = self.getCardDiff(card_name=card_name)
             
             card_info_list = [card_name, card_rank, card_diff]
             card_info_arr.append(card_info_list)
+        return card_info_arr
     
     def getCardRank(self, card_name, game_type = '4player_default'):
         workbook_list = self.workbook_list
