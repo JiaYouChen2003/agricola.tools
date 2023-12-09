@@ -59,6 +59,10 @@ if __name__ == '__main__':
     
     card_name_list = machine_scrape.getCardListFromBGA()
     
+    if card_name_list[0].text == 'Still in Draft Phase':
+        print('Still in Draft Phase')
+        exit()
+    
     print()
     print("Name".rjust(20), "Rank".rjust(5), "Diff".rjust(5))
     for card in card_name_list:

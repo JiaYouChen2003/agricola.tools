@@ -114,6 +114,9 @@ class GUI(QWidget):
             return
         
         card_info_arr = machine_search.getCardInfoArr(self.url, game_type)
+        if card_info_arr[0][0] == 'Still in Draft Phase':
+            self.label_print.setText('Still in Draft Phase')
+            return
         
         self.label_print.setText('Searching Done!')
         self.setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
