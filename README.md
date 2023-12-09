@@ -11,6 +11,7 @@ In the future, we hope to develop tools with more functions that help new player
 - [Contents](#contents)
 - [Installation](#installation)
 - [Feature](#feature)
+- [CheckList](#checklist)
 
 # Installation
 ## Download
@@ -31,7 +32,14 @@ $conda python main.py
 ```
 
 # Feature
-
 <div align="center">
 <img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/layout.png" width="81%" height="81%">
 </div>
+
+# CheckList
+## Big
+1. scrape data for draft phase (require login)
+2. give more information to user (ex: average ranking of card seen, tips for playing specific card)
+
+## Small
+1. change const_agricola.py to json
