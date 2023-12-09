@@ -6,6 +6,7 @@ import sys
 import time
 
 import search
+import message_agricolatools
 
 CARD_INFO_LABEL = ["Card Name", "Card Rank", "Card Diff"]
 
@@ -114,8 +115,9 @@ class GUI(QWidget):
             return
         
         card_info_arr = machine_search.getCardInfoArr(self.url, game_type)
-        if card_info_arr[0][0] == 'Still in Draft Phase':
-            self.label_print.setText('Still in Draft Phase')
+        card_draftphase_name = message_agricolatools.ConstMessage().draftphase
+        if card_info_arr[0][0] == card_draftphase_name:
+            self.label_print.setText(card_draftphase_name)
             return
         
         self.label_print.setText('Searching Done!')

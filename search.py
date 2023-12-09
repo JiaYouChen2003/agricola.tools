@@ -2,6 +2,8 @@ import openpyxl
 import scrape
 import os
 
+import message_agricolatools
+
 class SearchMachine():
     def __init__(self):
         PATH = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
@@ -59,8 +61,9 @@ if __name__ == '__main__':
     
     card_name_list = machine_scrape.getCardListFromBGA()
     
-    if card_name_list[0].text == 'Still in Draft Phase':
-        print('Still in Draft Phase')
+    card_draftphase_name = message_agricolatools.ConstMessage().draftphase
+    if card_name_list[0].text == card_draftphase_name:
+        print('Now in Draft Phase')
         exit()
     
     print()
