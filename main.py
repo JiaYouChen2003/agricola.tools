@@ -109,6 +109,10 @@ class GUI(QWidget):
         game_type = self.getGameType()
         need_auto_refresh = self.getNeedAutoRefresh()
         
+        if not need_auto_refresh and self.start_thread_refresh:
+            self.interruptThreadRefresh()
+            return
+        
         card_info_arr = machine_search.getCardInfoArr(self.url, game_type)
         
         self.label_print.setText('Searching Done!')
@@ -116,8 +120,6 @@ class GUI(QWidget):
         
         if need_auto_refresh and not self.start_thread_refresh:
             self.startThreadRefresh()
-        elif not need_auto_refresh and self.start_thread_refresh:
-            self.interruptThreadRefresh()
 
     def startThreadRefresh(self):
         self.start_thread_refresh = True
