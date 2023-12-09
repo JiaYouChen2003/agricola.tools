@@ -1,12 +1,30 @@
 from PySide2.QtWidgets import *
 from PySide2.QtGui import QIcon
+from PySide2.QtCore import *
 
 import sys
+import time
+
 import search
+
+CARD_INFO_LABEL = ["Card Name", "Card Rank", "Card Diff"]
+
+class Worker(QObject):
+    finished = Signal()
+    update = Signal()
+    
+    def run(self):
+        for i in range(120):
+            time.sleep(30)
+            self.update.emit()
+        self.finished.emit()
 
 class GUI(QWidget):
     def __init__(self, parent=None):
         super().__init__()
+        self.start_refresh_thread = False
+        self.url = ''
+        
         self.setWindowTitle('agricola.tools')
         self.setWindowIcon(QIcon('raw_asset/agricola-en.jpg'))
         
@@ -29,7 +47,7 @@ class GUI(QWidget):
         self.label3 = QLabel('Auto Refresh:')
         self.cmb2 = QComboBox()
         self.cmb2.setStyle(QStyleFactory.create('Fusion'))
-        self.autorefresh_type_list = ['on', 'off']
+        self.autorefresh_type_list = ['off', 'on']
         self.cmb2.addItem(self.autorefresh_type_list[0])
         self.cmb2.addItem(self.autorefresh_type_list[1])
         
@@ -57,16 +75,40 @@ class GUI(QWidget):
             self.inquiryCardName()
 
     def inquiryUrl(self):
-        card_info_label = ["Card Name", "Card Rank", "Card Diff"]
+        card_info_label = CARD_INFO_LABEL
         machine_search = search.SearchMachine()
-        url = self.line_edit.text()
-        game_type = self.getGameType()
+        if self.url == '':
+            self.url = self.line_edit.text()
+        game_type = self.getGameType()    
+        need_auto_refresh = self.getNeedAutoRefresh()
         
-        card_info_arr = machine_search.getCardInfoArr(url, game_type)
-        self.setTableByArr(card_info_arr, card_info_label)
+        card_info_arr = machine_search.getCardInfoArr(self.url, game_type)
+        self.setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_refresh_thread))
+        
+        if need_auto_refresh and not self.start_refresh_thread:
+            self.startThreadRefresh(self)
+
+    def startThreadRefresh(self):
+        self.start_refresh_thread = True
+        self.thread = QThread()
+        self.worker = Worker()
+        self.worker.moveToThread(self.thread)
+        
+        self.thread.started.connect(self.worker.run)
+        
+        self.worker.update.connect(self.inquiryUrl)
+        
+        self.worker.finished.connect(self.endThreadRefresh)
+        self.worker.finished.connect(self.thread.quit)
+        self.worker.finished.connect(self.worker.deleteLater)
+        self.thread.finished.connect(self.thread.deleteLater)
+        self.thread.start()
+
+    def endThreadRefresh(self):
+        self.start_refresh_thread = False
 
     def inquiryCardName(self):
-        card_info_label = ["Card Name", "Card Rank", "Card Diff"]
+        card_info_label = CARD_INFO_LABEL
         machine_search = search.SearchMachine()
         card_name = str(self.line_edit.text())
         
@@ -80,20 +122,27 @@ class GUI(QWidget):
         game_type = self.game_type_list[self.cmb1.currentIndex()]
         return game_type
 
-    def setTableByArr(self, arr, arr_label):
+    def getNeedAutoRefresh(self):
+        # bool
+        need_auto_refresh = self.cmb2.currentIndex()
+        return need_auto_refresh
+
+    def setTableByArr(self, arr, arr_label, first_set = False):
         self.table.setRowCount(len(arr))
-        self.table.setColumnCount(len(arr[0]))
-        self.table.setHorizontalHeaderLabels(arr_label)
+        if first_set:
+            self.table.setColumnCount(len(arr[0]))
+            self.table.setHorizontalHeaderLabels(arr_label)
         
         for i, arr_row in enumerate(arr):
             for j, item in enumerate(arr_row):
                 self.setTableItem(item, i, j)
         
-        header = self.table.horizontalHeader()
-        header.setSectionResizeMode(0, QHeaderView.Stretch)
-        
-        for i in range(1, len(arr[0])):
-            header.setSectionResizeMode(i, QHeaderView.ResizeToContents)
+        if first_set:
+            header = self.table.horizontalHeader()
+            header.setSectionResizeMode(0, QHeaderView.Stretch)
+            
+            for i in range(1, len(arr[0])):
+                header.setSectionResizeMode(i, QHeaderView.ResizeToContents)
 
     def setTableItem(self, item, row, column):
         item = QTableWidgetItem(item)
