@@ -7,7 +7,7 @@ The purpose of the project is to analyze realtime public information about board
 In the future, we hope to develop tools with more functions that help new players get familiar and better with the game faster. Also, we hope to deploy the tool into various platform such as windows, ubuntu, M1 mac, etc.
 
 # Contents
-- [agricola.tools](#agricola.tools)
+- [agricola.tools](#agricola-tools-file)
 - [Contents](#contents)
 - [Installation](#installation)
 - [Feature](#feature)
