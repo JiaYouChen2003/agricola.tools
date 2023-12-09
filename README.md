@@ -10,6 +10,7 @@ In the future, we hope to develop tools with more functions that help new player
 - [agricola.tools](#agricola.tools)
 - [Contents](#contents)
 - [Installation](#installation)
+- [Feature](#feature)
 
 # Installation
 ## Build Environment
@@ -24,7 +25,8 @@ $pip install -r requirements.txt
 $conda python main.py
 ```
 
-## Feature
+# Feature
+
 <div align="center">
 <img src="https://github.com/JiaYouChen2003/agricola.tools/tree/main/raw_asset/layout.png" width="81%" height="81%">
 </div>
