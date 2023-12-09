@@ -26,5 +26,5 @@ $conda python main.py
 
 ## Feature
 <div align="center">
-<img src="https://github.com/JiaYouChen2003/agricola.tools/tree/main/raw_asset/layout.png">
+<img src="https://github.com/JiaYouChen2003/agricola.tools/tree/main/raw_asset/layout.png" width="81%" height="81%">
 </div>
