@@ -4,7 +4,7 @@ Tools for playing Agricola on BGA
 The purpose of the project is to analyze realtime public information about board game [agricola](https://boardgamegeek.com/boardgame/200680/agricola-revised-edition). Speaking specific, the project is able to show the card rank that have been played on the player board on the website [BoardGameArena(BGA)](https://boardgamearena.com). The card rank [statistic](https://boardgamearena.com/forum/viewtopic.php?t=31498) is also from the website.
 
 
-In the future, we hope to develop tools with more functions that help new players get familiar and better with the game faster. Also, we hope to deploy the tool into various platform such as windows, ubuntu, M1 mac, etc.
+In the future, we hope to develop tools with more functions that help new players get familiar and better with the game faster. Also, we hope to deploy the tool into various platform such as windows, Ubuntu, ios, android etc.
 
 # Contents
 - [agricola.tools](#agricolatools)
