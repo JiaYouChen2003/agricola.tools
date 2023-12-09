@@ -7,9 +7,10 @@ The purpose of the project is to analyze realtime public information about board
 In the future, we hope to develop tools with more functions that help new players get familiar and better with the game faster. Also, we hope to deploy the tool into various platform such as windows, ubuntu, M1 mac, etc.
 
 # Contents
-- [agricola.tools](#agricola.tools)
+- [agricola.tools](#agricolatools)
 - [Contents](#contents)
 - [Installation](#installation)
+- [Feature](#feature)
 
 # Installation
 ## Build Environment
@@ -24,7 +25,8 @@ $pip install -r requirements.txt
 $conda python main.py
 ```
 
-## Feature
+# Feature
+
 <div align="center">
-<img src="https://github.com/JiaYouChen2003/agricola.tools/tree/main/raw_asset/layout.png">
+<img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/layout.png" width="81%" height="81%">
 </div>
