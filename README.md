@@ -13,6 +13,11 @@ In the future, we hope to develop tools with more functions that help new player
 - [Feature](#feature)
 
 # Installation
+## Download
+```bash
+$git clone https://github.com/JiaYouChen2003/agricola.tools.git
+```
+
 ## Build Environment
 ```bash
 $conda create -n ENV_NAME python=3.9
