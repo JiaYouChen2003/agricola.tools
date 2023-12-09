@@ -1,13 +1,11 @@
 import openpyxl
 import scrape
-import os
 
 import const_agricolatools
 
 class SearchMachine():
     def __init__(self):
-        PATH = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
-        self.xlsx_name = PATH
+        self.xlsx_name = const_agricolatools.XLSXPATH
         self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
 
     def __getValuesFromSheet(self, sheet):
@@ -19,13 +17,17 @@ class SearchMachine():
             arr.append(list)
         return arr
 
-    def __getItemIndexByNameFromArray(self, itemName, arr, column4name, column4index):
+    def __getItemIndexByNameFromArray(self, itemName, arr, column4name, column4index, wantcasefold = False):
         for row in arr:
-            if row[column4name] == itemName:
-                return row[column4index]
+            if wantcasefold:
+                if row[column4name].casefold() == itemName.casefold():
+                    return row[column4index]
+            else:
+                if row[column4name] == itemName:
+                    return row[column4index]
     
     # Functions that can be called
-    def getCardInfoArr(self, url, game_type):
+    def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
         card_info_arr = []
         
         machine_scrape = scrape.ScrapeMachine()
@@ -40,21 +42,21 @@ class SearchMachine():
             card_info_arr.append(card_info_list)
         return card_info_arr
     
-    def getCardRank(self, card_name, game_type = '4player_default'):
+    def getCardRank(self, card_name, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
         workbook_list = self.workbook_list
         
         arr_rank = self.__getValuesFromSheet(workbook_list[game_type])
-        card_rank = self.__getItemIndexByNameFromArray(card_name, arr_rank, 1, 0)
+        card_rank = self.__getItemIndexByNameFromArray(card_name, arr_rank, 1, 0, wantcasefold=True)
         return card_rank
 
     def getCardDiff(self, card_name):
         workbook_list = self.workbook_list
         
-        arr_diff = self.__getValuesFromSheet(workbook_list['Diff'])
-        card_diff = self.__getItemIndexByNameFromArray(card_name, arr_diff, 0, 3)
+        arr_diff = self.__getValuesFromSheet(workbook_list[const_agricolatools.WORKBOOK_DIFF_NAME])
+        card_diff = self.__getItemIndexByNameFromArray(card_name, arr_diff, 0, 3, wantcasefold=True)
         return card_diff
 
-
+# test code
 if __name__ == '__main__':
     machine_search = SearchMachine()
     machine_scrape = scrape.ScrapeMachine()

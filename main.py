@@ -31,10 +31,9 @@ class GUI(QWidget):
     def __init__(self, parent=None):
         super().__init__()
         self.start_thread_refresh = False
-        self.url = ''
         
         self.setWindowTitle('agricola.tools')
-        self.setWindowIcon(QIcon('raw_asset/agricola-en.jpg'))
+        self.setWindowIcon(QIcon(const_agricolatools.WINDOW_ICON_PATH))
         
         self.label1_1 = QLabel('URL or')
         self.label1_2 = QLabel('Card Name:')
@@ -47,7 +46,7 @@ class GUI(QWidget):
         self.button.setText('search')
         self.cmb1 = QComboBox()
         self.cmb1.setStyle(QStyleFactory.create('Fusion'))
-        self.game_type_list = ['4player_default', '4player_withAAS', '4player_banlist_500+', '4player_banlist_300-']
+        self.game_type_list = const_agricolatools.GAME_TYPE_LIST
         self.cmb1.addItem(self.game_type_list[0])
         self.cmb1.addItem(self.game_type_list[1])
         self.cmb1.addItem(self.game_type_list[2])
@@ -103,8 +102,7 @@ class GUI(QWidget):
     def inquiryUrl(self):
         card_info_label = const_agricolatools.CARD_INFO_LABEL
         machine_search = search.SearchMachine()
-        if self.url == '':
-            self.url = self.line_edit.text()
+        url = self.line_edit.text()
         game_type = self.getGameType()
         need_auto_refresh = self.getNeedAutoRefresh()
         
@@ -112,7 +110,7 @@ class GUI(QWidget):
             self.interruptThreadRefresh()
             return
         
-        card_info_arr = machine_search.getCardInfoArr(self.url, game_type)
+        card_info_arr = machine_search.getCardInfoArr(url, game_type)
         card_draftphase_name = const_agricolatools.ConstMessage().draftphase
         if card_info_arr[0][0] == card_draftphase_name:
             self.label_print.setText(card_draftphase_name)
@@ -153,13 +151,14 @@ class GUI(QWidget):
         card_info_label = const_agricolatools.CARD_INFO_LABEL
         machine_search = search.SearchMachine()
         card_name = str(self.line_edit.text())
+        game_type = self.getGameType()
         
-        card_rank = machine_search.getCardRank(card_name=card_name)
+        card_rank = machine_search.getCardRank(card_name=card_name, game_type=game_type)
         card_diff = machine_search.getCardDiff(card_name=card_name)
         card_info = [[card_name, card_rank, card_diff]]
         self.setTableByArr(card_info, card_info_label)
         if card_rank == None:
-            self.label_print.setText('Cannot Found Card :(')        
+            self.label_print.setText('Cannot Found Card :(')
         else:
             self.label_print.setText('Card Searched!')
 

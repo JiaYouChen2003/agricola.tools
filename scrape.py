@@ -43,7 +43,6 @@ class ScrapeMachine():
             return True
         return False
 
+# test from search.py
 if __name__ == '__main__':
-    # machine_scrape = ScrapeMachine()
-    # _ = machine_scrape.getCardListFromBGA()
     print('scrape.py should not be executed')
