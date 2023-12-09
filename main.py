@@ -6,7 +6,7 @@ import sys
 import time
 
 import search
-import message_agricolatools
+import const_agricolatools
 
 class WorkerInquiryUrl(QObject):
     finished = Signal()
@@ -101,7 +101,7 @@ class GUI(QWidget):
         self.thread_inquiry_url.start()
 
     def inquiryUrl(self):
-        card_info_label = message_agricolatools.CARD_INFO_LABEL
+        card_info_label = const_agricolatools.CARD_INFO_LABEL
         machine_search = search.SearchMachine()
         if self.url == '':
             self.url = self.line_edit.text()
@@ -113,7 +113,7 @@ class GUI(QWidget):
             return
         
         card_info_arr = machine_search.getCardInfoArr(self.url, game_type)
-        card_draftphase_name = message_agricolatools.ConstMessage().draftphase
+        card_draftphase_name = const_agricolatools.ConstMessage().draftphase
         if card_info_arr[0][0] == card_draftphase_name:
             self.label_print.setText(card_draftphase_name)
             return
@@ -150,7 +150,7 @@ class GUI(QWidget):
         self.label_print.setText('AutoRefreshInterrupted')
 
     def inquiryCardName(self):
-        card_info_label = message_agricolatools.CARD_INFO_LABEL
+        card_info_label = const_agricolatools.CARD_INFO_LABEL
         machine_search = search.SearchMachine()
         card_name = str(self.line_edit.text())
         

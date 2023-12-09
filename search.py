@@ -2,7 +2,7 @@ import openpyxl
 import scrape
 import os
 
-import message_agricolatools
+import const_agricolatools
 
 class SearchMachine():
     def __init__(self):
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     
     card_name_list = machine_scrape.getCardListFromBGA()
     
-    card_draftphase_name = message_agricolatools.ConstMessage().draftphase
+    card_draftphase_name = const_agricolatools.ConstMessage().draftphase
     if card_name_list[0].text == card_draftphase_name:
         print('Now in Draft Phase')
         exit()

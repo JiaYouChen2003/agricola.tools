@@ -1,4 +1,3 @@
-
 CARD_INFO_LABEL = ["Card Name", "Card Rank", "Card Diff"]
 
 class ConstMessage():

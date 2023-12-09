@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-import message_agricolatools
+import const_agricolatools
 
 class MessageCard():
     def __init__(self, message):
@@ -29,7 +29,7 @@ class ScrapeMachine():
         is_draftphase = self.checkDraftPhase(main_title_text=main_tile_text)
         
         if is_draftphase:
-            card_draftphase_name = message_agricolatools.ConstMessage().draftphase
+            card_draftphase_name = const_agricolatools.ConstMessage().draftphase
             card_draftphase = MessageCard(card_draftphase_name)
             return [card_draftphase]
         
