@@ -5,6 +5,7 @@ from PySide2.QtCore import *
 import sys
 import time
 
+sys.path.append('./python_files')
 import const_agricolatools
 import inquiry
 
@@ -211,6 +212,7 @@ class GUI(QWidget):
         self.__setTableByArr(card_info, card_info_label)
 
 if __name__ == '__main__':
+    print(const_agricolatools.CARD_INFO_LABEL)
     app = QApplication(sys.argv)
     gui = GUI()
     gui.show()
