@@ -6,14 +6,13 @@ import sys
 import time
 
 import const_agricolatools
-import search
 import inquiry
 
 class WorkerWaitToShowThings(QObject):
     finished = Signal()
     
     def run(self):
-        time.sleep(1)
+        time.sleep(0.1)
         self.finished.emit()
 
 class WorkerRefresh(QObject):
