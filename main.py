@@ -5,14 +5,15 @@ from PySide2.QtCore import *
 import sys
 import time
 
-import search
 import const_agricolatools
+import search
+import inquiry
 
-class WorkerInquiryUrl(QObject):
+class WorkerWaitToShowThings(QObject):
     finished = Signal()
     
     def run(self):
-        time.sleep(0.1)
+        time.sleep(1)
         self.finished.emit()
 
 class WorkerRefresh(QObject):
@@ -75,104 +76,19 @@ class GUI(QWidget):
         self.grid.addWidget(self.cmb2, 32, 36)
         self.setLayout(self.grid)
         self.resize(640, 810)
-        self.button.clicked.connect(self.inquiry)
+        self.button.clicked.connect(self.startInquiry)
 
-    def inquiry(self):
-        if self.line_edit.text()[0:5] == 'https':
-            self.label_print.setText('Searching Website...')
-            # use thread so that label print can be shown, not required
-            self.startThreadInquiryUrl()
-        else:
-            self.label_print.setText('Searching Card...')
-            self.inquiryCardName()
-
-    def startThreadInquiryUrl(self):
-        self.thread_inquiry_url = QThread()
-        self.worker = WorkerInquiryUrl()
-        self.worker.moveToThread(self.thread_inquiry_url)
-        
-        self.thread_inquiry_url.started.connect(self.worker.run)
-        
-        self.worker.finished.connect(self.inquiryUrl)
-        self.worker.finished.connect(self.thread_inquiry_url.quit)
-        self.worker.finished.connect(self.worker.deleteLater)
-        self.thread_inquiry_url.finished.connect(self.thread_inquiry_url.deleteLater)
-        self.thread_inquiry_url.start()
-
-    def inquiryUrl(self):
-        card_info_label = const_agricolatools.CARD_INFO_LABEL
-        machine_search = search.SearchMachine()
-        url = self.line_edit.text()
-        game_type = self.getGameType()
-        need_auto_refresh = self.getNeedAutoRefresh()
-        
-        if not need_auto_refresh and self.start_thread_refresh:
-            self.interruptThreadRefresh()
-            return
-        
-        card_info_arr = machine_search.getCardInfoArr(url, game_type)
-        card_draftphase_name = const_agricolatools.ConstMessage().draftphase
-        if card_info_arr[0][0] == card_draftphase_name:
-            self.label_print.setText(card_draftphase_name)
-            return
-        
-        self.label_print.setText('Searching Done!')
-        self.setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
-        
-        if need_auto_refresh and not self.start_thread_refresh:
-            self.startThreadRefresh()
-
-    def startThreadRefresh(self):
-        self.start_thread_refresh = True
-        self.thread_refresh = QThread()
-        self.worker = WorkerRefresh()
-        self.worker.moveToThread(self.thread_refresh)
-        
-        self.thread_refresh.started.connect(self.worker.run)
-        
-        self.worker.refresh.connect(self.inquiryUrl)
-        
-        self.worker.finished.connect(self.endThreadRefresh)
-        self.worker.finished.connect(self.thread_refresh.quit)
-        self.worker.finished.connect(self.worker.deleteLater)
-        self.thread_refresh.finished.connect(self.thread_refresh.deleteLater)
-        self.thread_refresh.start()
-        self.label_print.setText('AutoRefreshStart')
-
-    def endThreadRefresh(self):
-        self.start_thread_refresh = False
-        self.label_print.setText('AutoRefreshEnd')
-
-    def interruptThreadRefresh(self):
-        self.thread_refresh.requestInterruption()
-        self.label_print.setText('AutoRefreshInterrupted')
-
-    def inquiryCardName(self):
-        card_info_label = const_agricolatools.CARD_INFO_LABEL
-        machine_search = search.SearchMachine()
-        card_name = str(self.line_edit.text())
-        game_type = self.getGameType()
-        
-        card_rank = machine_search.getCardRank(card_name=card_name, game_type=game_type)
-        card_diff = machine_search.getCardDiff(card_name=card_name)
-        card_info = [[card_name, card_rank, card_diff]]
-        self.setTableByArr(card_info, card_info_label)
-        if card_rank == None:
-            self.label_print.setText('Cannot Found Card :(')
-        else:
-            self.label_print.setText('Card Searched!')
-
-    def getGameType(self):
+    def __getGameType(self):
         # 4player_default
         game_type = self.game_type_list[self.cmb1.currentIndex()]
         return game_type
 
-    def getNeedAutoRefresh(self):
+    def __getNeedAutoRefresh(self):
         # bool
         need_auto_refresh = self.cmb2.currentIndex()
         return need_auto_refresh
 
-    def setTableByArr(self, arr, arr_label, first_set = True):
+    def __setTableByArr(self, arr, arr_label, first_set = True):
         self.table.setRowCount(len(arr))
         if first_set:
             self.table.setColumnCount(len(arr[0]))
@@ -180,7 +96,7 @@ class GUI(QWidget):
         
         for i, arr_row in enumerate(arr):
             for j, item in enumerate(arr_row):
-                self.setTableItem(item, i, j)
+                self.__setTableItem(item, i, j)
         
         if first_set:
             header = self.table.horizontalHeader()
@@ -189,9 +105,111 @@ class GUI(QWidget):
             for i in range(1, len(arr[0])):
                 header.setSectionResizeMode(i, QHeaderView.ResizeToContents)
 
-    def setTableItem(self, item, row, column):
+    def __setTableItem(self, item, row, column):
         item = QTableWidgetItem(item)
         self.table.setItem(row, column, item)
+
+    def __startThreadToWaitThenInquiryByUrl(self):
+        # initial thread and what to run while thread running
+        self.thread_wait = QThread()
+        self.worker_wait = WorkerWaitToShowThings()
+        self.worker_wait.moveToThread(self.thread_wait)
+        self.thread_wait.started.connect(self.worker_wait.run)
+        
+        # finish wait thread, start inquiry
+        self.worker_wait.finished.connect(self.startInquiryByUrl())
+        # delete thread
+        self.worker_wait.finished.connect(self.thread_wait.quit)
+        self.worker_wait.finished.connect(self.worker_wait.deleteLater)
+        self.thread_wait.finished.connect(self.thread_wait.deleteLater)
+        self.thread_wait.start()
+
+    def __startThreadRefresh(self):
+        self.label_print.setText('Start Auto Refresh')
+        self.start_thread_refresh = True
+        self.thread_refresh = QThread()
+        self.worker_refresh = WorkerRefresh()
+        self.worker_refresh.moveToThread(self.thread_refresh)
+        
+        self.thread_refresh.started.connect(self.worker_refresh.run)
+        
+        self.worker_refresh.refresh.connect(self.startInquiryByUrl)
+        
+        self.worker_refresh.finished.connect(self.__endThreadRefresh)
+        self.worker_refresh.finished.connect(self.thread_refresh.quit)
+        self.worker_refresh.finished.connect(self.worker_refresh.deleteLater)
+        self.thread_refresh.finished.connect(self.thread_refresh.deleteLater)
+        self.thread_refresh.start()
+
+    def __endThreadRefresh(self):
+        self.label_print.setText('End Auto Refresh')
+        self.start_thread_refresh = False
+
+    def __interruptThreadRefresh(self):
+        self.label_print.setText('Interrupt Refresh!')
+        self.thread_refresh.requestInterruption()
+        self.start_thread_refresh = False
+
+    def startInquiry(self):
+        if self.line_edit.text()[0:5] == 'https':
+            self.label_print.setText('Searching Website...')
+            # use thread so that label print can be shown, not required
+            # when thread end, start inquiry
+            self.__startThreadToWaitThenInquiryByUrl()
+        else:
+            self.label_print.setText('Searching Card...')
+            self.startInquiryByCardName(card_name=self.line_edit.text())
+
+    def startInquiryByUrl(self):
+        # if auto refresh is off but refresh thread is start, interrupt thread
+        need_auto_refresh = self.__getNeedAutoRefresh()
+        if not need_auto_refresh and self.start_thread_refresh:
+            self.__interruptThreadRefresh()
+            return
+        
+        # things need for inquiry
+        url = self.line_edit.text()
+        machine_inquiry = inquiry.InquiryMachine()
+        game_type = self.__getGameType()
+        
+        # inquiry and get info for all played cards
+        card_info_arr = machine_inquiry.inquiryByUrl(url=url, game_type=game_type)
+        
+        # title to show
+        card_info_label = const_agricolatools.CARD_INFO_LABEL
+        self.label_print.setText('Searching Done!')
+        
+        # if still in draft phase don't show info for all played cards(no card played)
+        card_draftphase_name = const_agricolatools.ConstMessage().draftphase
+        if card_info_arr[0][0] == card_draftphase_name:
+            self.label_print.setText(card_draftphase_name)
+            self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
+            return
+        
+        # show info for all played cards
+        self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
+        
+        # if auto refresh is on but refresh thread did not start, start thread
+        if need_auto_refresh and not self.start_thread_refresh:
+            self.__startThreadRefresh()
+
+    def startInquiryByCardName(self, card_name):
+        # things need for inquiry
+        machine_inquiry = inquiry.InquiryMachine()
+        game_type = self.__getGameType()
+        
+        # inquiry and get info for the card
+        card_info = machine_inquiry.inquiryByCardName(card_name=card_name, game_type=game_type)
+        
+        # title to show
+        card_info_label = const_agricolatools.CARD_INFO_LABEL
+        if card_info[0][1] == None:
+            self.label_print.setText('Cannot Found Card :(')
+        else:
+            self.label_print.setText('Card Searched!')
+        
+        # show info for the card
+        self.__setTableByArr(card_info, card_info_label)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

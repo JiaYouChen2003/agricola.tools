@@ -1,7 +1,7 @@
 import openpyxl
-import scrape
 
 import const_agricolatools
+import scrape
 
 class SearchMachine():
     def __init__(self):
@@ -31,6 +31,7 @@ class SearchMachine():
         card_info_arr = []
         
         machine_scrape = scrape.ScrapeMachine()
+        # if still in draft phase, return fake card that say still in draft phase
         card_name_list = machine_scrape.getCardListFromBGA(url=url)
         
         for card in card_name_list:
