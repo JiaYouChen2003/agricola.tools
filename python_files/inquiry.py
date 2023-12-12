@@ -17,7 +17,7 @@ class InquiryMachine():
             return [[card_draftphase_name]]
         
         return card_info_arr
-
+    
     def inquiryByCardName(self, card_name, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
         machine_search = search.SearchMachine()
         

@@ -13,7 +13,7 @@ class MessageCard():
 class ScrapeMachine(): 
     def __init__(self):
         self.url_en_front = 'https://en.'
-
+    
     def getCardListFromBGA(self, url=''):
         if url == '':
             url = input('Enter the URL:')
@@ -39,7 +39,7 @@ class ScrapeMachine():
         # card_name_list should add card player
         assert(False)
         return card_name_list
-
+    
     def checkDraftPhase(self, main_title_text):
         if main_title_text.text[6:12] == 'Draft:':
             return True

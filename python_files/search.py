@@ -7,7 +7,7 @@ class SearchMachine():
     def __init__(self):
         self.xlsx_name = const_agricolatools.XLSXPATH
         self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
-
+    
     def __getValuesFromSheet(self, sheet):
         arr = []
         for row in sheet:
@@ -16,7 +16,7 @@ class SearchMachine():
                 list.append(str(column.value).strip())
             arr.append(list)
         return arr
-
+    
     def __getItemIndexByNameFromArray(self, itemName, arr, column4name, column4index, wantcasefold = False):
         for row in arr:
             if wantcasefold:
@@ -53,7 +53,7 @@ class SearchMachine():
         arr_rank = self.__getValuesFromSheet(workbook_list[game_type])
         card_rank = self.__getItemIndexByNameFromArray(card_name, arr_rank, 1, 0, wantcasefold=True)
         return card_rank
-
+    
     def getCardDiff(self, card_name):
         workbook_list = self.workbook_list
         
