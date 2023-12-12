@@ -31,8 +31,8 @@ class SearchMachine():
         card_info_arr = []
         
         machine_scrape = scrape.ScrapeMachine()
-        # if still in draft phase, return fake card that say still in draft phase
-        card_name_list = machine_scrape.getCardListFromBGA(url=url)
+        # if still in draft phase, get a fake card that say still in draft phase
+        card_name_list = machine_scrape.getCardListFromBGA(url=url, need_player=need_player)
         
         for card in card_name_list:
             card_name = card.text

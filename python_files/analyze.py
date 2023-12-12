@@ -5,3 +5,6 @@ class AnalyzeMachine():
         bla = True
     
     def showCardRankMean(self):
+        
+    def showCardRankMid(self):
+        

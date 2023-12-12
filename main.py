@@ -77,17 +77,17 @@ class GUI(QWidget):
         self.setLayout(self.grid)
         self.resize(640, 810)
         self.button.clicked.connect(self.startInquiry)
-
+    
     def __getGameType(self):
         # 4player_default
         game_type = self.game_type_list[self.cmb1.currentIndex()]
         return game_type
-
+    
     def __getNeedAutoRefresh(self):
         # bool
         need_auto_refresh = self.cmb2.currentIndex()
         return need_auto_refresh
-
+    
     def __setTableByArr(self, arr, arr_label, first_set = True):
         self.table.setRowCount(len(arr))
         if first_set:
@@ -104,11 +104,11 @@ class GUI(QWidget):
             
             for i in range(1, len(arr[0])):
                 header.setSectionResizeMode(i, QHeaderView.ResizeToContents)
-
+    
     def __setTableItem(self, item, row, column):
         item = QTableWidgetItem(item)
         self.table.setItem(row, column, item)
-
+    
     def __startThreadToWaitThenInquiryByUrl(self):
         # initial thread and what to run while thread running
         self.thread_wait = QThread()
@@ -123,7 +123,7 @@ class GUI(QWidget):
         self.worker_wait.finished.connect(self.worker_wait.deleteLater)
         self.thread_wait.finished.connect(self.thread_wait.deleteLater)
         self.thread_wait.start()
-
+    
     def __startThreadRefresh(self):
         self.label_print.setText('Start Auto Refresh')
         self.start_thread_refresh = True
@@ -140,16 +140,16 @@ class GUI(QWidget):
         self.worker_refresh.finished.connect(self.worker_refresh.deleteLater)
         self.thread_refresh.finished.connect(self.thread_refresh.deleteLater)
         self.thread_refresh.start()
-
+    
     def __endThreadRefresh(self):
         self.label_print.setText('End Auto Refresh')
         self.start_thread_refresh = False
-
+    
     def __interruptThreadRefresh(self):
         self.label_print.setText('Interrupt Refresh!')
         self.thread_refresh.requestInterruption()
         self.start_thread_refresh = False
-
+    
     def startInquiry(self):
         if self.line_edit.text()[0:5] == 'https':
             self.label_print.setText('Searching Website...')
@@ -159,7 +159,7 @@ class GUI(QWidget):
         else:
             self.label_print.setText('Searching Card...')
             self.startInquiryByCardName(card_name=self.line_edit.text())
-
+    
     def startInquiryByUrl(self):
         # if auto refresh is off but refresh thread is start, interrupt thread
         need_auto_refresh = self.__getNeedAutoRefresh()
@@ -192,7 +192,7 @@ class GUI(QWidget):
         # if auto refresh is on but refresh thread did not start, start thread
         if need_auto_refresh and not self.start_thread_refresh:
             self.__startThreadRefresh()
-
+    
     def startInquiryByCardName(self, card_name):
         # things need for inquiry
         machine_inquiry = inquiry.InquiryMachine()
