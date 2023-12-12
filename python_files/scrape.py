@@ -36,6 +36,8 @@ class ScrapeMachine():
         card_board = html.find_element(By.ID, 'player-boards')
         card_name_list = card_board.find_elements(By.CLASS_NAME, 'card-title')
         
+        # card_name_list should add card player
+        assert(False)
         return card_name_list
 
     def checkDraftPhase(self, main_title_text):

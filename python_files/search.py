@@ -27,7 +27,7 @@ class SearchMachine():
                     return row[column4index]
     
     # Functions that can be called
-    def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
+    def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], need_player = False):
         card_info_arr = []
         
         machine_scrape = scrape.ScrapeMachine()
@@ -41,6 +41,10 @@ class SearchMachine():
             
             card_info_list = [card_name, card_rank, card_diff]
             card_info_arr.append(card_info_list)
+            
+            # card_info_list should add card player if need_player = True
+            assert(False)
+        
         return card_info_arr
     
     def getCardRank(self, card_name, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
