@@ -7,7 +7,7 @@ class SearchMachine():
     def __init__(self):
         self.xlsx_name = const_agricolatools.XLSXPATH
         self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
-
+    
     def __getValuesFromSheet(self, sheet):
         arr = []
         for row in sheet:
@@ -16,7 +16,7 @@ class SearchMachine():
                 list.append(str(column.value).strip())
             arr.append(list)
         return arr
-
+    
     def __getItemIndexByNameFromArray(self, itemName, arr, column4name, column4index, wantcasefold = False):
         for row in arr:
             if wantcasefold:
@@ -27,12 +27,12 @@ class SearchMachine():
                     return row[column4index]
     
     # Functions that can be called
-    def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
+    def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], need_player = False):
         card_info_arr = []
         
         machine_scrape = scrape.ScrapeMachine()
-        # if still in draft phase, return fake card that say still in draft phase
-        card_name_list = machine_scrape.getCardListFromBGA(url=url)
+        # if still in draft phase, get a fake card that say still in draft phase
+        card_name_list = machine_scrape.getCardListFromBGA(url=url, need_player=need_player)
         
         for card in card_name_list:
             card_name = card.text
@@ -41,6 +41,10 @@ class SearchMachine():
             
             card_info_list = [card_name, card_rank, card_diff]
             card_info_arr.append(card_info_list)
+            
+            # card_info_list should add card player if need_player = True
+            assert(False)
+        
         return card_info_arr
     
     def getCardRank(self, card_name, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
@@ -49,7 +53,7 @@ class SearchMachine():
         arr_rank = self.__getValuesFromSheet(workbook_list[game_type])
         card_rank = self.__getItemIndexByNameFromArray(card_name, arr_rank, 1, 0, wantcasefold=True)
         return card_rank
-
+    
     def getCardDiff(self, card_name):
         workbook_list = self.workbook_list
         
