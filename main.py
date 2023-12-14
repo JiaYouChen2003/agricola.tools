@@ -88,10 +88,13 @@ class GUI(QWidget):
         need_auto_refresh = self.cmb2.currentIndex()
         return need_auto_refresh
     
-    def __setTableByArr(self, arr, arr_label, first_set = True):
+    def __setTableByArr(self, arr, arr_label, first_set = True, have_card_player = False):
         self.table.setRowCount(len(arr))
         if first_set:
-            self.table.setColumnCount(len(arr[0]))
+            if have_card_player:
+                self.table.setColumnCount(len(arr[0]) - 1)
+            else:
+                self.table.setColumnCount(len(arr[0]))
             self.table.setHorizontalHeaderLabels(arr_label)
         
         for i, arr_row in enumerate(arr):
@@ -102,7 +105,7 @@ class GUI(QWidget):
             header = self.table.horizontalHeader()
             header.setSectionResizeMode(0, QHeaderView.Stretch)
             
-            for i in range(1, len(arr[0])):
+            for i in range(1, self.table.columnCount()):
                 header.setSectionResizeMode(i, QHeaderView.ResizeToContents)
     
     def __setTableItem(self, item, row, column):
@@ -179,6 +182,10 @@ class GUI(QWidget):
         card_info_label = const_agricolatools.CARD_INFO_LABEL
         self.label_print.setText('Searching Done!')
         
+        # if auto refresh is on but refresh thread did not start, start thread
+        if need_auto_refresh and not self.start_thread_refresh:
+            self.__startThreadRefresh()
+        
         # if still in draft phase don't show info for all played cards(no card played)
         card_draftphase_name = const_agricolatools.ConstMessage().draftphase
         if card_info_arr[0][0] == card_draftphase_name:
@@ -187,11 +194,7 @@ class GUI(QWidget):
             return
         
         # show info for all played cards
-        self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
-        
-        # if auto refresh is on but refresh thread did not start, start thread
-        if need_auto_refresh and not self.start_thread_refresh:
-            self.__startThreadRefresh()
+        self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh), have_card_player=True)
     
     def startInquiryByCardName(self, card_name):
         # things need for inquiry
@@ -212,7 +215,6 @@ class GUI(QWidget):
         self.__setTableByArr(card_info, card_info_label)
 
 if __name__ == '__main__':
-    print(const_agricolatools.CARD_INFO_LABEL)
     app = QApplication(sys.argv)
     gui = GUI()
     gui.show()
