@@ -9,6 +9,7 @@ import const_agricolatools
 class MessageCard():
     def __init__(self, message):
         self.text = message
+        self.__class__ = None
 
 class ScrapeMachine(): 
     def __init__(self):
@@ -16,7 +17,7 @@ class ScrapeMachine():
     
     def getCardListFromBGA(self, url='', need_player = False):
         if url == '':
-            url = input('Enter the URL:')
+            url = input(const_agricolatools.URL_REQUIRE_HINT)
         url_en_backstartnum = url.find('boardgamearena.com')
         url_en = self.url_en_front + url[url_en_backstartnum:]
         
@@ -35,10 +36,8 @@ class ScrapeMachine():
             return [card_draftphase]
         
         card_board = html.find_element(By.ID, 'player-boards')
-        card_name_list = card_board.find_elements(By.CLASS_NAME, 'card-title')
+        card_name_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
         
-        # card_name_list should add card player
-        assert(False)
         return card_name_list
     
     def checkDraftPhase(self, main_title_text):
@@ -48,4 +47,4 @@ class ScrapeMachine():
 
 # test from search.py
 if __name__ == '__main__':
-    print('scrape.py should not be executed')
+    assert False, 'scrape.py should not be executed'

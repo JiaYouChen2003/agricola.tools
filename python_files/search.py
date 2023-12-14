@@ -34,16 +34,17 @@ class SearchMachine():
         # if still in draft phase, get a fake card that say still in draft phase
         card_name_list = machine_scrape.getCardListFromBGA(url=url, need_player=need_player)
         
+        # get card rank, diff and card player
         for card in card_name_list:
             card_name = card.text
             card_rank = self.getCardRank(card_name=card_name, game_type=game_type)
             card_diff = self.getCardDiff(card_name=card_name)
             
+            if card.size['height'] < 30:
+                card_name = const_agricolatools.CARD_PLAYER_LABEL + card_name
+            
             card_info_list = [card_name, card_rank, card_diff]
             card_info_arr.append(card_info_list)
-            
-            # card_info_list should add card player if need_player = True
-            assert(False)
         
         return card_info_arr
     
@@ -75,9 +76,12 @@ if __name__ == '__main__':
     
     print()
     print("Name".rjust(20), "Rank".rjust(5), "Diff".rjust(5))
+    player_num = 0
     for card in card_name_list:
         card_name = card.text
         card_rank = machine_search.getCardRank(card_name=card_name)
         card_diff = machine_search.getCardDiff(card_name=card_name)
+        if card.size['height'] < 30:
+            card_name = const_agricolatools.CARD_PLAYER_LABEL + card_name
         
         print(card_name.rjust(20), str(card_rank).rjust(5), str(card_diff).rjust(5))
