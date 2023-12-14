@@ -15,7 +15,7 @@ class ScrapeMachine():
     def __init__(self):
         self.url_en_front = 'https://en.'
     
-    def getCardListFromBGA(self, url='', need_player = False):
+    def getCardListFromBGA(self, url=''):
         if url == '':
             url = input(const_agricolatools.URL_REQUIRE_HINT)
         url_en_backstartnum = url.find('boardgamearena.com')
@@ -36,10 +36,7 @@ class ScrapeMachine():
             return [card_draftphase]
         
         card_board = html.find_element(By.ID, 'player-boards')
-        if need_player:
-            card_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
-        else:
-            card_list = card_board.find_elements(By.XPATH, './/*[@class="card-title"]')
+        card_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
         
         return card_list
     

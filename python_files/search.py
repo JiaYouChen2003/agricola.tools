@@ -27,15 +27,15 @@ class SearchMachine():
                     return row[column4index]
     
     # Functions that can be called
-    def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], need_player = False):
+    def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
         machine_scrape = scrape.ScrapeMachine()
         
         # if still in draft phase, get a fake card that say still in draft phase
-        card_list = machine_scrape.getCardListFromBGA(url=url, need_player=need_player)
+        card_list = machine_scrape.getCardListFromBGA(url=url)
         
-        return self.getCardInfoArrFromCardNameList(card_list=card_list, game_type=game_type, need_player=need_player)
+        return self.getCardInfoArrFromCardNameList(card_list=card_list, game_type=game_type)
     
-    def getCardInfoArrFromCardNameList(self, card_list, game_type = const_agricolatools.GAME_TYPE_LIST[0], need_player = False):
+    def getCardInfoArrFromCardNameList(self, card_list, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
         card_info_arr = []
         self.player_num = 0
         

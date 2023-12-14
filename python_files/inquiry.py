@@ -6,10 +6,10 @@ import const_agricolatools
 import search
 
 class InquiryMachine():
-    def inquiryByUrl(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], need_player = False):
+    def inquiryByUrl(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
         machine_search = search.SearchMachine()
         
-        card_info_arr = machine_search.getCardInfoArr(url, game_type, need_player=need_player)
+        card_info_arr = machine_search.getCardInfoArr(url, game_type)
         
         # if still in draft phase, return fake card that say still in draft phase
         card_draftphase_name = const_agricolatools.ConstMessage().draftphase
