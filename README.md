@@ -39,7 +39,7 @@ $conda python main.py
 # CheckList
 ## Big
 1. scrape data for draft phase (require login)
-2. give more information to user (ex: average ranking of card seen, tips for playing specific card)
+2. give more information to user (ex: tips for playing specific card)
 
 ## Small
 1. change const_agricola.py to json
