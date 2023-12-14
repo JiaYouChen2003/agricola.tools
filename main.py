@@ -191,7 +191,17 @@ class GUI(QWidget):
         machine_analyze = analyze.AnalyzeMachine
         
         # analyze all played cards
-        machine_analyze.showCardRankMean(card_info_arr=card_info_arr, player_num=0)
+        mean = []
+        for i in range(card_info_arr[-1][3]):
+            mean.append(machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
+        
+        player_num = 0
+        for card_info in card_info_arr:
+            if card_info[3] == (player_num + 1):
+                card_info_arr.insert(['mean: ', mean[player_num]])
+                player_num += 1
+            else:
+                continue
         
         # show info for all played cards
         self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
