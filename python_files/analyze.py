@@ -4,7 +4,7 @@ class AnalyzeMachine():
     def __init__(self):
         bla = True
     
-    def showCardRankMean(self, card_info_arr, player_num = 0):
+    def getCardRankMean(self, card_info_arr, player_num = 0):
         total_rank = 0
         total_card = 0
         
