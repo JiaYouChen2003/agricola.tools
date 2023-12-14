@@ -117,10 +117,11 @@ class GUI(QWidget):
         for i in range(card_info_arr[-1][3]):
             mean.append(machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
         
-        player_num = 0
-        for card_info in card_info_arr:
-            if card_info[3] == (player_num + 1):
-                card_info_arr.insert(['mean: ', mean[player_num], None, None])
+        card_info_arr.insert(0, ['mean: ', mean[0], None, None])        
+        player_num = 1
+        for card_num, card_info in enumerate(card_info_arr):
+            if card_info[3] == player_num:
+                card_info_arr.insert(card_num, ['mean: ', mean[player_num], None, None])
                 player_num += 1
             else:
                 continue
