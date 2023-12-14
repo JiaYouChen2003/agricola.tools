@@ -37,11 +37,11 @@ class ScrapeMachine():
         
         card_board = html.find_element(By.ID, 'player-boards')
         if need_player:
-            card_name_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
+            card_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
         else:
-            card_name_list = card_board.find_elements(By.XPATH, './/*[@class="card-title"]')
+            card_list = card_board.find_elements(By.XPATH, './/*[@class="card-title"]')
         
-        return card_name_list
+        return card_list
     
     def checkDraftPhase(self, main_title_text):
         if main_title_text.text[6:12] == 'Draft:':
