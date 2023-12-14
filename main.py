@@ -110,6 +110,22 @@ class GUI(QWidget):
         item = QTableWidgetItem(item)
         self.table.setItem(row, column, item)
     
+    def __getAnalyzeOfCardInfoArr(card_info_arr):
+        machine_analyze = analyze.AnalyzeMachine
+        
+        mean = []
+        for i in range(card_info_arr[-1][3]):
+            mean.append(machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
+        
+        player_num = 0
+        for card_info in card_info_arr:
+            if card_info[3] == (player_num + 1):
+                card_info_arr.insert(['mean: ', mean[player_num], None, None])
+                player_num += 1
+            else:
+                continue
+        return card_info_arr
+    
     def __startThreadToWaitThenInquiryByUrl(self):
         # initial thread and what to run while thread running
         self.thread_wait = QThread()
@@ -187,21 +203,8 @@ class GUI(QWidget):
             self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
             return
         
-        # things need for analyze
-        machine_analyze = analyze.AnalyzeMachine
-        
         # analyze all played cards
-        mean = []
-        for i in range(card_info_arr[-1][3]):
-            mean.append(machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
-        
-        player_num = 0
-        for card_info in card_info_arr:
-            if card_info[3] == (player_num + 1):
-                card_info_arr.insert(['mean: ', mean[player_num]])
-                player_num += 1
-            else:
-                continue
+        card_info_arr = self.__getAnalyzeOfCardInfoArr(card_info_arr)
         
         # show info for all played cards
         self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
