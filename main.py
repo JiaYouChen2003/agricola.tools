@@ -89,7 +89,7 @@ class GUI(QWidget):
         need_auto_refresh = self.cmb2.currentIndex()
         return need_auto_refresh
     
-    def __setTableByArr(self, arr, arr_label, first_set = True):
+    def __setTableByArr(self, arr, arr_label, first_set = True, have_card_player = False):
         self.table.setRowCount(len(arr))
         if first_set:
             if have_card_player:
@@ -113,18 +113,18 @@ class GUI(QWidget):
         item = QTableWidgetItem(item)
         self.table.setItem(row, column, item)
     
-    def __getAnalyzeOfCardInfoArr(card_info_arr):
-        machine_analyze = analyze.AnalyzeMachine
+    def __getAnalyzeOfCardInfoArr(self, card_info_arr):
+        machine_analyze = analyze.AnalyzeMachine()
         
-        mean = []
-        for i in range(card_info_arr[-1][3]):
-            mean.append(machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
+        mean_list = []
+        for i in range(card_info_arr[-1][3] + 1):
+            mean_list.append(machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
         
-        card_info_arr.insert(0, ['mean: ', mean[0], None, None])        
+        card_info_arr.insert(0, ['mean: ', str(mean_list[0]), None, None])        
         player_num = 1
         for card_num, card_info in enumerate(card_info_arr):
             if card_info[3] == player_num:
-                card_info_arr.insert(card_num, ['mean: ', mean[player_num], None, None])
+                card_info_arr.insert(card_num, ['mean: ', str(mean_list[player_num]), None, None])
                 player_num += 1
             else:
                 continue
