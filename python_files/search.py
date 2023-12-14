@@ -28,12 +28,14 @@ class SearchMachine():
     
     # Functions that can be called
     def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], need_player = False):
-        card_info_arr = []
-        
         machine_scrape = scrape.ScrapeMachine()
         # if still in draft phase, get a fake card that say still in draft phase
         card_name_list = machine_scrape.getCardListFromBGA(url=url, need_player=need_player)
         
+        return self.getCardInfoArrFromCardNameList(card_name_list=card_name_list, game_type=game_type, need_player=need_player)
+        
+    def getCardInfoArrFromCardNameList(self, card_name_list, game_type = const_agricolatools.GAME_TYPE_LIST[0], need_player = False):
+        card_info_arr = []
         # get card rank, diff and card player
         for card in card_name_list:
             card_name = card.text
@@ -69,19 +71,19 @@ if __name__ == '__main__':
     
     card_name_list = machine_scrape.getCardListFromBGA()
     
+    # things that done in main.py
     card_draftphase_name = const_agricolatools.ConstMessage().draftphase
     if card_name_list[0].text == card_draftphase_name:
         print('Now in Draft Phase')
         exit()
     
+    # test SearchMachine
     print()
     print("Name".rjust(20), "Rank".rjust(5), "Diff".rjust(5))
-    player_num = 0
-    for card in card_name_list:
-        card_name = card.text
-        card_rank = machine_search.getCardRank(card_name=card_name)
-        card_diff = machine_search.getCardDiff(card_name=card_name)
-        if card.size['height'] < 30:
-            card_name = const_agricolatools.CARD_PLAYER_LABEL + card_name
-        
+    
+    card_info_arr = machine_search.getCardInfoArrFromCardNameList(card_name_list=card_name_list)
+    for card_info in card_info_arr:
+        card_name = card_info[0]
+        card_rank = card_info[1]
+        card_diff = card_info[2]
         print(card_name.rjust(20), str(card_rank).rjust(5), str(card_diff).rjust(5))
