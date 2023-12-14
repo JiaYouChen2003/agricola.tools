@@ -8,6 +8,16 @@ class SearchMachine():
         self.xlsx_name = const_agricolatools.XLSXPATH
         self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
     
+    def __getCardNameAndPlayerNum(self, card):
+        card_name = card.text
+        
+        if card.size['height'] < 30:
+            card_name = const_agricolatools.CARD_PLAYER_LABEL + card_name
+            self.player_num += 1
+        card_player_num = self.player_num
+        
+        return card_name, card_player_num
+    
     def __getValuesFromSheet(self, sheet):
         arr = []
         for row in sheet:
@@ -41,7 +51,7 @@ class SearchMachine():
         
         # get card rank, diff and card player
         for card in card_list:
-            card_name, card_player_num = self.getCardNameAndPlayerNum(card=card)
+            card_name, card_player_num = self.__getCardNameAndPlayerNum(card=card)
             card_rank = self.getCardRank(card_name=card_name, game_type=game_type)
             card_diff = self.getCardDiff(card_name=card_name)
             
@@ -49,16 +59,6 @@ class SearchMachine():
             card_info_arr.append(card_info)
         
         return card_info_arr
-    
-    def getCardNameAndPlayerNum(self, card):
-        card_name = card.text
-        
-        if card.size['height'] < 30:
-            card_name = const_agricolatools.CARD_PLAYER_LABEL + card_name
-            self.player_num += 1
-        card_player_num = self.player_num
-        
-        return card_name, card_player_num
     
     def getCardRank(self, card_name, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
         workbook_list = self.workbook_list
