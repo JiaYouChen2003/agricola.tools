@@ -37,15 +37,15 @@ class GUI(QWidget):
         self.setWindowTitle('agricola.tools')
         self.setWindowIcon(QIcon(const_agricolatools.WINDOW_ICON_PATH))
         
-        self.label1_1 = QLabel('URL or')
-        self.label1_2 = QLabel('Card Name:')
-        self.label2 = QLabel('Results:')
+        self.label1_1 = QLabel(const_agricolatools.QLABEL_1_1)
+        self.label1_2 = QLabel(const_agricolatools.QLABEL_1_2)
+        self.label2 = QLabel(const_agricolatools.QLABEL_2)
         
         self.line_edit = QLineEdit()
         self.table = QTableWidget()
         self.button = QPushButton()
         
-        self.button.setText('search')
+        self.button.setText(const_agricolatools.SEARCH_BUTTON_TEXT)
         self.cmb1 = QComboBox()
         self.cmb1.setStyle(QStyleFactory.create('Fusion'))
         self.game_type_list = const_agricolatools.GAME_TYPE_LIST
@@ -54,10 +54,10 @@ class GUI(QWidget):
         self.cmb1.addItem(self.game_type_list[2])
         self.cmb1.addItem(self.game_type_list[3])
         self.label_print = QLabel('')
-        self.label3 = QLabel('Auto Refresh:')
+        self.label3 = QLabel(const_agricolatools.AUTO_REFRESH_LABEL)
         self.cmb2 = QComboBox()
         self.cmb2.setStyle(QStyleFactory.create('Fusion'))
-        self.autorefresh_type_list = ['off', 'on']
+        self.autorefresh_type_list = const_agricolatools.AUTO_REFRESH_TEXT
         self.cmb2.addItem(self.autorefresh_type_list[0])
         self.cmb2.addItem(self.autorefresh_type_list[1])
         
@@ -120,11 +120,12 @@ class GUI(QWidget):
         for i in range(card_info_arr[-1][3] + 1):
             mean_list.append(machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
         
-        card_info_arr.insert(0, ['mean: ', str(mean_list[0]), None, None])        
+        card_info_arr.insert(0, [const_agricolatools.CARD_PLAYER_LABEL + const_agricolatools.CARD_PLAYER_LABEL_ALL, None, None, None])
+        card_info_arr.insert(1, [const_agricolatools.CARD_MEAN_LABEL, str(mean_list[0]), None, None])
         player_num = 1
         for card_num, card_info in enumerate(card_info_arr):
             if card_info[3] == player_num:
-                card_info_arr.insert(card_num, ['mean: ', str(mean_list[player_num]), None, None])
+                card_info_arr.insert(card_num + 1, [const_agricolatools.CARD_MEAN_LABEL, str(mean_list[player_num]), None, None])
                 player_num += 1
             else:
                 continue
@@ -163,22 +164,22 @@ class GUI(QWidget):
         self.thread_refresh.start()
     
     def __endThreadRefresh(self):
-        self.label_print.setText('End Auto Refresh')
+        self.label_print.setText(const_agricolatools.END_AUTO_REFRESH_TEXT)
         self.start_thread_refresh = False
     
     def __interruptThreadRefresh(self):
-        self.label_print.setText('Interrupt Refresh!')
+        self.label_print.setText(const_agricolatools.INTERRUPT_AUTO_REFRESH_TEXT)
         self.thread_refresh.requestInterruption()
         self.start_thread_refresh = False
     
     def startInquiry(self):
         if self.line_edit.text()[0:5] == 'https':
-            self.label_print.setText('Searching Website...')
+            self.label_print.setText(const_agricolatools.SEARCHING_WEBSITE_TEXT)
             # use thread so that label print can be shown, not required
             # when thread end, start inquiry
             self.__startThreadToWaitThenInquiryByUrl()
         else:
-            self.label_print.setText('Searching Card...')
+            self.label_print.setText(const_agricolatools.SEARCHING_CARD_TEXT)
             self.startInquiryByCardName(card_name=self.line_edit.text())
     
     def startInquiryByUrl(self):
@@ -198,7 +199,7 @@ class GUI(QWidget):
         
         # title to show
         card_info_label = const_agricolatools.CARD_INFO_LABEL
-        self.label_print.setText('Searching Done!')
+        self.label_print.setText(const_agricolatools.SEARCHING_DONE_TEXT)
         
         # if auto refresh is on but refresh thread did not start, start thread
         if need_auto_refresh and not self.start_thread_refresh:
@@ -228,9 +229,9 @@ class GUI(QWidget):
         # title to show
         card_info_label = const_agricolatools.CARD_INFO_LABEL
         if card_info[0][1] == None:
-            self.label_print.setText('Cannot Found Card :(')
+            self.label_print.setText(const_agricolatools.CARD_CANNOT_FIND_TEXT)
         else:
-            self.label_print.setText('Card Searched!')
+            self.label_print.setText(const_agricolatools.CARD_SEARCHED_TEXT)
         
         # show info for the card
         self.__setTableByArr(card_info, card_info_label)
