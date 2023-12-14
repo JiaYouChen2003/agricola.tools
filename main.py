@@ -173,7 +173,7 @@ class GUI(QWidget):
         game_type = self.__getGameType()
         
         # inquiry and get info for all played cards
-        card_info_arr = machine_inquiry.inquiryByUrl(url=url, game_type=game_type)
+        card_info_arr = machine_inquiry.inquiryByUrl(url=url, game_type=game_type, need_player=True)
         
         # title to show
         card_info_label = const_agricolatools.CARD_INFO_LABEL

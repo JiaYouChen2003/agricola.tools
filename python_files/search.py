@@ -29,6 +29,7 @@ class SearchMachine():
     # Functions that can be called
     def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], need_player = False):
         machine_scrape = scrape.ScrapeMachine()
+        
         # if still in draft phase, get a fake card that say still in draft phase
         card_name_list = machine_scrape.getCardListFromBGA(url=url, need_player=need_player)
         
@@ -36,17 +37,21 @@ class SearchMachine():
         
     def getCardInfoArrFromCardNameList(self, card_name_list, game_type = const_agricolatools.GAME_TYPE_LIST[0], need_player = False):
         card_info_arr = []
+        player_num = 1
+        
         # get card rank, diff and card player
         for card in card_name_list:
             card_name = card.text
             card_rank = self.getCardRank(card_name=card_name, game_type=game_type)
             card_diff = self.getCardDiff(card_name=card_name)
+            card_player_num = player_num
             
             if card.size['height'] < 30:
                 card_name = const_agricolatools.CARD_PLAYER_LABEL + card_name
+                player_num += 1
             
-            card_info_list = [card_name, card_rank, card_diff]
-            card_info_arr.append(card_info_list)
+            card_info = [card_name, card_rank, card_diff, card_player_num]
+            card_info_arr.append(card_info)
         
         return card_info_arr
     

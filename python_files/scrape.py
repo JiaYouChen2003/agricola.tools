@@ -9,7 +9,7 @@ import const_agricolatools
 class MessageCard():
     def __init__(self, message):
         self.text = message
-        self.__class__ = None
+        self.size = {'height': 100}
 
 class ScrapeMachine(): 
     def __init__(self):
@@ -36,7 +36,10 @@ class ScrapeMachine():
             return [card_draftphase]
         
         card_board = html.find_element(By.ID, 'player-boards')
-        card_name_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
+        if need_player:
+            card_name_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
+        else:
+            card_name_list = card_board.find_elements(By.XPATH, './/*[@class="card-title"]')
         
         return card_name_list
     
