@@ -32,9 +32,11 @@ $conda python main.py
 ```
 
 # Feature
+
 <div align="center">
 <img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/layout.png" width="81%" height="81%">
 </div>
+
 
 # CheckList
 ## Big
@@ -46,6 +48,7 @@ $conda python main.py
 
 ## Bug
 - Qt plugin
+
 <div align="center">
-<img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/bug_Qtxcb.png" width="100%" height="100%">
+<img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/bug_Qtxcb.png" width="121%" height="121%">
 </div>
