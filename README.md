@@ -43,3 +43,9 @@ $conda python main.py
 
 ## Small
 1. change const_agricola.py to json
+
+## Bug
+- Qt plugin
+<div align="center">
+<img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/bug_Qtxcb.png" width="81%" height="81%">
+</div>
