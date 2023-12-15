@@ -5,7 +5,7 @@ from PySide2.QtCore import *
 import sys
 import time
 
-sys.path.append('./python_files')
+sys.path.append('./raw_asset/python_files')
 import const_agricolatools
 import inquiry
 import analyze
