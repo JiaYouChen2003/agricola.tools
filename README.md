@@ -47,5 +47,5 @@ $conda python main.py
 ## Bug
 - Qt plugin
 <div align="center">
-<img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/bug_Qtxcb.png" width="81%" height="81%">
+<img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/bug_Qtxcb.png" width="100%" height="100%">
 </div>
