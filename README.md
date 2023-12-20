@@ -16,19 +16,19 @@ In the future, we hope to develop tools with more functions that help new player
 # Installation
 ## Download
 ```bash
-$git clone https://github.com/JiaYouChen2003/agricola.tools.git
+git clone https://github.com/JiaYouChen2003/agricola.tools.git
 ```
 
 ## Build Environment
 ```bash
-$conda create -n agricola.tools python=3.9
-$conda activate agricola.tools
-$pip install -r requirements.txt
+conda create -n agricola.tools python=3.9
+conda activate agricola.tools
+pip install -r requirements.txt
 ```
 
 ## How to run the project
 ```bash
-$conda python main.py
+conda python main.py
 ```
 
 # Feature
