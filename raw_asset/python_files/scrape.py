@@ -18,7 +18,7 @@ class ScrapeMachine():
     def __init__(self):
         self.url_language_front = const_agricolatools.URL_LANGUAGE_PREFIX
     
-    def getCardListFromBGA(self, url='', username='', password=''):
+    def getCardListFromBGA(self, url = '', username = '', password = ''):
         # selenium webdriver setting
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
@@ -71,5 +71,5 @@ class ScrapeMachine():
 
 # test from search.py
 if __name__ == '__main__':
-    ScrapeMachine().getCardListFromBGA()
+    # ScrapeMachine().getCardListFromBGA()
     assert False, 'scrape.py should not be executed'
