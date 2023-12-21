@@ -26,6 +26,7 @@ SEARCH_BUTTON_TEXT = 'search'
 SEARCHING_CARD_TEXT = 'Searching Card...'
 SEARCHING_DONE_TEXT = 'Searching Done!'
 SEARCHING_WEBSITE_TEXT = 'Searching Website...'
+URL_LANGUAGE_PREFIX = 'https://en.'
 URL_REQUIRE_HINT = 'Enter the URL:'
 
 

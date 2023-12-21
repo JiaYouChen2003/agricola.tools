@@ -1,8 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
+
+import time
 
 import const_agricolatools
 
@@ -13,38 +16,60 @@ class MessageCard():
 
 class ScrapeMachine(): 
     def __init__(self):
-        self.url_en_front = 'https://en.'
+        self.url_language_front = const_agricolatools.URL_LANGUAGE_PREFIX
     
-    def getCardListFromBGA(self, url=''):
+    def getCardListFromBGA(self, url='', username='', password=''):
+        # selenium webdriver setting
+        chrome_options = Options()
+        chrome_options.add_argument("--headless=new")
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+        
+        self.loginWebsiteBGA(driver, username, password)
+        
+        # change language
         if url == '':
             url = input(const_agricolatools.URL_REQUIRE_HINT)
         url_en_backstartnum = url.find('boardgamearena.com')
-        url_en = self.url_en_front + url[url_en_backstartnum:]
+        url_en = self.url_language_front + url[url_en_backstartnum:]
         
-        chrome_options = Options()
-        chrome_options.add_argument("--headless=new")
-        html = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
-        html.get(url_en)
-        
-        main_tile_text = html.find_element(By.XPATH, './/span[@id="pagemaintitletext"]')
-        is_draftphase = self.checkDraftPhase(main_title_text=main_tile_text)
+        driver.get(url_en)
         
         # if still in draft phase, return fake card that say still in draft phase
+        is_draftphase = self.checkDraftPhase(driver)
         if is_draftphase:
             card_draftphase_name = const_agricolatools.ConstMessage().draftphase
             card_draftphase = MessageCard(card_draftphase_name)
             return [card_draftphase]
         
-        card_board = html.find_element(By.ID, 'player-boards')
+        card_board = driver.find_element(By.ID, 'player-boards')
         card_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
         
         return card_list
     
-    def checkDraftPhase(self, main_title_text):
-        if main_title_text.text[6:12] == 'Draft:':
+    def loginWebsiteBGA(self, driver, username, password):
+        driver.get('https://en.boardgamearena.com/account')
+        username_input = driver.find_element(By.ID, 'username_input')
+        password_input = driver.find_element(By.ID, 'password_input')
+        
+        username_input.send_keys(username)
+        password_input.send_keys(password)
+        
+        login_button = driver.find_element(By.ID, 'submit_login_button')
+        login_button.send_keys(Keys.ENTER)
+        
+        time.sleep(5)
+    
+    def checkDraftPhase(self, driver):
+        '''
+        Return true if is in draftphase
+        type: selenium webdriver
+        rtype: bool
+        '''
+        if driver.find_elements(By.ID, 'turn-number-tooltipable-1') != []:
             return True
         return False
 
 # test from search.py
 if __name__ == '__main__':
+    ScrapeMachine().getCardListFromBGA()
     assert False, 'scrape.py should not be executed'
