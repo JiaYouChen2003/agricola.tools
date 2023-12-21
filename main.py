@@ -202,10 +202,10 @@ class GUI(QWidget):
         
         # things need for inquiry
         url = self.line_edit_URL.text()
-        machine_inquiry = inquiry.InquiryMachine()
         game_type = self.__getGameType()
-        username = ''
-        password = ''
+        username = self.line_edit_username.text()
+        password = self.line_edit_password.text()
+        machine_inquiry = inquiry.InquiryMachine()
         
         # inquiry and get info for all played cards
         card_info_arr = machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password)

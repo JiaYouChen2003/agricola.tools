@@ -24,7 +24,8 @@ class ScrapeMachine():
         chrome_options.add_argument("--headless=new")
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
         
-        self.loginWebsiteBGA(driver, username, password)
+        if username != '' and password != '':
+            self.loginWebsiteBGA(driver, username, password)
         
         # change language
         if url == '':
