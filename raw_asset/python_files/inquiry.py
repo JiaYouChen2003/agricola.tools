@@ -1,7 +1,5 @@
 from PySide2.QtCore import *
 
-import time
-
 import const_agricolatools
 import search
 

@@ -1,11 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-
-import time
 
 import const_agricolatools
 import login
@@ -22,11 +19,11 @@ class ScrapeMachine():
     def getCardListFromBGA(self, url = '', username = '', password = ''):
         # selenium webdriver setting
         chrome_options = Options()
-        chrome_options.add_argument("--headless=new")
+        # chrome_options.add_argument("--headless=new")
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
         
         if username != '' and password != '':
-            self.loginWebsiteBGA(driver, username, password)
+            login.LoginMachine().loginWebsiteBGA(driver, username, password)
         
         # change language
         if url == '':
@@ -48,19 +45,6 @@ class ScrapeMachine():
         
         return card_list
     
-    def loginWebsiteBGA(self, driver, username, password):
-        driver.get('https://en.boardgamearena.com/account')
-        username_input = driver.find_element(By.ID, 'username_input')
-        password_input = driver.find_element(By.ID, 'password_input')
-        
-        username_input.send_keys(username)
-        password_input.send_keys(password)
-        
-        login_button = driver.find_element(By.ID, 'submit_login_button')
-        login_button.send_keys(Keys.ENTER)
-        
-        time.sleep(5)
-    
     def checkDraftPhase(self, driver):
         '''
         Return true if is in draftphase
@@ -73,5 +57,5 @@ class ScrapeMachine():
 
 # test from search.py
 if __name__ == '__main__':
-    # ScrapeMachine().getCardListFromBGA()
+    ScrapeMachine().getCardListFromBGA()
     assert False, 'scrape.py should not be executed'
