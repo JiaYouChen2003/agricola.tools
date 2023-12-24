@@ -23,8 +23,12 @@ class ScrapeMachine():
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
         
         if username != '' and password != '':
-            login.LoginMachine().loginWebsiteBGA(driver, username, password)
-        
+            can_login = login.LoginMachine().loginWebsiteBGA_IfCannotLoginReturnFalse(driver, username, password)
+        if not can_login:
+            card_cannot_login_name = const_agricolatools.ConstMessage().cannot_login
+            card_cannot_login = MessageCard(card_cannot_login_name)
+            return [card_cannot_login]
+            
         # change language
         if url == '':
             url = input(const_agricolatools.URL_REQUIRE_HINT)
@@ -57,5 +61,5 @@ class ScrapeMachine():
 
 # test from search.py
 if __name__ == '__main__':
-    ScrapeMachine().getCardListFromBGA()
+    # ScrapeMachine().getCardListFromBGA()
     assert False, 'scrape.py should not be executed'

@@ -5,8 +5,6 @@ WINDOW_ICON_PATH = os.path.abspath('./raw_asset/agricola-en.jpg')
 WORKBOOK_DIFF_NAME = 'Diff'
 XLSXPATH = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
 
-CARD_PLAYER_CLASS_NAME = "player-board-name"
-
 # Const that can an be translate
 AUTO_REFRESH_TEXT = ['off', 'on']
 CARD_CANNOT_FIND_TEXT = 'Cannot Found Card :('
@@ -35,3 +33,4 @@ URL_REQUIRE_HINT = 'Enter the URL:'
 class ConstMessage():
     def __init__(self):
         self.draftphase = 'Still in Draft Phase'
+        self.cannot_login = 'Cannot Login'
