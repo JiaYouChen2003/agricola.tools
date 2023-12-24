@@ -208,6 +208,10 @@ class GUI(QWidget):
         password = self.line_edit_password.text()
         machine_inquiry = inquiry.InquiryMachine()
         
+        # check can login
+        machine_login = login.LoginMachine()
+        can_login = machine_login.checkCanLogin(username, password)
+        
         # inquiry and get info for all played cards
         card_info_arr = machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password)
         

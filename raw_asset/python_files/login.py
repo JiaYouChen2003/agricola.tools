@@ -16,3 +16,6 @@ class LoginMachine():
         login_button.send_keys(Keys.ENTER)
         
         time.sleep(5)
+    
+    def checkCanLogin(self, username, password):
+        
