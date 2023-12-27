@@ -208,12 +208,14 @@ class GUI(QWidget):
         password = self.line_edit_password.text()
         machine_inquiry = inquiry.InquiryMachine()
         
-        # check can login
-        machine_login = login.LoginMachine()
-        can_login = machine_login.checkCanLogin(username, password)
-        
         # inquiry and get info for all played cards
         card_info_arr = machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password)
+        
+        # if still in draft phase don't show info for all played cards(no card played)
+        card_cannot_login_name = const_agricolatools.ConstMessage().draftphase
+        if card_info_arr[0][0] == card_cannot_login_name:
+            self.label_print.setText(const_agricolatools.MESSAGE_CANNOT_LOGIN)
+            return
         
         # if auto refresh is on but refresh thread did not start, start thread
         if self.need_auto_refresh and not self.start_thread_refresh:
@@ -230,7 +232,7 @@ class GUI(QWidget):
         # if still in draft phase don't show info for all played cards(no card played)
         card_draftphase_name = const_agricolatools.ConstMessage().draftphase
         if card_info_arr[0][0] == card_draftphase_name:
-            self.label_print.setText(card_draftphase_name)
+            self.label_print.setText(const_agricolatools.MESSAGE_DRAFTPHASE)
             self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
             return
         

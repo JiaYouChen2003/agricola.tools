@@ -24,11 +24,14 @@ class ScrapeMachine():
         
         if username != '' and password != '':
             can_login = login.LoginMachine().loginWebsiteBGA_IfCannotLoginReturnFalse(driver, username, password)
+        else:
+            can_login = True
+        
         if not can_login:
             card_cannot_login_name = const_agricolatools.ConstMessage().cannot_login
             card_cannot_login = MessageCard(card_cannot_login_name)
             return [card_cannot_login]
-            
+        
         # change language
         if url == '':
             url = input(const_agricolatools.URL_REQUIRE_HINT)

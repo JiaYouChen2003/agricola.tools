@@ -9,7 +9,7 @@ class InquiryMachine():
         
         card_info_arr = machine_search.getCardInfoArr(url, game_type=game_type, username=username, password=password)
         
-        # if still in draft phase, return fake card that say still in draft phase
+        # may get a fake card that has some message
         card_draftphase_name = const_agricolatools.ConstMessage().draftphase
         if card_info_arr[0][0] == card_draftphase_name:
             return [[card_draftphase_name]]

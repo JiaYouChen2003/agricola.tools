@@ -40,7 +40,7 @@ class SearchMachine():
     def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], username = '', password = ''):
         machine_scrape = scrape.ScrapeMachine()
         
-        # if still in draft phase, get a fake card that say still in draft phase
+        # may get a fake card that has some message
         card_list = machine_scrape.getCardListFromBGA(url=url, username=username, password=password)
         
         return self.getCardInfoArrFromCardNameList(card_list=card_list, game_type=game_type)
