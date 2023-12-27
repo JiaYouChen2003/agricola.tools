@@ -33,19 +33,28 @@ class GUI(QWidget):
     def __init__(self, parent=None):
         super().__init__()
         self.start_thread_refresh = False
+        self.need_auto_refresh = False
         
         self.setWindowTitle('agricola.tools')
         self.setWindowIcon(QIcon(const_agricolatools.WINDOW_ICON_PATH))
         
-        self.label1_1 = QLabel(const_agricolatools.QLABEL_1_1)
-        self.label1_2 = QLabel(const_agricolatools.QLABEL_1_2)
-        self.label2 = QLabel(const_agricolatools.QLABEL_2)
+        self.label_URL_1 = QLabel(const_agricolatools.QLABEL_URL_1)
+        self.label_URL_2 = QLabel(const_agricolatools.QLABEL_URL_2)
+        self.label_result = QLabel(const_agricolatools.QLABEL_RESULT)
+        self.label_print = QLabel('')
+        self.label_username = QLabel(const_agricolatools.QLABEL_USERNAME)
+        self.label_password = QLabel(const_agricolatools.QLABEL_PASSWORD)
+        self.label_auto_refresh = QLabel(const_agricolatools.QLABEL_AUTO_REFRESH)
         
-        self.line_edit = QLineEdit()
+        self.line_edit_URL = QLineEdit()
+        self.line_edit_username = QLineEdit()
+        self.line_edit_password = QLineEdit()
+        
         self.table = QTableWidget()
-        self.button = QPushButton()
         
+        self.button = QPushButton()
         self.button.setText(const_agricolatools.SEARCH_BUTTON_TEXT)
+        
         self.cmb1 = QComboBox()
         self.cmb1.setStyle(QStyleFactory.create('Fusion'))
         self.game_type_list = const_agricolatools.GAME_TYPE_LIST
@@ -53,27 +62,29 @@ class GUI(QWidget):
         self.cmb1.addItem(self.game_type_list[1])
         self.cmb1.addItem(self.game_type_list[2])
         self.cmb1.addItem(self.game_type_list[3])
-        self.label_print = QLabel('')
-        self.label3 = QLabel(const_agricolatools.AUTO_REFRESH_LABEL)
         self.cmb2 = QComboBox()
         self.cmb2.setStyle(QStyleFactory.create('Fusion'))
-        self.autorefresh_type_list = const_agricolatools.AUTO_REFRESH_TEXT
-        self.cmb2.addItem(self.autorefresh_type_list[0])
-        self.cmb2.addItem(self.autorefresh_type_list[1])
+        self.auto_refresh_type_list = const_agricolatools.AUTO_REFRESH_TEXT
+        self.cmb2.addItem(self.auto_refresh_type_list[0])
+        self.cmb2.addItem(self.auto_refresh_type_list[1])
         
         self.grid = QGridLayout()
         self.grid.setSpacing(10)
-        self.grid.addWidget(self.label1_1, 1, 0)
-        self.grid.addWidget(self.label1_2, 1, 0, 3, 0)
-        self.grid.addWidget(self.label2, 5, 0)
+        self.grid.addWidget(self.label_URL_1, 1, 0)
+        self.grid.addWidget(self.label_URL_2, 1, 0, 3, 0)
+        self.grid.addWidget(self.label_result, 5, 0)
         
-        self.grid.addWidget(self.line_edit, 1, 3, 3, 33)
+        self.grid.addWidget(self.line_edit_URL, 1, 3, 3, 33)
         self.grid.addWidget(self.table, 4, 1, 30, 35)
         
         self.grid.addWidget(self.button, 1, 36, 3, 1)
-        self.grid.addWidget(self.cmb1, 30, 36)
         self.grid.addWidget(self.label_print, 5, 36)
-        self.grid.addWidget(self.label3, 31, 36)
+        self.grid.addWidget(self.label_username, 25, 36)
+        self.grid.addWidget(self.line_edit_username, 26, 36)
+        self.grid.addWidget(self.label_password, 27, 36)
+        self.grid.addWidget(self.line_edit_password, 28, 36)
+        self.grid.addWidget(self.cmb1, 30, 36)
+        self.grid.addWidget(self.label_auto_refresh, 31, 36)
         self.grid.addWidget(self.cmb2, 32, 36)
         self.setLayout(self.grid)
         self.resize(640, 810)
@@ -173,42 +184,54 @@ class GUI(QWidget):
         self.start_thread_refresh = False
     
     def startInquiry(self):
-        if self.line_edit.text()[0:5] == 'https':
+        if self.line_edit_URL.text()[0:5] == 'https':
             self.label_print.setText(const_agricolatools.SEARCHING_WEBSITE_TEXT)
             # use thread so that label print can be shown, not required
             # when thread end, start inquiry
             self.__startThreadToWaitThenInquiryByUrl()
         else:
             self.label_print.setText(const_agricolatools.SEARCHING_CARD_TEXT)
-            self.startInquiryByCardName(card_name=self.line_edit.text())
+            self.startInquiryByCardName(card_name=self.line_edit_URL.text())
     
     def startInquiryByUrl(self):
         # if auto refresh is off but refresh thread is start, interrupt thread
-        need_auto_refresh = self.__getNeedAutoRefresh()
-        if not need_auto_refresh and self.start_thread_refresh:
+        self.need_auto_refresh = self.__getNeedAutoRefresh()
+        if not self.need_auto_refresh and self.start_thread_refresh:
             self.__interruptThreadRefresh()
             return
         
         # things need for inquiry
-        url = self.line_edit.text()
-        machine_inquiry = inquiry.InquiryMachine()
+        url = self.line_edit_URL.text()
         game_type = self.__getGameType()
+        username = self.line_edit_username.text()
+        password = self.line_edit_password.text()
+        machine_inquiry = inquiry.InquiryMachine()
         
         # inquiry and get info for all played cards
-        card_info_arr = machine_inquiry.inquiryByUrl(url=url, game_type=game_type)
+        card_info_arr = machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password)
         
+        # if still in draft phase don't show info for all played cards(no card played)
+        card_cannot_login_name = const_agricolatools.ConstMessage().draftphase
+        if card_info_arr[0][0] == card_cannot_login_name:
+            self.label_print.setText(const_agricolatools.MESSAGE_CANNOT_LOGIN)
+            return
+        
+        # if auto refresh is on but refresh thread did not start, start thread
+        if self.need_auto_refresh and not self.start_thread_refresh:
+            self.__startThreadRefresh()
+        
+        # show card info
+        self.showCardInfoByArr(card_info_arr)
+    
+    def showCardInfoByArr(self, card_info_arr):
         # title to show
         card_info_label = const_agricolatools.CARD_INFO_LABEL
         self.label_print.setText(const_agricolatools.SEARCHING_DONE_TEXT)
         
-        # if auto refresh is on but refresh thread did not start, start thread
-        if need_auto_refresh and not self.start_thread_refresh:
-            self.__startThreadRefresh()
-        
         # if still in draft phase don't show info for all played cards(no card played)
         card_draftphase_name = const_agricolatools.ConstMessage().draftphase
         if card_info_arr[0][0] == card_draftphase_name:
-            self.label_print.setText(card_draftphase_name)
+            self.label_print.setText(const_agricolatools.MESSAGE_DRAFTPHASE)
             self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
             return
         

@@ -1,4 +1,3 @@
-import const_agricolatools
 
 class AnalyzeMachine():
     def getCardRankMean(self, card_info_arr, player_num = 0):
