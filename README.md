@@ -40,6 +40,7 @@ conda python main.py
 ## Big
 1. scrape data for draft phase
 2. give more information to user (ex: tips for playing specific card)
+3. scrape data for replay
 
 ## Small
 1. change const_agricola.py to json
