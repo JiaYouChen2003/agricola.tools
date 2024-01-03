@@ -31,13 +31,14 @@ SEARCHING_WEBSITE_TEXT = 'Searching Website...'
 URL_LANGUAGE_PREFIX = 'https://en.'
 URL_REQUIRE_HINT = 'Enter the URL:'
 
-
+# Following code do not need to translate
 class ConstMessage():
     def __init__(self):
         self.draftphase = 'Still in Draft Phase'
         self.cannot_login = 'Cannot Login'
         
         self.all_message = []
+        # search for all variable in self
         for const_message_name in dir(self):
             if const_message_name == 'all_message' or const_message_name.startswith('__'):
                 continue
