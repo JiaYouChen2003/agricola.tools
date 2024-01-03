@@ -210,8 +210,7 @@ class GUI(QWidget):
         # inquiry and get info for all played cards
         card_info_arr = machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password)
         
-        # if still in draft phase don't show info for all played cards(no card played)
-        card_cannot_login_name = const_agricolatools.ConstMessage().draftphase
+        card_cannot_login_name = const_agricolatools.ConstMessage().cannot_login
         if card_info_arr[0][0] == card_cannot_login_name:
             self.label_print.setText(const_agricolatools.MESSAGE_CANNOT_LOGIN)
             return

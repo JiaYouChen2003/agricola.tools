@@ -36,3 +36,10 @@ class ConstMessage():
     def __init__(self):
         self.draftphase = 'Still in Draft Phase'
         self.cannot_login = 'Cannot Login'
+        
+        self.all_message = []
+        for const_message_name in dir(self):
+            if const_message_name == 'all_message' or const_message_name.startswith('__'):
+                continue
+            const_message = getattr(self, const_message_name)
+            self.all_message.append(const_message)
