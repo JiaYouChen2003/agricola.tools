@@ -10,9 +10,10 @@ class InquiryMachine():
         card_info_arr = machine_search.getCardInfoArr(url, game_type=game_type, username=username, password=password)
         
         # may get a fake card that has some message
-        card_draftphase_name = const_agricolatools.ConstMessage().draftphase
-        if card_info_arr[0][0] == card_draftphase_name:
-            return [[card_draftphase_name]]
+        possible_message_card_name_list = const_agricolatools.ConstMessage().all_message
+        for possible_message_card_name in possible_message_card_name_list:
+            if card_info_arr[0][0] == possible_message_card_name:
+                return [[possible_message_card_name]]
         
         return card_info_arr
     
