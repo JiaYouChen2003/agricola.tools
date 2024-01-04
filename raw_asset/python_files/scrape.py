@@ -22,7 +22,7 @@ class ScrapeMachine():
         # chrome_options.add_argument("--headless=new")
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
         
-        if username != '' and password != '':
+        if username != '' or password != '':
             can_login = login.LoginMachine().loginWebsiteBGA_IfCannotLoginReturnFalse(driver, username, password)
         else:
             can_login = True
@@ -48,6 +48,7 @@ class ScrapeMachine():
                 card_draftphase = MessageCard(card_draftphase_name)
                 return [card_draftphase]
             else:
+                card_board = driver.find_element(By.ID, 'draft-container')
                 card_list = card_board.find_elements(By.CLASS_NAME, 'card-title')
         else:
             card_board = driver.find_element(By.ID, 'player-boards')

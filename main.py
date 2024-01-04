@@ -46,8 +46,8 @@ class GUI(QWidget):
         self.label_password = QLabel(const_agricolatools.QLABEL_PASSWORD)
         self.label_auto_refresh = QLabel(const_agricolatools.QLABEL_AUTO_REFRESH)
         
-        self.line_edit_URL = QLineEdit()
-        self.line_edit_username = QLineEdit()
+        self.line_edit_URL = QLineEdit('')
+        self.line_edit_username = QLineEdit('MapleElf')
         self.line_edit_password = QLineEdit()
         
         self.table = QTableWidget()
@@ -239,7 +239,7 @@ class GUI(QWidget):
         card_info_arr = self.__getAnalyzeOfCardInfoArr(card_info_arr)
         
         # show info for all played cards
-        self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh), have_card_player=card_info_arr[-1][3])
+        self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh), have_card_player=True)
     
     def startInquiryByCardName(self, card_name):
         # things need for inquiry

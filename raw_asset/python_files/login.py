@@ -21,8 +21,9 @@ class LoginMachine():
         
         time.sleep(1)
         
-        have_login = driver.find_elements(By.ID, 'submit_login_button')
-        if have_login == None:
+        have_login_button = []
+        have_login_button = driver.find_elements(By.ID, 'submit_login_button')
+        if have_login_button == []:
             return True
         else:
             return False
