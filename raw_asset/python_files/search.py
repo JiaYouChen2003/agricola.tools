@@ -7,6 +7,7 @@ class SearchMachine():
     def __init__(self):
         self.xlsx_name = const_agricolatools.XLSXPATH
         self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
+        self.player_num = 0
     
     def __getCardNameAndPlayerNum(self, card):
         card_name = card.text
@@ -38,6 +39,9 @@ class SearchMachine():
     
     # Functions that can be called
     def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], username = '', password = ''):
+        '''
+        card_info = [card_name, card_rank, card_diff, card_player_num]
+        '''
         machine_scrape = scrape.ScrapeMachine()
         
         # may get a fake card that has some message
@@ -46,6 +50,9 @@ class SearchMachine():
         return self.getCardInfoArrFromCardNameList(card_list=card_list, game_type=game_type)
     
     def getCardInfoArrFromCardNameList(self, card_list, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
+        '''
+        card_info = [card_name, card_rank, card_diff, card_player_num]
+        '''
         card_info_arr = []
         self.player_num = 0
         

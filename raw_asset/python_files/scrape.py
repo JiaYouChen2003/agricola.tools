@@ -40,15 +40,18 @@ class ScrapeMachine():
         
         driver.get(url_en)
         
-        # if still in draft phase, return fake card that say still in draft phase
         is_draftphase = self.checkDraftPhase(driver)
         if is_draftphase:
-            card_draftphase_name = const_agricolatools.ConstMessage().draftphase
-            card_draftphase = MessageCard(card_draftphase_name)
-            return [card_draftphase]
-        
-        card_board = driver.find_element(By.ID, 'player-boards')
-        card_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
+            # if still in draft phase and not login, return fake card that say still in draft phase
+            if username == '':
+                card_draftphase_name = const_agricolatools.ConstMessage().draftphase
+                card_draftphase = MessageCard(card_draftphase_name)
+                return [card_draftphase]
+            else:
+                card_list = card_board.find_elements(By.CLASS_NAME, 'card-title')
+        else:
+            card_board = driver.find_element(By.ID, 'player-boards')
+            card_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
         
         return card_list
     

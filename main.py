@@ -228,7 +228,7 @@ class GUI(QWidget):
         card_info_label = const_agricolatools.CARD_INFO_LABEL
         self.label_print.setText(const_agricolatools.SEARCHING_DONE_TEXT)
         
-        # if still in draft phase don't show info for all played cards(no card played)
+        # if still in draft phase and not login don't show info for all played cards(no card played)
         card_draftphase_name = const_agricolatools.ConstMessage().draftphase
         if card_info_arr[0][0] == card_draftphase_name:
             self.label_print.setText(const_agricolatools.MESSAGE_DRAFTPHASE)
@@ -239,7 +239,7 @@ class GUI(QWidget):
         card_info_arr = self.__getAnalyzeOfCardInfoArr(card_info_arr)
         
         # show info for all played cards
-        self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh), have_card_player=True)
+        self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh), have_card_player=card_info_arr[-1][3])
     
     def startInquiryByCardName(self, card_name):
         # things need for inquiry
