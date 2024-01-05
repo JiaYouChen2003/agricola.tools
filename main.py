@@ -5,6 +5,14 @@ from PySide2.QtCore import *
 import sys
 import time
 
+import openpyxl
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+
 sys.path.append('./raw_asset/python_files')
 import const_agricolatools
 import inquiry
@@ -31,9 +39,11 @@ class WorkerRefresh(QObject):
 
 class GUI(QWidget):
     def __init__(self, parent=None):
+        print('Do not close this terminal!!!')
         super().__init__()
         
         self.machine_inquiry = inquiry.InquiryMachine()
+        self.machine_analyze = analyze.AnalyzeMachine()
         
         self.start_thread_refresh = False
         self.need_auto_refresh = False
@@ -128,11 +138,10 @@ class GUI(QWidget):
         self.table.setItem(row, column, item)
     
     def __getAnalyzeOfCardInfoArr(self, card_info_arr):
-        machine_analyze = analyze.AnalyzeMachine()
         
         mean_list = []
         for i in range(card_info_arr[-1][3] + 1):
-            mean_list.append(machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
+            mean_list.append(self.machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
         
         card_info_arr.insert(0, [const_agricolatools.CARD_PLAYER_LABEL + const_agricolatools.CARD_PLAYER_LABEL_ALL, None, None, None])
         card_info_arr.insert(1, [const_agricolatools.CARD_MEAN_LABEL, str(mean_list[0]), None, None])

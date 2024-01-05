@@ -1,3 +1,4 @@
+import const_agricolatools
 
 class AnalyzeMachine():
     def getCardRankMean(self, card_info_arr, player_num = 0):
@@ -10,6 +11,9 @@ class AnalyzeMachine():
                     total_rank += int(card_info[1])
                     total_card += 1
             
+            if total_card == 0:
+                return 0
+            
             mean = int(total_rank / total_card)
             return mean
         else:
@@ -17,6 +21,9 @@ class AnalyzeMachine():
                 if card_info[1] != None and card_info[3] == player_num:
                     total_rank += int(card_info[1])
                     total_card += 1
+            
+            if total_card == 0:
+                return 0
             
             mean = int(total_rank / total_card)
             return mean

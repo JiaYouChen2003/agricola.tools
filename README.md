@@ -51,3 +51,5 @@ conda python main.py
 <div align="center">
 <img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/bug_Qtxcb.png" width="121%" height="121%">
 </div>
+
+- Cannot see game in progress while login

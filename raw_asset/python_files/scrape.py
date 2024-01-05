@@ -20,7 +20,7 @@ class ScrapeMachine():
         
         # selenium webdriver setting
         chrome_options = Options()
-        # chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--headless=new")
         self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
     
     def getCardListFromBGA(self, url = '', username = '', password = ''):
