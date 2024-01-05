@@ -245,11 +245,10 @@ class GUI(QWidget):
     
     def startInquiryByCardName(self, card_name):
         # things need for inquiry
-        machine_inquiry = inquiry.InquiryMachine()
         game_type = self.__getGameType()
         
         # inquiry and get info for the card
-        card_info = machine_inquiry.inquiryByCardName(card_name=card_name, game_type=game_type)
+        card_info = self.machine_inquiry.inquiryByCardName(card_name=card_name, game_type=game_type)
         
         # title to show
         card_info_label = const_agricolatools.CARD_INFO_LABEL

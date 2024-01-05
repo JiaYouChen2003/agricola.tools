@@ -9,6 +9,7 @@ class SearchMachine():
         
         self.xlsx_name = const_agricolatools.XLSXPATH
         self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
+        
         self.player_num = 0
     
     def __getCardNameAndPlayerNum(self, card):

@@ -8,13 +8,15 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 class LoginMachine():
+    def __init__(self):
+        self.have_login = False
+    
     def loginWebsiteBGA_IfCannotLoginReturnFalse(self, driver: webdriver.Chrome, username, password):
+        if self.have_login:
+            return True
         driver.get('https://en.boardgamearena.com/account')
         username_input = driver.find_element(By.ID, 'username_input')
         password_input = driver.find_element(By.ID, 'password_input')
-        
-        if username_input == None or password_input == None:
-            return True
         
         username_input.send_keys(username)
         password_input.send_keys(password)
@@ -27,6 +29,7 @@ class LoginMachine():
         have_login_button = []
         have_login_button = driver.find_elements(By.ID, 'submit_login_button')
         if have_login_button == []:
+            self.have_login = True
             return True
         else:
             return False

@@ -14,16 +14,18 @@ class MessageCard():
 
 class ScrapeMachine(): 
     def __init__(self):
+        self.machine_login = login.LoginMachine()
+        
+        self.url_language_front = const_agricolatools.URL_LANGUAGE_PREFIX
+        
         # selenium webdriver setting
         chrome_options = Options()
         # chrome_options.add_argument("--headless=new")
         self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
-        
-        self.url_language_front = const_agricolatools.URL_LANGUAGE_PREFIX
     
     def getCardListFromBGA(self, url = '', username = '', password = ''):
         if username != '' or password != '':
-            can_login = login.LoginMachine().loginWebsiteBGA_IfCannotLoginReturnFalse(self.driver, username, password)
+            can_login = self.machine_login.loginWebsiteBGA_IfCannotLoginReturnFalse(self.driver, username, password)
         else:
             can_login = True
         

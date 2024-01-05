@@ -23,10 +23,8 @@ class InquiryMachine():
         return card_info_arr
     
     def inquiryByCardName(self, card_name, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
-        machine_search = search.SearchMachine()
-        
-        card_rank = machine_search.getCardRank(card_name=card_name, game_type=game_type)
-        card_diff = machine_search.getCardDiff(card_name=card_name)
+        card_rank = self.machine_search.getCardRank(card_name=card_name, game_type=game_type)
+        card_diff = self.machine_search.getCardDiff(card_name=card_name)
         card_info = [[card_name, card_rank, card_diff]]
         
         return card_info
