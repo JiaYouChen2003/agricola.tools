@@ -39,7 +39,6 @@ class WorkerRefresh(QObject):
 
 class GUI(QWidget):
     def __init__(self, parent=None):
-        print('Do not close this terminal!!!')
         super().__init__()
         
         self.machine_inquiry = inquiry.InquiryMachine()
@@ -195,6 +194,28 @@ class GUI(QWidget):
         self.thread_refresh.requestInterruption()
         self.start_thread_refresh = False
     
+    def __isLoginFailed(self, card_info_arr):
+        # if login fail show cannot login
+        card_cannot_login_name = const_agricolatools.ConstMessage().cannot_login
+        
+        if card_info_arr[0][0] == card_cannot_login_name:
+            self.label_print.setText(const_agricolatools.MESSAGE_CANNOT_LOGIN)
+            return True
+        
+        return False
+    
+    def __isDraftPhaseAndNotLogin(self, card_info_arr):
+        # if still in draft phase and not login don't show info for all played cards(no card played)
+        card_draftphase_name = const_agricolatools.ConstMessage().draftphase
+        card_info_label = const_agricolatools.CARD_INFO_LABEL
+        
+        if card_info_arr[0][0] == card_draftphase_name:
+            self.label_print.setText(const_agricolatools.MESSAGE_DRAFTPHASE)
+            self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
+            return True
+        
+        return False
+    
     def startInquiry(self):
         if self.line_edit_URL.text()[0:5] == 'https':
             self.label_print.setText(const_agricolatools.SEARCHING_WEBSITE_TEXT)
@@ -221,10 +242,7 @@ class GUI(QWidget):
         # inquiry and get info for all played cards
         card_info_arr = self.machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password)
         
-        # if login fail show cannot login
-        card_cannot_login_name = const_agricolatools.ConstMessage().cannot_login
-        if card_info_arr[0][0] == card_cannot_login_name:
-            self.label_print.setText(const_agricolatools.MESSAGE_CANNOT_LOGIN)
+        if self.__isLoginFailed(card_info_arr):
             return
         
         # if auto refresh is on but refresh thread did not start, start thread
@@ -235,15 +253,13 @@ class GUI(QWidget):
         self.showCardInfoByArr(card_info_arr)
     
     def showCardInfoByArr(self, card_info_arr):
-        # title to show
-        card_info_label = const_agricolatools.CARD_INFO_LABEL
+        # show search done
         self.label_print.setText(const_agricolatools.SEARCHING_DONE_TEXT)
         
-        # if still in draft phase and not login don't show info for all played cards(no card played)
-        card_draftphase_name = const_agricolatools.ConstMessage().draftphase
-        if card_info_arr[0][0] == card_draftphase_name:
-            self.label_print.setText(const_agricolatools.MESSAGE_DRAFTPHASE)
-            self.__setTableByArr(card_info_arr, card_info_label, first_set=(not self.start_thread_refresh))
+        # title to show
+        card_info_label = const_agricolatools.CARD_INFO_LABEL
+        
+        if self.__isDraftPhaseAndNotLogin(card_info_arr):
             return
         
         # analyze all played cards
@@ -259,17 +275,20 @@ class GUI(QWidget):
         # inquiry and get info for the card
         card_info = self.machine_inquiry.inquiryByCardName(card_name=card_name, game_type=game_type)
         
-        # title to show
-        card_info_label = const_agricolatools.CARD_INFO_LABEL
+        # show the card exist or not
         if card_info[0][1] == None:
             self.label_print.setText(const_agricolatools.CARD_CANNOT_FIND_TEXT)
         else:
             self.label_print.setText(const_agricolatools.CARD_SEARCHED_TEXT)
         
+        # title to show
+        card_info_label = const_agricolatools.CARD_INFO_LABEL
+        
         # show info for the card
         self.__setTableByArr(card_info, card_info_label)
 
 if __name__ == '__main__':
+    print('Do not close this terminal!!!')
     app = QApplication(sys.argv)
     gui = GUI()
     gui.show()
