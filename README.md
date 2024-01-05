@@ -38,12 +38,12 @@ conda python main.py
 
 # CheckList
 ## Big
-1. scrape data for draft phase
-2. give more information to user (ex: tips for playing specific card)
-3. scrape data for replay
+[x] scrape data for draft phase -- 2024/01/05
+[ ] give more information to user (ex: tips for playing specific card)
+[ ] scrape data for replay
 
 ## Small
-1. change const_agricola.py to json
+[ ] change const_agricola.py to json
 
 ## Bug
 - Qt plugin
