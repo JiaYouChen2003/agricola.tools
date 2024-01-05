@@ -4,13 +4,15 @@ import const_agricolatools
 import search
 
 class InquiryMachine():
+    def __init__(self):
+        self.machine_search = search.SearchMachine()
+    
     def inquiryByUrl(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], username = '', password = ''):
         '''
         card_info = [card_name, card_rank, card_diff, card_player_num]
         '''
-        machine_search = search.SearchMachine()
         
-        card_info_arr = machine_search.getCardInfoArr(url, game_type=game_type, username=username, password=password)
+        card_info_arr = self.machine_search.getCardInfoArr(url, game_type=game_type, username=username, password=password)
         
         # may get a fake card that has some message
         possible_message_card_name_list = const_agricolatools.ConstMessage().all_message

@@ -32,6 +32,9 @@ class WorkerRefresh(QObject):
 class GUI(QWidget):
     def __init__(self, parent=None):
         super().__init__()
+        
+        self.machine_inquiry = inquiry.InquiryMachine()
+        
         self.start_thread_refresh = False
         self.need_auto_refresh = False
         
@@ -47,8 +50,8 @@ class GUI(QWidget):
         self.label_auto_refresh = QLabel(const_agricolatools.QLABEL_AUTO_REFRESH)
         
         self.line_edit_URL = QLineEdit('')
-        self.line_edit_username = QLineEdit('MapleElf')
-        self.line_edit_password = QLineEdit()
+        self.line_edit_username = QLineEdit('')
+        self.line_edit_password = QLineEdit('')
         
         self.table = QTableWidget()
         
@@ -205,10 +208,9 @@ class GUI(QWidget):
         game_type = self.__getGameType()
         username = self.line_edit_username.text()
         password = self.line_edit_password.text()
-        machine_inquiry = inquiry.InquiryMachine()
         
         # inquiry and get info for all played cards
-        card_info_arr = machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password)
+        card_info_arr = self.machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password)
         
         # if login fail show cannot login
         card_cannot_login_name = const_agricolatools.ConstMessage().cannot_login

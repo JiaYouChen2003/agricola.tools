@@ -13,6 +13,9 @@ class LoginMachine():
         username_input = driver.find_element(By.ID, 'username_input')
         password_input = driver.find_element(By.ID, 'password_input')
         
+        if username_input == None or password_input == None:
+            return True
+        
         username_input.send_keys(username)
         password_input.send_keys(password)
         
