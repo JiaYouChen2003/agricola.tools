@@ -54,3 +54,4 @@ conda python main.py
 
 - Cannot see game in progress while login
 - Cannot run exe on another computer
+- ModuleNotFoundError: No module named 'pyexpat'
