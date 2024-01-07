@@ -179,4 +179,4 @@ cython_debug/
 _test.py
 
 # DLL
-!_internal/*
+!_internal/**
