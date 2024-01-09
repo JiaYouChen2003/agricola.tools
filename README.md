@@ -35,6 +35,9 @@ conda python main.py
 <img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/layout.png" width="81%" height="81%">
 </div>
 
+<div align="center">
+<img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/layout_url.png" width="81%" height="81%">
+</div>
 
 # CheckList
 ## Big
