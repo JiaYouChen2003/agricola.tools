@@ -5,17 +5,9 @@ from PySide2.QtCore import *
 import sys
 import time
 
-# import openpyxl
-# from selenium import webdriver
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.chrome.service import Service as ChromeService
-# from selenium.webdriver.chrome.options import Options
-# from webdriver_manager.chrome import ChromeDriverManager
-
-import const_agricolatools
-import inquiry
-import analyze
+from raw_asset.python_files import const_agricolatools
+from raw_asset.python_files import inquiry
+from raw_asset.python_files import analyze
 
 class WorkerWaitToShowThings(QObject):
     finished = Signal()

@@ -1,7 +1,7 @@
 import openpyxl
 
-import const_agricolatools
-import scrape
+from raw_asset.python_files import const_agricolatools
+from raw_asset.python_files import scrape
 
 class SearchMachine():
     def __init__(self):

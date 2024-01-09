@@ -1,7 +1,7 @@
 from PySide2.QtCore import *
 
-import const_agricolatools
-import search
+from raw_asset.python_files import const_agricolatools
+from raw_asset.python_files import search
 
 class InquiryMachine():
     def __init__(self):

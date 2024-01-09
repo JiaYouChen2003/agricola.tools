@@ -4,8 +4,8 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-import const_agricolatools
-import login
+from raw_asset.python_files import const_agricolatools
+from raw_asset.python_files import login
 
 class MessageCard():
     def __init__(self, message):

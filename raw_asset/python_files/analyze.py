@@ -1,4 +1,4 @@
-import const_agricolatools
+from raw_asset.python_files import const_agricolatools
 
 class AnalyzeMachine():
     def __getMean(self, sum, num):
