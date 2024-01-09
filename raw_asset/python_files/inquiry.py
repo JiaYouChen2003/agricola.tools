@@ -9,7 +9,9 @@ class InquiryMachine():
     
     def inquiryByUrl(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], username = '', password = ''):
         '''
-        card_info = [card_name, card_rank, card_diff, card_player_num]
+        Return card_info_arr
+        card_info: [card_name, card_rank, card_diff, card_player_num]
+        rtype: list(list(arr))
         '''
         
         card_info_arr = self.machine_search.getCardInfoArr(url, game_type=game_type, username=username, password=password)

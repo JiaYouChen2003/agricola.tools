@@ -1,4 +1,3 @@
-from raw_asset.python_files import const_agricolatools
 
 class AnalyzeMachine():
     def __getMean(self, sum, num):
@@ -9,6 +8,9 @@ class AnalyzeMachine():
         return mean
         
     def getCardRankMean(self, card_info_arr, player_num = 0):
+        '''
+        card_info = [card_name, card_rank, card_diff, card_player_num]
+        '''
         total_rank = 0
         total_card = 0
         
