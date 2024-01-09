@@ -56,7 +56,7 @@ class GUI(QWidget):
         self.table = QTableWidget()
         
         self.button = QPushButton()
-        self.button.setText(const_agricolatools.SEARCH_BUTTON_TEXT)
+        self.button.setText(const_agricolatools.TEXT_SEARCH_BUTTON)
         
         self.cmb1 = QComboBox()
         self.cmb1.setStyle(QStyleFactory.create('Fusion'))
@@ -67,7 +67,7 @@ class GUI(QWidget):
         self.cmb1.addItem(self.game_type_list[3])
         self.cmb2 = QComboBox()
         self.cmb2.setStyle(QStyleFactory.create('Fusion'))
-        self.auto_refresh_type_list = const_agricolatools.AUTO_REFRESH_TEXT
+        self.auto_refresh_type_list = const_agricolatools.AUTO_REFRESH_LIST
         self.cmb2.addItem(self.auto_refresh_type_list[0])
         self.cmb2.addItem(self.auto_refresh_type_list[1])
         
@@ -177,11 +177,11 @@ class GUI(QWidget):
         self.thread_refresh.start()
     
     def __endThreadRefresh(self):
-        self.label_print.setText(const_agricolatools.END_AUTO_REFRESH_TEXT)
+        self.label_print.setText(const_agricolatools.TEXT_END_AUTO_REFRESH)
         self.start_thread_refresh = False
     
     def __interruptThreadRefresh(self):
-        self.label_print.setText(const_agricolatools.INTERRUPT_AUTO_REFRESH_TEXT)
+        self.label_print.setText(const_agricolatools.TEXT_INTERRUPT_AUTO_REFRESH)
         self.thread_refresh.requestInterruption()
         self.start_thread_refresh = False
     
@@ -209,12 +209,12 @@ class GUI(QWidget):
     
     def startInquiry(self):
         if self.line_edit_URL.text()[0:5] == 'https':
-            self.label_print.setText(const_agricolatools.SEARCHING_WEBSITE_TEXT)
+            self.label_print.setText(const_agricolatools.TEXT_SEARCHING_WEBSITE)
             # use thread so that label print can be shown, not required
             # when thread end, start inquiry
             self.__startThreadToWaitThenInquiryByUrl()
         else:
-            self.label_print.setText(const_agricolatools.SEARCHING_CARD_TEXT)
+            self.label_print.setText(const_agricolatools.TEXT_SEARCHING_CARD)
             self.startInquiryByCardName(card_name=self.line_edit_URL.text())
     
     def startInquiryByUrl(self):
@@ -245,7 +245,7 @@ class GUI(QWidget):
     
     def showCardInfoByArr(self, card_info_arr):
         # show search done
-        self.label_print.setText(const_agricolatools.SEARCHING_DONE_TEXT)
+        self.label_print.setText(const_agricolatools.TEXT_SEARCHING_DONE)
         
         # title to show
         card_info_label = const_agricolatools.CARD_INFO_LABEL
@@ -268,9 +268,9 @@ class GUI(QWidget):
         
         # show the card exist or not
         if card_info[0][1] == None:
-            self.label_print.setText(const_agricolatools.CARD_CANNOT_FIND_TEXT)
+            self.label_print.setText(const_agricolatools.TEXT_CARD_CANNOT_FIND)
         else:
-            self.label_print.setText(const_agricolatools.CARD_SEARCHED_TEXT)
+            self.label_print.setText(const_agricolatools.TEXT_CARD_SEARCHED)
         
         # title to show
         card_info_label = const_agricolatools.CARD_INFO_LABEL

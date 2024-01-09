@@ -6,28 +6,34 @@ WORKBOOK_DIFF_NAME = 'Diff'
 XLSXPATH = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
 
 # Const that can an be translate
-AUTO_REFRESH_TEXT = ['off', 'on']
-CARD_CANNOT_FIND_TEXT = 'Cannot Found Card :('
+AUTO_REFRESH_LIST = ['off', 'on']
+
 CARD_INFO_LABEL = ["Card Name", "Card Rank", "Card Diff"]
 CARD_MEAN_LABEL = 'Mean: '
 CARD_PLAYER_LABEL = 'Player: '
 CARD_PLAYER_LABEL_ALL = 'All'
-CARD_SEARCHED_TEXT = 'Card Searched!'
-END_AUTO_REFRESH_TEXT = 'End Auto Refresh'
+
 GAME_TYPE_LIST = ['4player_default', '4player_withAAS', '4player_banlist_500+', '4player_banlist_300-']
-INTERRUPT_AUTO_REFRESH_TEXT = 'Interrupt Refresh!'
+
 MESSAGE_CANNOT_LOGIN = 'Cannot Login'
 MESSAGE_DRAFTPHASE = 'Still in Draft Phase'
+
 QLABEL_AUTO_REFRESH = 'Auto Refresh:'
 QLABEL_PASSWORD = 'Password'
 QLABEL_RESULT = 'Results:'
 QLABEL_URL_1 = 'URL or'
 QLABEL_URL_2 = 'Card Name:'
 QLABEL_USERNAME = 'Username'
-SEARCH_BUTTON_TEXT = 'search'
-SEARCHING_CARD_TEXT = 'Searching Card...'
-SEARCHING_DONE_TEXT = 'Searching Done!'
-SEARCHING_WEBSITE_TEXT = 'Searching Website...'
+
+TEXT_CARD_CANNOT_FIND = 'Cannot Found Card :('
+TEXT_CARD_SEARCHED = 'Card Searched!'
+TEXT_END_AUTO_REFRESH = 'End Auto Refresh'
+TEXT_INTERRUPT_AUTO_REFRESH = 'Interrupt Refresh!'
+TEXT_SEARCH_BUTTON = 'search'
+TEXT_SEARCHING_CARD = 'Searching Card...'
+TEXT_SEARCHING_DONE = 'Searching Done!'
+TEXT_SEARCHING_WEBSITE = 'Searching Website...'
+
 URL_LANGUAGE_PREFIX = 'https://en.'
 URL_REQUIRE_HINT = 'Enter the URL:'
 
