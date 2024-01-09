@@ -4,6 +4,8 @@ from PySide2.QtCore import *
 
 import sys
 import time
+import os.path
+import json
 
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import inquiry
@@ -39,7 +41,7 @@ class GUI(QWidget):
         self.need_auto_refresh = False
         
         self.setWindowTitle('agricola.tools')
-        self.setWindowIcon(QIcon(const_agricolatools.WINDOW_ICON_PATH))
+        self.setWindowIcon(QIcon(const_agricolatools.Path().window_icon_path))
         
         self.label_URL_1 = QLabel(const_agricolatools.QLABEL_URL_1)
         self.label_URL_2 = QLabel(const_agricolatools.QLABEL_URL_2)
@@ -50,8 +52,15 @@ class GUI(QWidget):
         self.label_auto_refresh = QLabel(const_agricolatools.QLABEL_AUTO_REFRESH)
         
         self.line_edit_URL = QLineEdit('')
-        self.line_edit_username = QLineEdit('')
-        self.line_edit_password = QLineEdit('')
+        
+        if os.path.isfile(const_agricolatools.LOGIN_INFO_FILE_NAME):
+            self.line_edit_username = QLineEdit(self.__getJsonFileValueByKey(const_agricolatools.JsonFile().name_login_info,
+                                                                            const_agricolatools.JsonFile().key_login_info_username))
+            self.line_edit_password = QLineEdit(self.__getJsonFileValueByKey(const_agricolatools.JsonFile().name_login_info,
+                                                                            const_agricolatools.JsonFile().key_login_info_password))
+        else:
+            self.line_edit_username = QLineEdit('')
+            self.line_edit_password = QLineEdit('')
         
         self.table = QTableWidget()
         
@@ -92,6 +101,11 @@ class GUI(QWidget):
         self.setLayout(self.grid)
         self.resize(640, 810)
         self.button.clicked.connect(self.startInquiry)
+    
+    def __getJsonFileValueByKey(self, json_file_name, key):
+        with open(json_file_name, 'r') as json_file:
+            json_dict = json.load(json_file)
+            return json_dict[key]
     
     def __getGameType(self):
         # 4player_default

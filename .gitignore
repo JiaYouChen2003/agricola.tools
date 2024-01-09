@@ -180,3 +180,6 @@ _test.py
 
 # DLL
 !_internal/**
+
+# User specified info
+login_info.json

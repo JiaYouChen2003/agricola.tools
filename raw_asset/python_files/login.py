@@ -3,6 +3,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 import time
+import json
+
+from raw_asset.python_files import const_agricolatools
 
 class LoginMachine():
     def __init__(self):
@@ -11,6 +14,12 @@ class LoginMachine():
     def loginWebsiteBGA_IfCannotLoginReturnFalse(self, driver: webdriver.Chrome, username, password):
         if self.have_login:
             return True
+        
+        login_info_dict = { const_agricolatools.JsonFile().key_login_info_username: username,
+                            const_agricolatools.JsonFile().key_login_info_password: password}
+        with open(const_agricolatools.JsonFile().name_login_info, 'w') as login_info_file:
+            json.dump(login_info_dict, login_info_file)
+        
         driver.get('https://en.boardgamearena.com/account')
         username_input = driver.find_element(By.ID, 'username_input')
         password_input = driver.find_element(By.ID, 'password_input')

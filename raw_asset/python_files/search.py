@@ -7,7 +7,7 @@ class SearchMachine():
     def __init__(self):
         self.machine_scrape = scrape.ScrapeMachine()
         
-        self.xlsx_name = const_agricolatools.XLSXPATH
+        self.xlsx_name = const_agricolatools.Path().xlsx_path
         self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
         
         self.player_num = 0
@@ -78,7 +78,7 @@ class SearchMachine():
     def getCardDiff(self, card_name):
         workbook_list = self.workbook_list
         
-        arr_diff = self.__getValuesFromSheet(workbook_list[const_agricolatools.WORKBOOK_DIFF_NAME])
+        arr_diff = self.__getValuesFromSheet(workbook_list[const_agricolatools.Path().xlsx_workbook_diff_name])
         card_diff = self.__getItemIndexByNameFromArray(card_name, arr_diff, 0, 3, wantcasefold=True)
         return card_diff
 

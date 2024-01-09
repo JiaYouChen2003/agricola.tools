@@ -1,10 +1,5 @@
 import os
 
-# Seen as in the same file with main.py
-WINDOW_ICON_PATH = os.path.abspath('./raw_asset/agricola-en.jpg')
-WORKBOOK_DIFF_NAME = 'Diff'
-XLSXPATH = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
-
 # Const that can an be translate
 AUTO_REFRESH_LIST = ['off', 'on']
 
@@ -50,3 +45,16 @@ class ConstMessage():
                 continue
             const_message = getattr(self, const_message_name)
             self.all_message.append(const_message)
+
+class Path():
+    def __init__(self):
+        # Seen as in the same file with main.py
+        self.window_icon_path = os.path.abspath('./raw_asset/agricola-en.jpg')
+        self.xlsx_path = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
+        self.xlsx_workbook_diff_name = 'Diff'
+
+class JsonFile():
+    def __init__(self):
+        self.name_login_info = 'login_info.json'
+        self.key_login_info_username = 'username'
+        self.key_login_info_password = 'password'
