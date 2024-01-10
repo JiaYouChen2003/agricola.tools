@@ -21,6 +21,7 @@ class ScrapeMachine():
         # selenium webdriver setting
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--no-sandbox")
         self.driver = webdriver.Chrome(options=chrome_options)
     
     def getCardListFromBGA(self, url='', username='', password=''):
