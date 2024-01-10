@@ -5,7 +5,7 @@ from raw_asset.python_files import scrape
 
 class SearchMachine():
     def __init__(self):
-        self.machine_scrape = scrape.ScrapeMachine()
+        self.machine_scrape = None
         
         self.xlsx_name = const_agricolatools.Path().xlsx_path
         self.workbook_list = openpyxl.load_workbook(self.xlsx_name)
@@ -45,6 +45,9 @@ class SearchMachine():
         '''
         card_info = [card_name, card_rank, card_diff, card_player_num]
         '''
+        if self.machine_scrape == None:
+            self.machine_scrape = scrape.ScrapeMachine()
+        
         # may get a fake card that has some message
         card_list = self.machine_scrape.getCardListFromBGA(url=url, username=username, password=password)
         
