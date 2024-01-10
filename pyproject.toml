@@ -1,0 +1,17 @@
+[tool.pytest.ini_options]
+markers = [
+    "url: marks tests as url (deselect with '-m \"not url\"')",
+    "card_name: marks tests as card_name (deselect with '-m \"not card_name\"')",
+]
+
+[tool.flake8]
+per-file-ignores = [
+    "__init__.py: F401"
+]
+ignore = [
+    "E128",
+    "E501",
+    "F403",
+    "F405",
+    "W293"
+]

@@ -1,18 +1,18 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import login
+
 
 class MessageCard():
     def __init__(self, message):
         self.text = message
         self.size = {'height': 100}
 
-class ScrapeMachine(): 
+
+class ScrapeMachine():
     def __init__(self):
         self.machine_login = login.LoginMachine()
         
@@ -21,9 +21,12 @@ class ScrapeMachine():
         # selenium webdriver setting
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
-        self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        self.driver = webdriver.Chrome(options=chrome_options)
     
-    def getCardListFromBGA(self, url = '', username = '', password = ''):
+    def getCardListFromBGA(self, url='', username='', password=''):
         if username != '' or password != '':
             can_login = self.machine_login.loginWebsiteBGA_IfCannotLoginReturnFalse(self.driver, username, password)
         else:
@@ -42,6 +45,12 @@ class ScrapeMachine():
         
         self.driver.get(url_en)
         
+        need_login = self.checkNeedLogin()
+        if need_login:
+            card_need_login_name = const_agricolatools.ConstMessage().need_login
+            card_need_login = MessageCard(card_need_login_name)
+            return [card_need_login]
+        
         is_draftphase = self.checkDraftPhase()
         if is_draftphase:
             # if still in draft phase and not login, return fake card that say still in draft phase
@@ -49,6 +58,7 @@ class ScrapeMachine():
                 card_draftphase_name = const_agricolatools.ConstMessage().draftphase
                 card_draftphase = MessageCard(card_draftphase_name)
                 return [card_draftphase]
+            # If login, return the card that shown on the draft container
             else:
                 card_board = self.driver.find_element(By.ID, 'draft-container')
                 card_list = card_board.find_elements(By.CLASS_NAME, 'card-title')
@@ -67,6 +77,19 @@ class ScrapeMachine():
         if self.driver.find_elements(By.ID, 'turn-number-tooltipable-1') != []:
             return True
         return False
+    
+    def checkNeedLogin(self):
+        '''
+        Return true if need login
+        type: selenium webdriver
+        rtype: bool
+        '''
+        Sorry = self.driver.find_elements(By.ID, 'bga_fatal_error_descr')
+        if Sorry != []:
+            if Sorry[0].text.startswith('Sorry'):
+                return True
+        return False
+
 
 # test from search.py
 if __name__ == '__main__':
