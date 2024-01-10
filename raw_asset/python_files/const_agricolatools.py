@@ -59,8 +59,7 @@ class Path():
     def __init__(self):
         # Seen as in the same file with main.py
         self.window_icon_path = os.path.abspath('./raw_asset/agricola-en.jpg')
-        self.xlsx_path = os.path.abspath('./raw_asset/card_statistic/ \
-                                            Jul_2023/agricola_statistic.xlsx')
+        self.xlsx_path = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
         self.xlsx_workbook_diff_name = 'Diff'
 
 
