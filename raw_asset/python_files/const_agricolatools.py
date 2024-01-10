@@ -37,6 +37,7 @@ class ConstMessage():
     def __init__(self):
         self.draftphase = 'Still in Draft Phase'
         self.cannot_login = 'Cannot Login'
+        self.need_login = 'Login Required'
         
         self.all_message = []
         # search for all variable in self

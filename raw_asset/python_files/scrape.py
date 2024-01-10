@@ -42,6 +42,12 @@ class ScrapeMachine():
         
         self.driver.get(url_en)
         
+        need_login = self.checkNeedLogin()
+        if need_login:
+            card_need_login_name = const_agricolatools.ConstMessage().need_login
+            card_need_login = MessageCard(card_need_login_name)
+            return [card_need_login]
+        
         is_draftphase = self.checkDraftPhase()
         if is_draftphase:
             # if still in draft phase and not login, return fake card that say still in draft phase
@@ -49,6 +55,7 @@ class ScrapeMachine():
                 card_draftphase_name = const_agricolatools.ConstMessage().draftphase
                 card_draftphase = MessageCard(card_draftphase_name)
                 return [card_draftphase]
+            # If login, return the card that shown on the draft container
             else:
                 card_board = self.driver.find_element(By.ID, 'draft-container')
                 card_list = card_board.find_elements(By.CLASS_NAME, 'card-title')
@@ -66,6 +73,18 @@ class ScrapeMachine():
         '''
         if self.driver.find_elements(By.ID, 'turn-number-tooltipable-1') != []:
             return True
+        return False
+    
+    def checkNeedLogin(self):
+        '''
+        Return true if need login
+        type: selenium webdriver
+        rtype: bool
+        '''
+        Sorry = self.driver.find_elements(By.ID, 'bga_fatal_error_descr')
+        if Sorry != []:
+            if Sorry[0].text.startswith('Sorry'):
+                return True
         return False
 
 # test from search.py
