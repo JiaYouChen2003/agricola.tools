@@ -15,8 +15,12 @@ jobs:
           name: install dependencies
           command: |
             python3 -m venv venv
-            /home/circleci/repo/venv/bin/python3 -m pip install --upgrade pip
             . venv/bin/activate
+            /home/circleci/repo/venv/bin/python3 -m pip install --upgrade pip
+            apt-get install -y libglib2.0-0=2.50.3-2 \
+            libnss3=2:3.26.2-1.1+deb9u1 \
+            libgconf-2-4=3.2.6-4+b1 \
+            libfontconfig1=2.11.0-6.7+b1
             pip install -r requirements.txt
       # Step 3: run linter and tests
       - run:
