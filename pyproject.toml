@@ -1,0 +1,5 @@
+[tool.pytest.ini_options]
+markers = [
+    "url: marks tests as url (deselect with '-m \"not url\"')",
+    "card_name: marks tests as card_name (deselect with '-m \"not card_name\"')",
+]
