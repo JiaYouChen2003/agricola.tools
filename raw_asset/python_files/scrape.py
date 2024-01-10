@@ -1,8 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import login
@@ -23,7 +21,7 @@ class ScrapeMachine():
         # selenium webdriver setting
         chrome_options = Options()
         chrome_options.add_argument("--headless=new")
-        self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+        self.driver = webdriver.Chrome(options=chrome_options)
     
     def getCardListFromBGA(self, url='', username='', password=''):
         if username != '' or password != '':
