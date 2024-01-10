@@ -13,9 +13,6 @@ jobs:
       - checkout
 
       # Step 2: create virtual env and install dependencies
-      - python/install-packages:
-          pkg-manager: pip
-
       - run:
           name: install dependencies
           command: |
