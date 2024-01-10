@@ -18,3 +18,24 @@ def test_inquiryByUrl_haveUsernameNoPassword_cannotLogin():
     card_info_arr = machine_inquiry.inquiryByUrl(URL_TESTING, username = 'abc')
     
     assert card_info_arr[0][0] == ConstMessage().cannot_login
+
+@pytest.mark.card_name
+def test_inquiryByCardName_CardNameTesting_CardNameTesting():
+    machine_inquiry = InquiryMachine()
+    card_info = machine_inquiry.inquiryByCardName(CARD_NAME_TESTING)
+    
+    assert card_info[0][0] == CARD_NAME_TESTING
+
+@pytest.mark.card_name
+def test_inquiryByCardName_allLowerCase_CardNameTesting():
+    machine_inquiry = InquiryMachine()
+    card_info = machine_inquiry.inquiryByCardName('seducer')
+    
+    assert card_info[0][0] == CARD_NAME_TESTING
+
+@pytest.mark.card_name
+def test_inquiryByCardName_randomUpperCase_CardNameTesting():
+    machine_inquiry = InquiryMachine()
+    card_info = machine_inquiry.inquiryByCardName('SEdUceR')
+    
+    assert card_info[0][0] == CARD_NAME_TESTING
