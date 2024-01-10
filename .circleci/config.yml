@@ -15,7 +15,7 @@ jobs:
           name: install dependencies
           command: |
             python3 -m venv venv
-            python3 pip install --upgrade pip
+            /home/circleci/repo/venv/bin/python3 -m pip install --upgrade pip
             . venv/bin/activate
             pip install -r requirements.txt
       # Step 3: run linter and tests
