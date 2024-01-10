@@ -8,7 +8,11 @@ CARD_MEAN_LABEL = 'Mean: '
 CARD_PLAYER_LABEL = 'Player: '
 CARD_PLAYER_LABEL_ALL = 'All'
 
-GAME_TYPE_LIST = ['4player_default', '4player_withAAS', '4player_banlist_500+', '4player_banlist_300-']
+GAME_TYPE_LIST = [
+    '4player_default',
+    '4player_withAAS',
+    '4player_banlist_500+',
+    '4player_banlist_300-']
 
 MESSAGE_CANNOT_LOGIN = 'Cannot Login'
 MESSAGE_DRAFTPHASE = 'Still in Draft Phase'
@@ -32,6 +36,7 @@ TEXT_SEARCHING_WEBSITE = 'Searching Website...'
 URL_LANGUAGE_PREFIX = 'https://en.'
 URL_REQUIRE_HINT = 'Enter the URL:'
 
+
 # Following code do not need to translate
 class ConstMessage():
     def __init__(self):
@@ -42,17 +47,22 @@ class ConstMessage():
         self.all_message = []
         # search for all variable in self
         for const_message_name in dir(self):
-            if const_message_name == 'all_message' or const_message_name.startswith('__'):
+            if const_message_name == 'all_message':
+                continue
+            if const_message_name.startswith('__'):
                 continue
             const_message = getattr(self, const_message_name)
             self.all_message.append(const_message)
+
 
 class Path():
     def __init__(self):
         # Seen as in the same file with main.py
         self.window_icon_path = os.path.abspath('./raw_asset/agricola-en.jpg')
-        self.xlsx_path = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
+        self.xlsx_path = os.path.abspath('./raw_asset/card_statistic/ \
+                                            Jul_2023/agricola_statistic.xlsx')
         self.xlsx_workbook_diff_name = 'Diff'
+
 
 class JsonFile():
     def __init__(self):

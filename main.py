@@ -11,12 +11,14 @@ from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import inquiry
 from raw_asset.python_files import analyze
 
+
 class WorkerWaitToShowThings(QObject):
     finished = Signal()
     
     def run(self):
         time.sleep(0.1)
         self.finished.emit()
+
 
 class WorkerRefresh(QObject):
     finished = Signal()
@@ -29,6 +31,7 @@ class WorkerRefresh(QObject):
                 return
             self.refresh.emit()
         self.finished.emit()
+
 
 class GUI(QWidget):
     def __init__(self, parent=None):
@@ -117,7 +120,7 @@ class GUI(QWidget):
         need_auto_refresh = self.cmb2.currentIndex()
         return need_auto_refresh
     
-    def __setTableByArr(self, arr, arr_label, first_set = True, have_card_player = False):
+    def __setTableByArr(self, arr, arr_label, first_set=True, have_card_player=False):
         self.table.setRowCount(len(arr))
         if first_set:
             if have_card_player:
@@ -281,7 +284,7 @@ class GUI(QWidget):
         card_info = self.machine_inquiry.inquiryByCardName(card_name=card_name, game_type=game_type)
         
         # show the card exist or not
-        if card_info[0][1] == None:
+        if card_info[0][1] is None:
             self.label_print.setText(const_agricolatools.TEXT_CARD_CANNOT_FIND)
         else:
             self.label_print.setText(const_agricolatools.TEXT_CARD_SEARCHED)
@@ -291,6 +294,7 @@ class GUI(QWidget):
         
         # show info for the card
         self.__setTableByArr(card_info, card_info_label)
+
 
 if __name__ == '__main__':
     print('Do not close this terminal!!!')

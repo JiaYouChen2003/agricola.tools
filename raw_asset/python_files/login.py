@@ -7,6 +7,7 @@ import json
 
 from raw_asset.python_files import const_agricolatools
 
+
 class LoginMachine():
     def __init__(self):
         self.have_login = False
@@ -15,8 +16,9 @@ class LoginMachine():
         if self.have_login:
             return True
         
-        login_info_dict = { const_agricolatools.JsonFile().key_login_info_username: username,
-                            const_agricolatools.JsonFile().key_login_info_password: password}
+        login_info_dict = {
+            const_agricolatools.JsonFile().key_login_info_username: username,
+            const_agricolatools.JsonFile().key_login_info_password: password}
         with open(const_agricolatools.JsonFile().name_login_info, 'w') as login_info_file:
             json.dump(login_info_dict, login_info_file)
         
@@ -39,6 +41,7 @@ class LoginMachine():
             return True
         else:
             return False
+
 
 if __name__ == '__main__':
     assert False, 'login.py should not be executed'

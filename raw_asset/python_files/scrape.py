@@ -7,12 +7,14 @@ from webdriver_manager.chrome import ChromeDriverManager
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import login
 
+
 class MessageCard():
     def __init__(self, message):
         self.text = message
         self.size = {'height': 100}
 
-class ScrapeMachine(): 
+
+class ScrapeMachine():
     def __init__(self):
         self.machine_login = login.LoginMachine()
         
@@ -23,7 +25,7 @@ class ScrapeMachine():
         chrome_options.add_argument("--headless=new")
         self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
     
-    def getCardListFromBGA(self, url = '', username = '', password = ''):
+    def getCardListFromBGA(self, url='', username='', password=''):
         if username != '' or password != '':
             can_login = self.machine_login.loginWebsiteBGA_IfCannotLoginReturnFalse(self.driver, username, password)
         else:
@@ -86,6 +88,7 @@ class ScrapeMachine():
             if Sorry[0].text.startswith('Sorry'):
                 return True
         return False
+
 
 # test from search.py
 if __name__ == '__main__':

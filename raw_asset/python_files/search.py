@@ -3,6 +3,7 @@ import openpyxl
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import scrape
 
+
 class SearchMachine():
     def __init__(self):
         self.machine_scrape = None
@@ -31,7 +32,7 @@ class SearchMachine():
             arr.append(list)
         return arr
     
-    def __getItemIndexByNameFromArray(self, itemName, arr, column4name, column4index, wantcasefold = False):
+    def __getItemIndexByNameFromArray(self, itemName, arr, column4name, column4index, wantcasefold=False):
         for row in arr:
             if wantcasefold:
                 if row[column4name].casefold() == itemName.casefold():
@@ -41,11 +42,11 @@ class SearchMachine():
                     return row[column4index]
     
     # Functions that can be called
-    def getCardInfoArr(self, url, game_type = const_agricolatools.GAME_TYPE_LIST[0], username = '', password = ''):
+    def getCardInfoArr(self, url, game_type=const_agricolatools.GAME_TYPE_LIST[0], username='', password=''):
         '''
         card_info = [card_name, card_rank, card_diff, card_player_num]
         '''
-        if self.machine_scrape == None:
+        if self.machine_scrape is None:
             self.machine_scrape = scrape.ScrapeMachine()
         
         # may get a fake card that has some message
@@ -53,7 +54,7 @@ class SearchMachine():
         
         return self.getCardInfoArrFromCardNameList(card_list=card_list, game_type=game_type)
     
-    def getCardInfoArrFromCardNameList(self, card_list, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
+    def getCardInfoArrFromCardNameList(self, card_list, game_type=const_agricolatools.GAME_TYPE_LIST[0]):
         '''
         card_info = [card_name, card_rank, card_diff, card_player_num]
         '''
@@ -71,7 +72,7 @@ class SearchMachine():
         
         return card_info_arr
     
-    def getCardRank(self, card_name, game_type = const_agricolatools.GAME_TYPE_LIST[0]):
+    def getCardRank(self, card_name, game_type=const_agricolatools.GAME_TYPE_LIST[0]):
         workbook_list = self.workbook_list
         
         arr_rank = self.__getValuesFromSheet(workbook_list[game_type])
@@ -84,6 +85,7 @@ class SearchMachine():
         arr_diff = self.__getValuesFromSheet(workbook_list[const_agricolatools.Path().xlsx_workbook_diff_name])
         card_diff = self.__getItemIndexByNameFromArray(card_name, arr_diff, 0, 3, wantcasefold=True)
         return card_diff
+
 
 # test code
 if __name__ == '__main__':
