@@ -248,7 +248,7 @@ class GUI(QWidget):
         password = self.line_edit_password.text()
         
         # inquiry and get info for all played cards
-        card_info_arr = self.machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password)
+        card_info_arr = self.machine_inquiry.inquiryByUrl(url, game_type=game_type, username=username, password=password, save_login_info=True)
         
         if self.__isLoginFailed(card_info_arr):
             return

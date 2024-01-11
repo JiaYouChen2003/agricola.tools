@@ -26,9 +26,9 @@ class ScrapeMachine():
         chrome_options.add_argument("--disable-dev-shm-usage")
         self.driver = webdriver.Chrome(options=chrome_options)
     
-    def getCardListFromBGA(self, url='', username='', password=''):
+    def getCardListFromBGA(self, url='', username='', password='', save_login_info=True):
         if username != '' or password != '':
-            can_login = self.machine_login.loginWebsiteBGA_IfCannotLoginReturnFalse(self.driver, username, password)
+            can_login = self.machine_login.loginWebsiteBGA_IfCannotLoginReturnFalse(self.driver, username, password, save_login_info=save_login_info)
         else:
             can_login = True
         

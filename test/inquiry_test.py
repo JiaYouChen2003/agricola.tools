@@ -9,7 +9,7 @@ CARD_NAME_TESTING = 'Seducer'
 @pytest.mark.url
 def test_inquiryByUrl_noUsernameNoPassword_needLogin():
     machine_inquiry = InquiryMachine()
-    card_info_arr = machine_inquiry.inquiryByUrl(URL_TESTING)
+    card_info_arr = machine_inquiry.inquiryByUrl(URL_TESTING, save_login_info=False)
     
     assert card_info_arr[0][0] == ConstMessage().need_login
 
@@ -17,7 +17,7 @@ def test_inquiryByUrl_noUsernameNoPassword_needLogin():
 @pytest.mark.url
 def test_inquiryByUrl_haveUsernameNoPassword_cannotLogin():
     machine_inquiry = InquiryMachine()
-    card_info_arr = machine_inquiry.inquiryByUrl(URL_TESTING, username='abc')
+    card_info_arr = machine_inquiry.inquiryByUrl(URL_TESTING, username='abc', save_login_info=False)
     
     assert card_info_arr[0][0] == ConstMessage().cannot_login
 

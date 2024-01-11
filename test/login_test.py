@@ -24,7 +24,8 @@ def test_loginWebsiteBGA_IfCannotLoginReturnFalse_loginInfoJson_True():
             assert machine_login.loginWebsiteBGA_IfCannotLoginReturnFalse(
                 driver,
                 json_dict[const_json_file.key_login_info_username],
-                json_dict[const_json_file.key_login_info_password])
+                json_dict[const_json_file.key_login_info_password],
+                save_login_info=False) is True
 
 
 @pytest.mark.login
@@ -37,9 +38,7 @@ def test_loginWebsiteBGA_IfCannotLoginReturnFalse_noPassword_False():
     driver = webdriver.Chrome(options=chrome_options)
     
     assert machine_login.loginWebsiteBGA_IfCannotLoginReturnFalse(
-        driver,
-        'username',
-        '') is False
+        driver, 'username', '', save_login_info=False) is False
 
 
 @pytest.mark.login
@@ -52,6 +51,4 @@ def test_loginWebsiteBGA_IfCannotLoginReturnFalse_noUsername_False():
     driver = webdriver.Chrome(options=chrome_options)
     
     assert machine_login.loginWebsiteBGA_IfCannotLoginReturnFalse(
-        driver,
-        '',
-        'password') is False
+        driver, '', 'password', save_login_info=False) is False
