@@ -44,7 +44,7 @@ class GUI(QWidget):
         self.need_auto_refresh = False
         
         self.setWindowTitle('agricola.tools')
-        self.setWindowIcon(QIcon(const_agricolatools.Path().window_icon_path))
+        self.setWindowIcon(QIcon(const_agricolatools.ConstPath().window_icon_path))
         
         self.label_URL_1 = QLabel(const_agricolatools.QLABEL_URL_1)
         self.label_URL_2 = QLabel(const_agricolatools.QLABEL_URL_2)
@@ -56,11 +56,11 @@ class GUI(QWidget):
         
         self.line_edit_URL = QLineEdit('')
         
-        if os.path.isfile(const_agricolatools.LOGIN_INFO_FILE_NAME):
-            self.line_edit_username = QLineEdit(self.__getJsonFileValueByKey(const_agricolatools.JsonFile().name_login_info,
-                                                                            const_agricolatools.JsonFile().key_login_info_username))
-            self.line_edit_password = QLineEdit(self.__getJsonFileValueByKey(const_agricolatools.JsonFile().name_login_info,
-                                                                            const_agricolatools.JsonFile().key_login_info_password))
+        if os.path.isfile(const_agricolatools.ConstJsonFile().name_login_info):
+            self.line_edit_username = QLineEdit(self.__getJsonFileValueByKey(const_agricolatools.ConstJsonFile().name_login_info,
+                                                                            const_agricolatools.ConstJsonFile().key_login_info_username))
+            self.line_edit_password = QLineEdit(self.__getJsonFileValueByKey(const_agricolatools.ConstJsonFile().name_login_info,
+                                                                            const_agricolatools.ConstJsonFile().key_login_info_password))
         else:
             self.line_edit_username = QLineEdit('')
             self.line_edit_password = QLineEdit('')

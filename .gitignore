@@ -177,6 +177,7 @@ cython_debug/
 
 # Testing Code
 _test.py
+coverage_re
 
 # DLL
 !_internal/**
