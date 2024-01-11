@@ -3,6 +3,7 @@ markers = [
     "url: marks tests as url (deselect with '-m \"not url\"')",
     "card_name: marks tests as card_name (deselect with '-m \"not card_name\"')",
     "card_info_arr: marks tests as card_info_arr (deselect with '-m \"not card_info_arr\"')",
+    "const_agri: marks tests as const_agri (deselect with '-m \"not const_agri\"')",
 ]
 
 [tool.flake8]

@@ -55,7 +55,7 @@ class ConstMessage():
             self.all_message.append(const_message)
 
 
-class Path():
+class ConstPath():
     def __init__(self):
         # Seen as in the same file with main.py
         self.window_icon_path = os.path.abspath('./raw_asset/agricola-en.jpg')
@@ -63,7 +63,7 @@ class Path():
         self.xlsx_workbook_diff_name = 'Diff'
 
 
-class JsonFile():
+class ConstJsonFile():
     def __init__(self):
         self.name_login_info = 'login_info.json'
         self.key_login_info_username = 'username'
