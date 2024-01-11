@@ -102,7 +102,7 @@ if __name__ == '__main__':
     
     # test SearchMachine
     print()
-    print("Name".rjust(20), "Rank".rjust(5), "Diff".rjust(5))
+    print('Name'.rjust(20), 'Rank'.rjust(5), 'Diff'.rjust(5))
     
     card_info_arr = machine_search.getCardInfoArrFromCardNameList(card_list=card_list)
     for card_info in card_info_arr:
