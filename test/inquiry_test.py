@@ -31,6 +31,7 @@ def test_inquiryByUrl_haveUsernamePassword_cardInfoArr():
             assert card_info_arr[-1][0] == 'Master Builder'
 
 
+@pytest.mark.false
 @pytest.mark.url
 def test_inquiryByUrl_noUsernameNoPassword_needLogin():
     machine_inquiry = InquiryMachine()
@@ -39,6 +40,7 @@ def test_inquiryByUrl_noUsernameNoPassword_needLogin():
     assert card_info_arr[0][0] == ConstMessage().need_login
 
 
+@pytest.mark.false
 @pytest.mark.url
 def test_inquiryByUrl_haveUsernameNoPassword_cannotLogin():
     machine_inquiry = InquiryMachine()

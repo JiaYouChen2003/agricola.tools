@@ -5,6 +5,7 @@ markers = [
     "card_info_arr: marks tests as card_info_arr (deselect with '-m \"not card_info_arr\"')",
     "const_agri: marks tests as const_agri (deselect with '-m \"not const_agri\"')",
     "login: marks tests as login (deselect with '-m \"not login\"')",
+    "false: marks tests as false (deselect with '-m \"not false\"')",
 ]
 
 [tool.flake8]
