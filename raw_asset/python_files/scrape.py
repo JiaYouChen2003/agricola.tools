@@ -7,7 +7,7 @@ from raw_asset.python_files import login
 
 
 class MessageCard():
-    def __init__(self, message):
+    def __init__(self, message=''):
         self.text = message
         self.size = {'height': 100}
 
@@ -36,7 +36,7 @@ class ScrapeMachine():
         
         # change language
         if url == '':
-            url = input(const_agricolatools.URL_REQUIRE_HINT)
+            return 'URL_REQUIRED'
         url_en_backstartnum = url.find('boardgamearena.com')
         url_en = self.url_language_front + url[url_en_backstartnum:]
         
@@ -65,23 +65,29 @@ class ScrapeMachine():
         
         return card_list
     
-    def checkDraftPhase(self):
+    def checkDraftPhase(self, driver=None):
         '''
         Return true if is in draftphase
         type: selenium webdriver
         rtype: bool
         '''
-        if self.driver.find_elements(By.ID, 'turn-number-tooltipable-1') != []:
+        if driver is None:
+            driver = self.driver
+        
+        if driver.find_elements(By.ID, 'turn-number-tooltipable-1') != []:
             return True
         return False
     
-    def checkNeedLogin(self):
+    def checkNeedLogin(self, driver=None):
         '''
         Return true if need login
         type: selenium webdriver
         rtype: bool
         '''
-        Sorry = self.driver.find_elements(By.ID, 'bga_fatal_error_descr')
+        if driver is None:
+            driver = self.driver
+        
+        Sorry = driver.find_elements(By.ID, 'bga_fatal_error_descr')
         if Sorry != []:
             if Sorry[0].text.startswith('Sorry'):
                 return True

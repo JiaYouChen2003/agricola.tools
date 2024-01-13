@@ -17,7 +17,7 @@ CARD_INFO_ARR_EXAMPLE_TESTING = [
     ['test5', 5, 0, 2]]
 
 
-@pytest.mark.card_info_arr
+@pytest.mark.analyze
 def test_getCardRankMean_nothingAllPlayer_meanZero():
     machine_analyze = AnalyzeMachine()
     mean = machine_analyze.getCardRankMean(CARD_INFO_ARR_NOTHING_TESTING, player_num=0)
@@ -25,7 +25,7 @@ def test_getCardRankMean_nothingAllPlayer_meanZero():
     assert mean == 0
 
 
-@pytest.mark.card_info_arr
+@pytest.mark.analyze
 def test_getCardRankMean_nothingPlayerOne_meanZero():
     machine_analyze = AnalyzeMachine()
     mean = machine_analyze.getCardRankMean(CARD_INFO_ARR_NOTHING_TESTING, player_num=1)
@@ -33,7 +33,7 @@ def test_getCardRankMean_nothingPlayerOne_meanZero():
     assert mean == 0
 
 
-@pytest.mark.card_info_arr
+@pytest.mark.analyze
 def test_getCardRankMean_exampleAllPlayer_meanThree():
     machine_analyze = AnalyzeMachine()
     mean = machine_analyze.getCardRankMean(CARD_INFO_ARR_EXAMPLE_TESTING, player_num=0)
@@ -41,7 +41,7 @@ def test_getCardRankMean_exampleAllPlayer_meanThree():
     assert mean == 3
 
 
-@pytest.mark.card_info_arr
+@pytest.mark.analyze
 def test_getCardRankMean_examplePlayerOne_meanTwo():
     machine_analyze = AnalyzeMachine()
     mean = machine_analyze.getCardRankMean(CARD_INFO_ARR_EXAMPLE_TESTING, player_num=1)
@@ -49,7 +49,7 @@ def test_getCardRankMean_examplePlayerOne_meanTwo():
     assert mean == 2
 
 
-@pytest.mark.card_info_arr
+@pytest.mark.analyze
 def test_getCardRankMean_examplePlayerTwo_meanFour():
     machine_analyze = AnalyzeMachine()
     mean = machine_analyze.getCardRankMean(CARD_INFO_ARR_EXAMPLE_TESTING, player_num=2)
