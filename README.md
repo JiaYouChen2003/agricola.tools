@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 ## How to run the project
 ```bash
-conda python main.py
+python main.py
 ```
 
 # Feature
@@ -49,11 +49,4 @@ conda python main.py
 - [ ] change const_agricola.py to json
 
 ## Bug
-- Qt plugin
-
-<div align="center">
-<img src="https://github.com/JiaYouChen2003/agricola.tools/blob/main/raw_asset/bug_Qtxcb.png" width="121%" height="121%">
-</div>
-
 - Cannot see game in progress while login
-- ModuleNotFoundError: No module named 'pyexpat'
