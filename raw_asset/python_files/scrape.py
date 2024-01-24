@@ -7,9 +7,9 @@ from raw_asset.python_files import login
 
 
 class MessageCard():
-    def __init__(self, message=''):
+    def __init__(self, message='', size=100):
         self.text = message
-        self.size = {'height': 100}
+        self.size = {'height': size}
 
 
 class ScrapeMachine():
