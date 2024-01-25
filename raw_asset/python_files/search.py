@@ -42,7 +42,7 @@ class SearchMachine():
                     return row[column4index]
     
     # Functions that can be called
-    def getCardInfoArr(self, url, game_type=const_agricolatools.GAME_TYPE_LIST[0], username='', password=''):
+    def getCardInfoArr(self, url, game_type=const_agricolatools.GAME_TYPE_LIST[0], username='', password='', save_login_info=True):
         '''
         card_info = [card_name, card_rank, card_diff, card_player_num]
         '''
@@ -50,7 +50,7 @@ class SearchMachine():
             self.machine_scrape = scrape.ScrapeMachine()
         
         # may get a fake card that has some message
-        card_list = self.machine_scrape.getCardListFromBGA(url=url, username=username, password=password)
+        card_list = self.machine_scrape.getCardListFromBGA(url=url, username=username, password=password, save_login_info=save_login_info)
         
         return self.getCardInfoArrFromCardNameList(card_list=card_list, game_type=game_type)
     
@@ -89,24 +89,4 @@ class SearchMachine():
 
 # test code
 if __name__ == '__main__':
-    machine_search = SearchMachine()
-    machine_scrape = scrape.ScrapeMachine()
-    
-    card_list = machine_scrape.getCardListFromBGA()
-    
-    # things that done in main.py
-    card_draftphase_name = const_agricolatools.ConstMessage().draftphase
-    if card_list[0].text == card_draftphase_name:
-        print('Now in Draft Phase')
-        exit()
-    
-    # test SearchMachine
-    print()
-    print("Name".rjust(20), "Rank".rjust(5), "Diff".rjust(5))
-    
-    card_info_arr = machine_search.getCardInfoArrFromCardNameList(card_list=card_list)
-    for card_info in card_info_arr:
-        card_name = card_info[0]
-        card_rank = card_info[1]
-        card_diff = card_info[2]
-        print(card_name.rjust(20), str(card_rank).rjust(5), str(card_diff).rjust(5))
+    assert False, 'search.py should not be executed'

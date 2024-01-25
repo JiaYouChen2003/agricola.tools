@@ -1,9 +1,12 @@
 [tool.pytest.ini_options]
 markers = [
+    "analyze: marks tests as analyze (deselect with '-m \"not analyze\"')",
+    "const_agri: marks tests as const_agri (deselect with '-m \"not const_agri\"')",
     "url: marks tests as url (deselect with '-m \"not url\"')",
     "card_name: marks tests as card_name (deselect with '-m \"not card_name\"')",
-    "card_info_arr: marks tests as card_info_arr (deselect with '-m \"not card_info_arr\"')",
-    "const_agri: marks tests as const_agri (deselect with '-m \"not const_agri\"')",
+    "login: marks tests as login (deselect with '-m \"not login\"')",
+    "scrape: marks tests as scrape (deselect with '-m \"not scrape\"')",
+    "false: marks tests as false (deselect with '-m \"not false\"')",
 ]
 
 [tool.flake8]

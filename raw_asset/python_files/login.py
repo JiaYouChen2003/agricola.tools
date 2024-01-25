@@ -12,15 +12,16 @@ class LoginMachine():
     def __init__(self):
         self.have_login = False
     
-    def loginWebsiteBGA_IfCannotLoginReturnFalse(self, driver: webdriver.Chrome, username, password):
+    def loginWebsiteBGA_IfCannotLoginReturnFalse(self, driver: webdriver.Chrome, username, password, save_login_info=True):
         if self.have_login:
             return True
         
-        login_info_dict = {
-            const_agricolatools.ConstJsonFile().key_login_info_username: username,
-            const_agricolatools.ConstJsonFile().key_login_info_password: password}
-        with open(const_agricolatools.ConstJsonFile().name_login_info, 'w') as login_info_file:
-            json.dump(login_info_dict, login_info_file)
+        if save_login_info:
+            login_info_dict = {
+                const_agricolatools.ConstJsonFile().key_login_info_username: username,
+                const_agricolatools.ConstJsonFile().key_login_info_password: password}
+            with open(const_agricolatools.ConstJsonFile().name_login_info, 'w') as login_info_file:
+                json.dump(login_info_dict, login_info_file)
         
         driver.get('https://en.boardgamearena.com/account')
         username_input = driver.find_element(By.ID, 'username_input')
