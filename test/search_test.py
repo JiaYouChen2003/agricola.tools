@@ -51,7 +51,7 @@ def test_getCardInfoArrFromCardNameList_cardListWithPlayer_cardPlayerLabelAndCar
     card_info = machine_search.getCardInfoArrFromCardNameList(CARD_LIST_TESTING_WITH_PLAYER)
     
     assert len(card_info) == 2
-    assert card_info[0][0] == const_agricolatools.CARD_PLAYER_LABEL + 'Seducer'
+    assert card_info[0][0] == const_agricolatools.CARD_PLAYER_LABEL + '1'
     assert card_info[0][3] == 1
     assert card_info[1][0] == 'Seducer'
     assert card_info[1][3] == 1
