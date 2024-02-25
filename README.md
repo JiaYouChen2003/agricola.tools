@@ -44,7 +44,7 @@ python main.py
 - [x] scrape data for draft phase -- 2024/01/05
 - [ ] give more information to user (ex: tips for playing specific card)
 - [ ] scrape data for replay
-- [ ] anonymous player data
+- [x] anonymous player data -- 2024/02/25
 
 ## Small
 - [ ] change const_agricola.py to json
