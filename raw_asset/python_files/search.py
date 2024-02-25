@@ -17,8 +17,8 @@ class SearchMachine():
         card_name = card.text
         
         if card.size['height'] < 30:
-            card_name = const_agricolatools.CARD_PLAYER_LABEL + card_name
             self.player_num += 1
+            card_name = const_agricolatools.CARD_PLAYER_LABEL + str(self.player_num)
         card_player_num = self.player_num
         
         return card_name, card_player_num
