@@ -35,9 +35,7 @@ class LoginMachine():
         
         time.sleep(1)
         
-        have_login_button = []
-        have_login_button = driver.find_elements(By.ID, 'submit_login_button')
-        if have_login_button == []:
+        if driver.current_url == const_agricolatools.URL_HAVE_LOGIN:
             self.have_login = True
             return True
         else:

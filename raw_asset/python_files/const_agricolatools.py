@@ -33,6 +33,7 @@ TEXT_SEARCHING_CARD = 'Searching Card...'
 TEXT_SEARCHING_DONE = 'Searching Done!'
 TEXT_SEARCHING_WEBSITE = 'Searching Website...'
 
+URL_HAVE_LOGIN = 'https://boardgamearena.com/welcome'
 URL_LANGUAGE_PREFIX = 'https://en.'
 URL_REQUIRE_HINT = 'Enter the URL:'
 
