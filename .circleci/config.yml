@@ -32,6 +32,7 @@ jobs:
           name: Run Tests
           command: |
             . venv/bin/activate
+            mkdir json
             flake8 --exclude=venv* --statistics
             pytest -v --cov --cov-report="html:coverage_re" -m "not url and not login and not scrape"
 
