@@ -1,5 +1,6 @@
 import json
 import os
+from raw_asset.python_files import const_agricolatools
 
 
 def saveCardToJSON(card_name, card_rank, card_diff, new_file=False):
@@ -9,7 +10,7 @@ def saveCardToJSON(card_name, card_rank, card_diff, new_file=False):
         'card_diff': card_diff
     }
 
-    file_path = 'json/card_details.json'
+    file_path = const_agricolatools.ConstJsonFile().name_card_details
     
     if new_file or not os.path.exists(file_path):
         with open(file_path, 'w') as json_file:

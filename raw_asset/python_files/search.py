@@ -2,6 +2,7 @@ import openpyxl
 
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import scrape
+from raw_asset.python_files import save
 
 
 class SearchMachine():
@@ -66,6 +67,11 @@ class SearchMachine():
             card_name, card_player_num = self.__getCardNameAndPlayerNum(card=card)
             card_rank = self.getCardRank(card_name=card_name, game_type=game_type)
             card_diff = self.getCardDiff(card_name=card_name)
+            
+            if (card == card_list[0]):
+                save.saveCardToJSON(card_name, card_rank, card_diff, new_file=True)
+            else:
+                save.saveCardToJSON(card_name, card_rank, card_diff)
             
             card_info = [card_name, card_rank, card_diff, card_player_num]
             card_info_arr.append(card_info)

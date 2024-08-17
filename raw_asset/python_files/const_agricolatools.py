@@ -66,6 +66,7 @@ class ConstPath():
 
 class ConstJsonFile():
     def __init__(self):
-        self.name_login_info = 'login_info.json'
+        self.name_login_info = 'json/login_info.json'
+        self.name_card_details = 'json/card_details.json'
         self.key_login_info_username = 'username'
         self.key_login_info_password = 'password'

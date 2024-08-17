@@ -1,5 +1,5 @@
 from PySide2.QtWidgets import *
-from PySide2.QtGui import QIcon
+from PySide2.QtGui import QFont, QIcon
 from PySide2.QtCore import *
 
 import sys
@@ -64,6 +64,10 @@ class GUI(QWidget):
         else:
             self.line_edit_username = QLineEdit('')
             self.line_edit_password = QLineEdit('')
+        line_edit_password_font = QFont()
+        line_edit_password_font.setPointSize(5)
+        self.line_edit_password.setEchoMode(QLineEdit.Password)
+        self.line_edit_password.setFont(line_edit_password_font)
         
         self.table = QTableWidget()
         
@@ -252,6 +256,8 @@ class GUI(QWidget):
         
         if self.__isLoginFailed(card_info_arr):
             return
+        
+        card_info_arr = sorted(card_info_arr, key=lambda x: int(x[1]))
         
         # if auto refresh is on but refresh thread did not start, start thread
         if self.need_auto_refresh and not self.start_thread_refresh:
