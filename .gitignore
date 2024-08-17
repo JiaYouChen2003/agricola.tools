@@ -184,6 +184,6 @@ coverage_re
 
 # User specified info
 json/login_info.json
-json/card_details.josn
+json/card_details.json
 
 raw_asset/cards_images/**/*.png
