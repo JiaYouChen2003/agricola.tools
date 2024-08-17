@@ -1,5 +1,5 @@
 from PySide2.QtWidgets import *
-from PySide2.QtGui import QFont, QIcon
+from PySide2.QtGui import QIcon, QPixmap
 from PySide2.QtCore import *
 
 import sys
@@ -46,10 +46,11 @@ class GUI(QWidget):
         self.setWindowTitle('agricola.tools')
         self.setWindowIcon(QIcon(const_agricolatools.ConstPath().window_icon_path))
         
-        self.label_URL_1 = QLabel(const_agricolatools.QLABEL_URL_1)
-        self.label_URL_2 = QLabel(const_agricolatools.QLABEL_URL_2)
-        self.label_result = QLabel(const_agricolatools.QLABEL_RESULT)
-        self.label_print = QLabel('')
+        self.stacked_widget = QStackedWidget()
+        self.login_page = QWidget()
+        self.main_page = QWidget()
+        
+        # login page
         self.label_username = QLabel(const_agricolatools.QLABEL_USERNAME)
         self.label_password = QLabel(const_agricolatools.QLABEL_PASSWORD)
         self.label_auto_refresh = QLabel(const_agricolatools.QLABEL_AUTO_REFRESH)
@@ -64,15 +65,35 @@ class GUI(QWidget):
         else:
             self.line_edit_username = QLineEdit('')
             self.line_edit_password = QLineEdit('')
-        line_edit_password_font = QFont()
-        line_edit_password_font.setPointSize(5)
         self.line_edit_password.setEchoMode(QLineEdit.Password)
-        self.line_edit_password.setFont(line_edit_password_font)
+        
+        self.login_button = QPushButton()
+        self.login_button.setText(const_agricolatools.TEXT_LOGIN_BUTTON)
+        self.login_button.clicked.connect(self.__openMainPage)
+        
+        self.login_page_layout = QGridLayout()
+        self.label_image = QLabel()
+        self.label_image.setPixmap(QPixmap('raw_asset/login.png').scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+        self.login_page_layout.setSpacing(10)
+        self.login_page_layout.addWidget(self.label_image, 0, 0, 1, 3)
+        self.login_page_layout.addWidget(self.label_username, 1, 1, 1, 1)
+        self.login_page_layout.addWidget(self.line_edit_username, 2, 1, 1, 1)
+        self.login_page_layout.addWidget(self.label_password, 3, 1, 1, 1)
+        self.login_page_layout.addWidget(self.line_edit_password, 4, 1, 1, 1)
+        self.login_page_layout.addWidget(self.login_button, 5, 2, 1, 1)
+        self.login_page.setLayout(self.login_page_layout)
+        
+        # main page
+        self.label_URL_1 = QLabel(const_agricolatools.QLABEL_URL_1)
+        self.label_URL_2 = QLabel(const_agricolatools.QLABEL_URL_2)
+        self.label_result = QLabel(const_agricolatools.QLABEL_RESULT)
+        self.label_print = QLabel('')
         
         self.table = QTableWidget()
         
-        self.button = QPushButton()
-        self.button.setText(const_agricolatools.TEXT_SEARCH_BUTTON)
+        self.search_button = QPushButton()
+        self.search_button.setText(const_agricolatools.TEXT_SEARCH_BUTTON)
+        self.search_button.clicked.connect(self.startInquiry)
         
         self.cmb1 = QComboBox()
         self.cmb1.setStyle(QStyleFactory.create('Fusion'))
@@ -87,27 +108,32 @@ class GUI(QWidget):
         self.cmb2.addItem(self.auto_refresh_type_list[0])
         self.cmb2.addItem(self.auto_refresh_type_list[1])
         
-        self.grid = QGridLayout()
-        self.grid.setSpacing(10)
-        self.grid.addWidget(self.label_URL_1, 1, 0)
-        self.grid.addWidget(self.label_URL_2, 1, 0, 3, 0)
-        self.grid.addWidget(self.label_result, 5, 0)
+        self.main_page_layout = QGridLayout()
+        self.main_page_layout.setSpacing(10)
+        self.main_page_layout.addWidget(self.label_URL_1, 1, 0)
+        self.main_page_layout.addWidget(self.label_URL_2, 1, 0, 3, 0)
+        self.main_page_layout.addWidget(self.label_result, 5, 0)
         
-        self.grid.addWidget(self.line_edit_URL, 1, 3, 3, 33)
-        self.grid.addWidget(self.table, 4, 1, 30, 35)
+        self.main_page_layout.addWidget(self.line_edit_URL, 1, 3, 3, 33)
+        self.main_page_layout.addWidget(self.table, 4, 1, 30, 35)
         
-        self.grid.addWidget(self.button, 1, 36, 3, 1)
-        self.grid.addWidget(self.label_print, 5, 36)
-        self.grid.addWidget(self.label_username, 25, 36)
-        self.grid.addWidget(self.line_edit_username, 26, 36)
-        self.grid.addWidget(self.label_password, 27, 36)
-        self.grid.addWidget(self.line_edit_password, 28, 36)
-        self.grid.addWidget(self.cmb1, 30, 36)
-        self.grid.addWidget(self.label_auto_refresh, 31, 36)
-        self.grid.addWidget(self.cmb2, 32, 36)
-        self.setLayout(self.grid)
+        self.main_page_layout.addWidget(self.search_button, 1, 36, 3, 2)
+        self.main_page_layout.addWidget(self.label_print, 5, 36)
+        self.main_page_layout.addWidget(self.cmb1, 30, 36)
+        self.main_page_layout.addWidget(self.label_auto_refresh, 31, 36)
+        self.main_page_layout.addWidget(self.cmb2, 32, 36)
+        self.main_page.setLayout(self.main_page_layout)
+        
+        self.stacked_widget.addWidget(self.login_page)
+        self.stacked_widget.addWidget(self.main_page)
+        
+        self.main_layout = QGridLayout()
+        self.main_layout.addWidget(self.stacked_widget)
+        self.setLayout(self.main_layout)
+    
+    def __openMainPage(self):
+        self.stacked_widget.setCurrentIndex(1)
         self.resize(640, 810)
-        self.button.clicked.connect(self.startInquiry)
     
     def __getJsonFileValueByKey(self, json_file_name, key):
         with open(json_file_name, 'r') as json_file:
