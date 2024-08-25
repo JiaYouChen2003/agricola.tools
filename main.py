@@ -10,6 +10,7 @@ import json
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import inquiry
 from raw_asset.python_files import analyze
+from raw_asset.python_files import login
 
 
 class WorkerWaitToShowThings(QObject):
@@ -73,7 +74,7 @@ class GUI(QWidget):
         
         self.login_page_layout = QGridLayout()
         self.label_image = QLabel()
-        self.label_image.setPixmap(QPixmap('raw_asset/login.png').scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+        self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
         self.login_page_layout.setSpacing(10)
         self.login_page_layout.addWidget(self.label_image, 0, 0, 1, 3)
         self.login_page_layout.addWidget(self.label_username, 1, 1, 1, 1)
@@ -132,8 +133,14 @@ class GUI(QWidget):
         self.setLayout(self.main_layout)
     
     def __openMainPage(self):
-        self.stacked_widget.setCurrentIndex(1)
-        self.resize(640, 810)
+        username = self.line_edit_username.text()
+        password = self.line_edit_password.text()
+        can_login = login.LoginMachine().checkCanLoginOrNot(driver=None, username=username, password=password)
+        if can_login:
+            self.stacked_widget.setCurrentIndex(1)
+            self.resize(640, 810)
+        else:
+            self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_cannot_login_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
     
     def __getJsonFileValueByKey(self, json_file_name, key):
         with open(json_file_name, 'r') as json_file:

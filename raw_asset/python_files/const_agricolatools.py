@@ -60,6 +60,8 @@ class ConstMessage():
 class ConstPath():
     def __init__(self):
         # Seen as in the same file with main.py
+        self.login_page_cannot_login_img_path = os.path.abspath('./raw_asset/login_fail.png')
+        self.login_page_img_path = os.path.abspath('./raw_asset/login.png')
         self.window_icon_path = os.path.abspath('./raw_asset/agricola-en.jpg')
         self.xlsx_path = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
         self.xlsx_workbook_diff_name = 'Diff'
