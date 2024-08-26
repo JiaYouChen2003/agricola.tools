@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import login
@@ -21,6 +23,7 @@ class ScrapeMachine():
         # selenium webdriver setting
         chrome_options = Options()
         chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--autoplay-policy=no-user-gesture-required")
         self.driver = webdriver.Chrome(options=chrome_options)
     
     def getCardListFromBGA(self, url='', username='', password='', save_login_info=True):
@@ -37,10 +40,16 @@ class ScrapeMachine():
         # change language
         if url == '':
             return 'URL_REQUIRED'
-        url_en_backstartnum = url.find('boardgamearena.com')
-        url_en = self.url_language_front + url[url_en_backstartnum:]
+        # url_en_backstartnum = url.find('boardgamearena.com')
+        # url_en = self.url_language_front + url[url_en_backstartnum:]
         
-        self.driver.get(url_en)
+        # self.driver.get(url_en)
+        self.driver.get(url)
+        
+        try:
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
+        except TimeoutError:
+            self.driver.refresh()
         
         need_login = self.checkNeedLogin()
         if need_login:

@@ -270,7 +270,7 @@ class GUI(QWidget):
         if self.__isLoginFailed(card_info_arr):
             return
         
-        card_info_arr = sorted(card_info_arr, key=lambda x: int(x[1]))
+        # card_info_arr = sorted(card_info_arr, key=lambda x: int(x[1]))
         
         # if auto refresh is on but refresh thread did not start, start thread
         if self.need_auto_refresh and not self.start_thread_refresh:
