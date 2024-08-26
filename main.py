@@ -13,14 +13,6 @@ from raw_asset.python_files import analyze
 from raw_asset.python_files import login
 
 
-class WorkerWaitToShowThings(QObject):
-    finished = Signal()
-    
-    def run(self):
-        time.sleep(0.1)
-        self.finished.emit()
-
-
 class WorkerRefresh(QObject):
     finished = Signal()
     refresh = Signal()
@@ -133,14 +125,19 @@ class GUI(QWidget):
         self.setLayout(self.main_layout)
     
     def __openMainPage(self):
+        self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_loading_login_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
         username = self.line_edit_username.text()
         password = self.line_edit_password.text()
-        can_login = login.LoginMachine().checkCanLoginOrNot(driver=None, username=username, password=password)
-        if can_login:
-            self.stacked_widget.setCurrentIndex(1)
-            self.resize(640, 810)
-        else:
-            self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_cannot_login_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+        
+        def process_login():
+            can_login = login.LoginMachine().checkCanLoginOrNot(driver=None, username=username, password=password)
+            if can_login:
+                self.stacked_widget.setCurrentIndex(1)
+                self.resize(640, 810)
+            else:
+                self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_cannot_login_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+        
+        QTimer.singleShot(1000, process_login)
     
     def __getJsonFileValueByKey(self, json_file_name, key):
         with open(json_file_name, 'r') as json_file:
@@ -198,21 +195,6 @@ class GUI(QWidget):
                 continue
         return card_info_arr
     
-    def __startThreadToWaitThenInquiryByUrl(self):
-        # initial thread and what to run while thread running
-        self.thread_wait = QThread()
-        self.worker_wait = WorkerWaitToShowThings()
-        self.worker_wait.moveToThread(self.thread_wait)
-        self.thread_wait.started.connect(self.worker_wait.run)
-        
-        # finish wait thread, start inquiry
-        self.worker_wait.finished.connect(self.startInquiryByUrl())
-        # delete thread
-        self.worker_wait.finished.connect(self.thread_wait.quit)
-        self.worker_wait.finished.connect(self.worker_wait.deleteLater)
-        self.thread_wait.finished.connect(self.thread_wait.deleteLater)
-        self.thread_wait.start()
-    
     def __startThreadRefresh(self):
         self.label_print.setText('Start Auto Refresh')
         self.start_thread_refresh = True
@@ -264,12 +246,10 @@ class GUI(QWidget):
     def startInquiry(self):
         if self.line_edit_URL.text()[0:5] == 'https':
             self.label_print.setText(const_agricolatools.TEXT_SEARCHING_WEBSITE)
-            # use thread so that label print can be shown, not required
-            # when thread end, start inquiry
-            self.__startThreadToWaitThenInquiryByUrl()
+            QTimer.singleShot(1000, self.startInquiryByUrl)
         else:
             self.label_print.setText(const_agricolatools.TEXT_SEARCHING_CARD)
-            self.startInquiryByCardName(card_name=self.line_edit_URL.text())
+            QTimer.singleShot(1000, lambda: self.startInquiryByCardName(card_name=self.line_edit_URL.text()))
     
     def startInquiryByUrl(self):
         # if auto refresh is off but refresh thread is start, interrupt thread

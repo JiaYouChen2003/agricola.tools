@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # import time
 import json
@@ -45,6 +47,13 @@ class LoginMachine():
         
         login_button = driver.find_element(By.ID, 'submit_login_button')
         login_button.send_keys(Keys.ENTER)
+        
+        try:
+            WebDriverWait(driver, 10).until(EC.url_changes('https://en.boardgamearena.com/account'))
+        except TimeoutError:
+            if not need_save_driver:
+                driver.quit()
+            return False
         
         website_url = driver.current_url
         if not need_save_driver:
