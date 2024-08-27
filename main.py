@@ -123,6 +123,20 @@ class GUI(QWidget):
         self.main_layout = QGridLayout()
         self.main_layout.addWidget(self.stacked_widget)
         self.setLayout(self.main_layout)
+        
+        window_size = self.size()
+        window_width = window_size.width()
+        window_height = window_size.height()
+        
+        screen = QApplication.primaryScreen()
+        screen_geometry = screen.availableGeometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+        
+        x = (screen_width - window_width) * 0.9
+        y = (screen_height - window_height) / 4
+        
+        self.setGeometry(x, y, window_width, window_height)
     
     def __openMainPage(self):
         self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_loading_login_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
