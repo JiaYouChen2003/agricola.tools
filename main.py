@@ -1,5 +1,5 @@
 from PySide2.QtWidgets import *
-from PySide2.QtGui import QIcon, QPixmap
+from PySide2.QtGui import QIcon, QPixmap, QColor
 from PySide2.QtCore import *
 
 import sys
@@ -179,7 +179,13 @@ class GUI(QWidget):
         
         for i, arr_row in enumerate(arr):
             for j, item in enumerate(arr_row):
-                self.__setTableItem(item, i, j)
+                if str(item).startswith('Player'):
+                    background_color = QColor(204, 204, 255)
+                elif str(item).startswith('Mean'):
+                    background_color = QColor(204, 255, 204)
+                else:
+                    background_color = None
+                self.__setTableItem(item, i, j, background_color=background_color)
         
         if first_set:
             header = self.table.horizontalHeader()
@@ -188,9 +194,11 @@ class GUI(QWidget):
             for i in range(1, self.table.columnCount()):
                 header.setSectionResizeMode(i, QHeaderView.ResizeToContents)
     
-    def __setTableItem(self, item, row, column):
+    def __setTableItem(self, item, row, column, background_color=None):
         item = QTableWidgetItem(item)
         self.table.setItem(row, column, item)
+        if background_color is not None:
+            self.table.item(row, column).setBackground(background_color)
     
     def __getAnalyzeOfCardInfoArr(self, card_info_arr):
         
