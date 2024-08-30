@@ -186,4 +186,4 @@ coverage_re
 json/login_info.json
 json/card_details.json
 
-# raw_asset/cards_images/
+raw_asset/cards_images/**/*.png
