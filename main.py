@@ -179,9 +179,11 @@ class GUI(QWidget):
         
         for i, arr_row in enumerate(arr):
             for j, item in enumerate(arr_row):
-                if str(item).startswith('Player'):
+                if str(item).startswith(const_agricolatools.CARD_PLAYER_LABEL):
                     background_color = QColor(204, 204, 255)
-                elif str(item).startswith('Mean'):
+                elif str(item).startswith(const_agricolatools.CARD_HAND_LABEL):
+                    background_color = QColor(204, 204, 255)
+                elif str(item).startswith(const_agricolatools.CARD_MEAN_LABEL):
                     background_color = QColor(204, 255, 204)
                 else:
                     background_color = None

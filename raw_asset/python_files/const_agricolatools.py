@@ -3,6 +3,7 @@ import os
 # Const that can an be translate
 AUTO_REFRESH_LIST = ['off', 'on']
 
+CARD_HAND_LABEL = 'Hand'
 CARD_INFO_LABEL = ['Card Name', 'Card Rank', 'Card Diff']
 CARD_MEAN_LABEL = 'Mean: '
 CARD_PLAYER_LABEL = 'Player: '

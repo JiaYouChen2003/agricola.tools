@@ -68,6 +68,9 @@ class ScrapeMachine():
             else:
                 card_board = self.driver.find_element(By.ID, 'draft-container')
                 card_list = card_board.find_elements(By.CLASS_NAME, 'card-title')
+                hand_board = self.driver.find_element(By.ID, 'hand-container')
+                hand_list = hand_board.find_elements(By.CLASS_NAME, 'card-title')
+                return [const_agricolatools.ConstMessage().draftphase, card_list, hand_list]
         else:
             card_board = self.driver.find_element(By.ID, 'player-boards')
             card_list = card_board.find_elements(By.XPATH, './/*[@class="card-title" or @class="player-board-name"]')
