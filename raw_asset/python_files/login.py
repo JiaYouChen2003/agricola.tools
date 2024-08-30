@@ -38,7 +38,7 @@ class LoginMachine():
         else:
             need_save_driver = True
         
-        driver.get('https://en.boardgamearena.com/account')
+        driver.get(const_agricolatools.URL_LOGIN_PAGE)
         username_input = driver.find_element(By.ID, 'username_input')
         password_input = driver.find_element(By.ID, 'password_input')
         
@@ -49,8 +49,12 @@ class LoginMachine():
         login_button.send_keys(Keys.ENTER)
         
         try:
-            WebDriverWait(driver, 10).until(EC.url_changes('https://en.boardgamearena.com/account'))
-        except TimeoutError:
+            WebDriverWait(driver, 10).until(EC.url_changes(const_agricolatools.URL_LOGIN_PAGE))
+            
+            if driver.current_url == const_agricolatools.URL_LOGIN_PAGE:
+                raise Exception
+        except Exception as e:
+            print(e, 'cannot login')
             if not need_save_driver:
                 driver.quit()
             return False

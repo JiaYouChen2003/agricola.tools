@@ -37,6 +37,7 @@ TEXT_SEARCHING_WEBSITE = 'Searching Website...'
 
 URL_HAVE_LOGIN = 'https://boardgamearena.com/welcome'
 URL_LANGUAGE_PREFIX = 'https://en.'
+URL_LOGIN_PAGE = 'https://en.boardgamearena.com/account'
 URL_REQUIRE_HINT = 'Enter the URL:'
 
 
