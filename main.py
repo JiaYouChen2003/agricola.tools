@@ -203,6 +203,7 @@ class GUI(QWidget):
             self.table.item(row, column).setBackground(background_color)
     
     def __getAnalyzeOfCardInfoArr(self, card_info_arr):
+        card_info_arr = self.machine_analyze.getCardSynergyScore(card_info_arr=card_info_arr)
         
         mean_list = []
         for i in range(card_info_arr[-1][3] + 1):

@@ -66,6 +66,7 @@ class ConstPath():
         self.login_page_img_path = os.path.abspath('./raw_asset/login.png')
         self.login_page_loading_login_img_path = os.path.abspath('./raw_asset/login_loading.png')
         self.window_icon_path = os.path.abspath('./raw_asset/agricola-en.jpg')
+        self.synergy_path = os.path.abspath('./raw_asset/card_statistic/card_synergy.csv')
         self.xlsx_path = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
         self.xlsx_workbook_diff_name = 'Diff'
 
