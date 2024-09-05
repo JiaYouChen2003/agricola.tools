@@ -38,7 +38,7 @@ def test_getCardInfoArrFromCardNameList_cardList_cardInfo():
     
     assert len(card_info) == 1
     assert card_info[0][0] == 'Seducer'
-    assert card_info[0][3] == 0
+    assert card_info[0][-1] == 0
 
 
 @pytest.mark.card_name
@@ -51,9 +51,9 @@ def test_getCardInfoArrFromCardNameList_cardListWithOnePlayer_cardPlayerLabelAnd
     
     assert len(card_info) == 2
     assert card_info[0][0] == const_agricolatools.CARD_PLAYER_LABEL + '1'
-    assert card_info[0][3] == 1
+    assert card_info[0][-1] == 1
     assert card_info[1][0] == 'Seducer'
-    assert card_info[1][3] == 1
+    assert card_info[1][-1] == 1
 
 
 @pytest.mark.card_name
@@ -68,10 +68,10 @@ def test_getCardInfoArrFromCardNameList_cardListWithTwoPlayer_cardPlayerLabelAnd
     
     assert len(card_info) == 4
     assert card_info[0][0] == const_agricolatools.CARD_PLAYER_LABEL + '1'
-    assert card_info[0][3] == 1
+    assert card_info[0][-1] == 1
     assert card_info[1][0] == 'Seducer'
-    assert card_info[1][3] == 1
+    assert card_info[1][-1] == 1
     assert card_info[2][0] == const_agricolatools.CARD_PLAYER_LABEL + '2'
-    assert card_info[2][3] == 2
+    assert card_info[2][-1] == 2
     assert card_info[3][0] == 'Lover'
-    assert card_info[3][3] == 2
+    assert card_info[3][-1] == 2

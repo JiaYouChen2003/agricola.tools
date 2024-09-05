@@ -147,7 +147,7 @@ class GUI(QWidget):
             can_login = login.LoginMachine().checkCanLoginOrNot(driver=None, username=username, password=password)
             if can_login:
                 self.stacked_widget.setCurrentIndex(1)
-                self.resize(640, 810)
+                self.resize(720, 810)
             else:
                 self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_cannot_login_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
         
@@ -171,10 +171,7 @@ class GUI(QWidget):
     def __setTableByArr(self, arr, arr_label, first_set=True, have_card_player=False):
         self.table.setRowCount(len(arr))
         if first_set:
-            if have_card_player:
-                self.table.setColumnCount(len(arr[0]) - 1)
-            else:
-                self.table.setColumnCount(len(arr[0]))
+            self.table.setColumnCount(len(arr_label))
             self.table.setHorizontalHeaderLabels(arr_label)
         
         for i, arr_row in enumerate(arr):
@@ -206,14 +203,14 @@ class GUI(QWidget):
         card_info_arr = self.machine_analyze.getCardSynergyScore(card_info_arr=card_info_arr)
         
         mean_list = []
-        for i in range(card_info_arr[-1][3] + 1):
+        for i in range(card_info_arr[-1][-1] + 1):
             mean_list.append(self.machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
         
         card_info_arr.insert(0, [const_agricolatools.CARD_PLAYER_LABEL + const_agricolatools.CARD_PLAYER_LABEL_ALL, None, None, None])
         card_info_arr.insert(1, [const_agricolatools.CARD_MEAN_LABEL, str(mean_list[0]), None, None])
         player_num = 1
         for card_num, card_info in enumerate(card_info_arr):
-            if card_info[3] == player_num:
+            if card_info[-1] == player_num:
                 card_info_arr.insert(card_num + 1, [const_agricolatools.CARD_MEAN_LABEL, str(mean_list[player_num]), None, None])
                 player_num += 1
             else:

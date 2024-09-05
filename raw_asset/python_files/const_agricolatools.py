@@ -4,7 +4,7 @@ import os
 AUTO_REFRESH_LIST = ['off', 'on']
 
 CARD_HAND_LABEL = 'Hand'
-CARD_INFO_LABEL = ['Card Name', 'Card Rank', 'Card Diff']
+CARD_INFO_LABEL = ['Card Name', 'Card Rank', 'Card Diff', 'Synergy Score']
 CARD_MEAN_LABEL = 'Mean: '
 CARD_PLAYER_LABEL = 'Player: '
 CARD_PLAYER_LABEL_ALL = 'All'

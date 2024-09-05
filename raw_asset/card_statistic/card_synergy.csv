@@ -13,7 +13,7 @@ Animal Reeve,1,1,1,0,sheep pig cattle,0,wood,0,0
 Animal Tamer,1,1,1,1,0,0,grain,0,0
 Animal Teacher,1,0,0,0,0,1,sheep pig cattle,occupation,0
 Asparagus Gift,0,1,1,0,fence,0,vegetable,0,0
-Assistant Tiller,1,1,0,1,0,0,field,day laborer,0
+Assistant Tiller,1,1,0,1,0,0,field,day_laborer,0
 Automatic Water Trough,0,0,0,0,0,0,0,0,0
 Baker,0,1,1,0,bake,0,bake,0,0
 Baking Sheet,0,1,1,0,bake,0,VP,0,0
@@ -116,7 +116,7 @@ Cordmaker,1,1,0,1,0,0,grain vegetable,0,0
 Corf,1,1,1,1,0,0,stone,0,0
 Corn Schnapps Distillery,0,1,1,0,grain,0,food,0,0
 Corn Scoop,1,1,1,1,0,0,grain,grain,0
-Cottager,1,1,1,1,0,0,renovation build,day laborer,more
+Cottager,1,1,1,1,0,0,renovation build,day_laborer,more
 Cow Prince,0,0,1,0,cattle,0,VP,0,0
 Cowherd,0,1,1,1,0,0,cattle,0,0
 Crack Weeder,1,1,1,1,0,0,food,0,0
@@ -145,7 +145,7 @@ build_fence",0,2
 Estate Worker,1,0,0,1,0,0,"wood clay reed
 stone",0,0
 Eternal Rye Cultivation,0,1,1,0,grain,0,food grain,0,0
-Excavator,1,1,0,1,0,0,wood clay stone,day laborer,0
+Excavator,1,1,0,1,0,0,wood clay stone,day_laborer,0
 Excursion to the Quarry,0,1,1,0,0,0,stone,0,0
 Facades Carving,0,1,1,0,wood food,0,VP,0,0
 Family Friendly Home,1,1,0,1,0,0,growth food,0,more
@@ -511,3 +511,12 @@ Writing Boards,0,0,0,0,0,0,0,0,0
 Writing Desk,0,0,0,0,0,0,0,0,0
 Young Animal Market,0,0,0,0,0,0,0,0,0
 Young Farmer,0,0,0,0,0,0,0,0,0
+zz_TEST0,1,0,0,1,0,0,wood,day_laborer,more
+zz_TEST01,1,0,0,0,wood,0,sheep,0,0
+zz_TEST02,0,1,0,0,clay,0,sheep,day_laborer,0
+zz_TEST03,0,0,1,1,0,0,sheep,0,more
+zz_TEST1,1,0,0,0,clay,0,wood,fishing,2
+zz_TEST11,1,0,0,1,0,0,clay,0,0
+zz_TEST12,0,1,0,0,wood,0,sheep,0,0
+zz_TEST13,0,0,1,0,0,0,sheep,fishing,0
+zz_TEST14,0,0,1,0,0,0,sheep,0,2
