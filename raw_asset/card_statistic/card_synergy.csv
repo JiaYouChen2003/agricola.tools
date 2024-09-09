@@ -5,14 +5,14 @@ Adoptive Parents,0,0,0,0,0,0,0,0,0
 Agrarian Fences,0,0,0,0,0,0,0,0,0
 Ale-Benches,0,1,1,0,grain,0,VP,0,0
 Angler,1,0,0,0,fishing,0,improvement,fishing,0
-Animal Activist,1,1,1,1,stable,0,wood,0,0
+Animal Activist,1,1,1,1,stable wood,0,wood,0,0
 Animal Catcher,0,0,0,0,0,0,0,0,0
 Animal Dealer,0,1,1,1,0,0,sheep pig cattle,0,0
 Animal Feeder,0,0,0,0,0,0,0,0,0
 Animal Reeve,1,1,1,0,sheep pig cattle,0,wood,0,0
 Animal Tamer,1,1,1,1,0,0,grain,0,0
 Animal Teacher,1,0,0,0,0,1,sheep pig cattle,occupation,0
-Asparagus Gift,0,1,1,0,fence,0,vegetable,0,0
+Asparagus Gift,0,1,1,0,fence wood,0,vegetable,0,0
 Assistant Tiller,1,1,0,1,0,0,field,day_laborer,0
 Automatic Water Trough,0,0,0,0,0,0,0,0,0
 Baker,0,1,1,0,bake,0,bake,0,0
@@ -42,7 +42,7 @@ Bookshelf,0,1,1,0,occupation,0,food,0,0
 Bottles,1,1,1,1,0,0,VP,0,0
 Bread Paddle,1,1,1,1,0,0,food bake,0,0
 Brewery Pond,1,1,0,1,0,0,wood grain,0,0
-Brewing Water,1,1,0,0,grain,0,round_food,0,0
+Brewing Water,1,1,0,0,grain,0,round_food food,0,0
 Brick Hammer,1,1,0,1,0,0,stone,0,0
 Bricklayer,1,1,0,1,0,0,clay,0,0
 Brook,1,1,0,1,0,0,food,0,0
@@ -74,7 +74,7 @@ Chain Float,1,0,0,0,0,1,field,0,0
 Chairman,1,0,0,1,0,0,food,0,0
 Charcoal Burner,1,1,0,1,0,0,wood food,0,0
 Chick Stable,1,1,0,1,0,0,food,0,0
-Chicken Coop,1,1,0,1,0,0,round_food,0,0
+Chicken Coop,1,1,0,1,0,0,round_food food,0,0
 Chief Forester,0,1,0,1,0,0,sow,wood,0
 Childless,1,0,0,1,0,0,"food vegetable
 grain",0,0
@@ -85,7 +85,7 @@ Churchyard,0,1,1,1,0,0,food,0,0
 Civic Facade,0,1,1,1,0,0,food,0,0
 Claw Knife,0,0,0,0,0,0,0,0,0
 Clay Carrier,1,1,1,1,0,0,clay,0,0
-Clay Deliveryman,1,1,0,1,0,0,round_clay,0,0
+Clay Deliveryman,1,1,0,1,0,0,round_clay clay,0,0
 Clay Deposit,0,0,0,0,0,0,0,0,0
 Clay Embankment,0,1,1,1,0,0,clay,0,0
 Clay Firer,0,1,1,0,clay,0,stone,0,0
@@ -93,19 +93,20 @@ Clay Hut Builder,0,0,0,0,0,0,0,0,0
 Clay Kneader,1,1,1,1,0,0,wood clay,grain vegetable,0
 Clay Plasterer,1,1,0,1,0,0,clay,0,more
 Clay Puncher,0,0,0,0,0,0,0,0,0
-Clay Supply,1,1,1,1,0,0,round_clay,0,0
+Clay Supply,1,1,1,1,0,0,round_clay clay,0,0
 Clay Supports,1,1,1,1,0,0,room,0,more
 Clay Warden,1,1,0,1,0,0,clay,0,0
 Claypipe,1,1,0,1,0,0,food,0,0
 Clearing Spade,1,1,1,1,0,0,harvest,0,0
 Club House,1,1,0,1,0,0,food stone,0,0
 Cob,1,1,1,1,0,0,clay,0,0
-Collector,1,1,1,1,0,0,"wood clay reed
+Collector,1,1,1,1,VP,0,"wood clay reed
 stone grain
 vegetable sheep
 pig cattle",0,0
 Collier,1,1,0,1,0,0,reed wood,clay,0
-Confidant,0,1,1,1,0,0,sow build_fence,0,0
+Confidant,0,1,1,1,0,0,"sow build_fence
+fence",0,0
 Conjurer,1,1,0,1,0,0,wood grain,traveling_players,0
 Conservator,0,1,1,1,0,0,renovation,0,0
 Constable,1,1,1,1,0,0,wood,0,0
@@ -141,7 +142,7 @@ Elephantgrass Plant,0,1,0,0,0,1,VP,0,0
 Emissary,0,0,0,0,0,0,0,0,0
 Equipper,1,1,1,1,0,0,minor,wood,0
 Established Person,1,0,0,0,0,1,"renovation
-build_fence",0,2
+build_fence fence",0,2
 Estate Worker,1,0,0,1,0,0,"wood clay reed
 stone",0,0
 Eternal Rye Cultivation,0,1,1,0,grain,0,food grain,0,0
@@ -160,9 +161,9 @@ Fellow Grazer,0,0,1,1,0,0,VP,0,0
 Fern Seeds,0,0,0,0,0,0,0,0,0
 Field Caretaker,1,1,1,1,0,0,grain field,0,0
 Field Clay,0,1,1,1,0,0,clay,0,0
-Field Fences,0,1,1,1,0,0,build_fence,0,0
+Field Fences,0,1,1,1,0,0,build_fence fence,0,0
 Field Watchman,1,1,1,1,0,0,field,grain,0
-Fire Protection Pond,1,1,0,1,0,0,round_food,0,0
+Fire Protection Pond,1,1,0,1,0,0,round_food food,0,0
 Firewood Collector,1,1,1,1,0,0,wood,0,0
 Fish Farmer,1,1,0,1,0,0,food,0,0
 Fisherman's Friend,1,1,0,1,0,0,food,fishing,0
@@ -184,7 +185,7 @@ Forest Scientist,0,0,0,0,0,0,0,0,0
 Forest Stone,0,1,1,1,0,0,food,0,0
 Forest Trader,1,1,1,1,0,0,"wood clay reed
 stone",wood clay,0
-Forest Well,0,1,1,0,wood,0,round_food,0,0
+Forest Well,0,1,1,0,wood,0,round_food food,0,0
 Forestry Studies,1,1,1,1,0,0,occupation,0,0
 Frame Builder,0,1,1,1,0,0,clay stone,0,0
 Freemason,1,1,0,0,0,1,clay stone,0,2
@@ -193,324 +194,337 @@ Full Peasant,0,0,0,0,0,0,0,0,0
 Furnisher,1,0,0,1,0,0,improvement,0,more
 Furniture Maker,1,1,0,0,occupation,0,wood,0,0
 Furrows,0,1,1,1,0,0,sow,0,0
-Game Catcher,0,0,0,0,0,0,0,0,0
-Game Trade,0,0,0,0,0,0,0,0,0
-Garden Claw,0,0,0,0,0,0,0,0,0
+Game Catcher,0,0,1,1,0,0,cattle pig,0,0
+Game Trade,0,0,1,1,0,0,cattle pig,0,0
+Garden Claw,0,1,0,0,field grain vegetable,0,food,0,0
 Garden Hoe,0,0,0,0,0,0,0,0,0
-Gardener's Knife,0,0,0,0,0,0,0,0,0
-Gardening Head Official,0,0,0,0,0,0,0,0,0
-Geologist,0,0,0,0,0,0,0,0,0
-German Heath Keeper,0,0,0,0,0,0,0,0,0
-Gift Basket,0,0,0,0,0,0,0,0,0
+Gardener's Knife,0,1,1,0,field grain vegetable,0,food grain,0,0
+Gardening Head Official,1,1,1,0,vegetable,0,wood,0,0
+Geologist,1,0,0,1,0,0,clay,forest  clay_pit reed,0
+German Heath Keeper,0,1,1,1,0,0,sheep,pig,0
+Gift Basket,0,1,1,1,0,0,grain vegetable,0,2 more
 Grain Sieve,0,0,0,0,0,0,0,0,0
-Granary,0,0,0,0,0,0,0,0,0
-Grange,0,0,0,0,0,0,0,0,0
-Green Grocer,0,0,0,0,0,0,0,0,0
-Greengrocer,0,0,0,0,0,0,0,0,0
-Greening Plan,0,0,0,0,0,0,0,0,0
+Granary,0,1,0,1,0,0,grain,0,0
+Grange,0,0,1,0,field cattle,0,VP,0,0
+Greengrocer,1,1,1,1,0,0,vegetable,grain,0
+Greening Plan,0,0,1,0,field,0,VP,0,0
 Gritter,0,0,0,0,0,0,0,0,0
-Grocer,0,0,0,0,0,0,0,0,0
-Groom,0,0,0,0,0,0,0,0,0
-Growing Farm,0,0,0,0,0,0,0,0,0
-Half-Timbered House,0,0,0,0,0,0,0,0,0
+Grocer,1,1,1,0,food,0,"reed grain
+vegetable",0,0
+Groom,0,1,1,0,stone,0,stable,0,0
+Growing Farm,0,1,0,0,wood,0,food VP,0,0
+Half-Timbered House,0,0,1,0,stone,0,VP,0,0
 Hand Truck,0,0,0,0,0,0,0,0,0
-Handplow,0,0,0,0,0,0,0,0,0
-Hard Porcelain,0,0,0,0,0,0,0,0,0
-Hardware Store,0,0,0,0,0,0,0,0,0
+Handplow,1,1,0,1,0,0,field,0,0
+Hard Porcelain,0,1,1,1,clay,0,stone,0,0
+Hardware Store,1,1,0,1,0,0,"wood clay
+reed stone",day_laborer,0
 Harpooner,0,0,0,0,0,0,0,0,0
-Harvest House,0,0,0,0,0,0,0,0,0
-Hauberg,0,0,0,0,0,0,0,0,0
-Hawktower,0,0,0,0,0,0,0,0,0
-Haydryer,0,0,0,0,0,0,0,0,0
-Heart of Stone,0,0,0,0,0,0,0,0,0
-Hedge Keeper,0,0,0,0,0,0,0,0,0
-Herring Pot,0,0,0,0,0,0,0,0,0
-Hide Farmer,0,0,0,0,0,0,0,0,0
-Hod,0,0,0,0,0,0,0,0,0
+Harvest House,0,1,1,0,occupation,0,grain vegetable,0,0
+Hauberg,0,1,0,1,0,0,wood pig,0,0
+Hawktower,0,1,0,0,stone,0,room,0,0
+Haydryer,0,1,1,1,0,0,cattle,0,0
+Heart of Stone,1,1,0,0,room,0,growth,0,more
+Hedge Keeper,0,1,1,1,0,0,wood,build_fence,0
+Herring Pot,1,1,0,1,0,0,food,fishing,0
+Hide Farmer,0,0,1,0,food,0,VP,0,0
+Hod,1,1,1,1,0,0,clay,pig,0
 Hollow Warden,0,0,0,0,0,0,0,0,0
-Home Brewer,0,0,0,0,0,0,0,0,0
-Hoof Caregiver,0,0,0,0,0,0,0,0,0
-Hook Knife,0,0,0,0,0,0,0,0,0
-Horse-Drawn Boat,0,0,0,0,0,0,0,0,0
+Home Brewer,0,1,1,0,grain,0,food VP,0,0
+Hoof Caregiver,0,0,1,1,0,0,grain food,0,0
+Hook Knife,0,1,1,0,sheep,0,VP,0,0
+Horse-Drawn Boat,0,1,0,1,0,0,food sheep,0,0
 House Artist,0,0,0,0,0,0,0,0,0
-House Steward,0,0,0,0,0,0,0,0,0
+House Steward,1,1,1,0,room,0,wood,0,more
 Housebook Master,0,0,0,0,0,0,0,0,0
 Housemaster,0,0,0,0,0,0,0,0,0
-Hunting Trophy,0,0,0,0,0,0,0,0,0
-Huntsman,0,0,0,0,0,0,0,0,0
-Hutch,0,0,0,0,0,0,0,0,0
-Informant,0,0,0,0,0,0,0,0,0
-Inner Districts Director,0,0,0,0,0,0,0,0,0
-Interim Storage,0,0,0,0,0,0,0,0,0
-Interior Decorator,0,0,0,0,0,0,0,0,0
-Joiner of the Sea,0,0,0,0,0,0,0,0,0
-Journeyman Bricklayer,0,0,0,0,0,0,0,0,0
-Junior Artist,0,0,0,0,0,0,0,0,0
-Junk Room,0,0,0,0,0,0,0,0,0
-Knapper,0,0,0,0,0,0,0,0,0
-Lantern House,0,0,0,0,0,0,0,0,0
-Large Greenhouse,0,0,0,0,0,0,0,0,0
+Hunting Trophy,0,1,1,1,0,0,wood,farm_redevelopment,0
+Huntsman,0,1,0,0,grain,0,pig,wood,0
+Hutch,0,1,0,0,reed,0,food,0,0
+Informant,1,1,0,1,0,0,wood,0,0
+Inner Districts Director,1,1,0,1,0,0,stone,0,more
+Interim Storage,1,1,0,1,0,0,wood clay reed,0,0
+Interior Decorator,0,1,0,1,0,0,round_food food,0,0
+Joiner of the Sea,1,1,0,1,0,0,food,fishing reed,0
+Journeyman Bricklayer,0,1,1,1,0,0,stone,0,0
+Junior Artist,1,1,0,1,0,0,food,day_laborer,0
+Junk Room,1,1,0,1,0,0,food,0,0
+Knapper,0,1,0,1,0,0,stone,0,0
+Lantern House,1,0,0,0,occupation,0,VP,0,0
+Large Greenhouse,0,1,0,1,0,0,vegetable,0,0
 Large-Scale Farmer,0,0,0,0,0,0,0,0,0
-Lasso,0,0,0,0,0,0,0,0,0
-Lawn Fertilzer,0,0,0,0,0,0,0,0,0
-Layabout,0,0,0,0,0,0,0,0,0
-Lettuce Patch,0,0,0,0,0,0,0,0,0
-Little Stick Knitter,0,0,0,0,0,0,0,0,0
-Livestock Feeder,0,0,0,0,0,0,0,0,0
-Loam Pit,0,0,0,0,0,0,0,0,0
-Loom,0,0,0,0,0,0,0,0,0
+Lasso,0,1,1,1,0,0,sheep pig cattle,0,0
+Lawn Fertilzer,1,1,1,1,0,0,space,0,0
+Layabout,0,1,1,1,0,0,food,0,0
+Lettuce Patch,0,1,1,1,vegetable,0,food,0,0
+Little Stick Knitter,1,0,0,1,0,0,growth sheep,sheep,0
+Livestock Feeder,0,1,1,1,grain,0,grain space,0,0
+Loam Pit,0,1,1,1,0,0,clay,day_laborer,0
+Loom,0,1,1,1,sheep,0,food VP,0,0
 Lord of the Manor,0,0,0,0,0,0,0,0,0
-Loudmouth,0,0,0,0,0,0,0,0,0
-Lover,0,0,0,0,0,0,0,0,0
-Lumber Mill,0,0,0,0,0,0,0,0,0
+Loudmouth,1,1,0,1,0,0,food,0,0
+Lover,0,1,1,1,0,0,growth,0,0
+Lumber Mill,1,1,0,1,0,0,wood VP,0,0
 Lumber Virtuoso,0,0,0,0,0,0,0,0,0
-Lumberjack,0,0,0,0,0,0,0,0,0
-Lutenist,0,0,0,0,0,0,0,0,0
+Lumberjack,0,1,1,0,fence,0,wood,0,0
+Lutenist,1,1,0,1,0,0,wood vegetable,0,0
 Luxurious Hostel,0,0,0,0,0,0,0,0,0
-Maintenance Premium,0,0,0,0,0,0,0,0,0
-Mandoline,0,0,0,0,0,0,0,0,0
-Manger,0,0,0,0,0,0,0,0,0
-Manservant,0,0,0,0,0,0,0,0,0
-Mantlepiece,0,0,0,0,0,0,0,0,0
-Market Crier,0,0,0,0,0,0,0,0,0
-Market Stall,0,0,0,0,0,0,0,0,0
-Mason,0,0,0,0,0,0,0,0,0
-Master Bricklayer,0,0,0,0,0,0,0,0,0
-Master Builder,0,0,0,0,0,0,0,0,0
-Master Workman,0,0,0,0,0,0,0,0,0
+Maintenance Premium,0,1,1,1,0,0,food,wood,0
+Mandoline,1,1,1,1,vegetable,0,food VP,0,0
+Manger,0,0,1,1,0,0,0,0,0
+Manservant,0,1,1,1,stone,0,food,0,0
+Mantlepiece,0,1,0,0,clay,0,VP,0,0
+Market Crier,1,1,0,1,0,0,grain vegetable,grain,0
+Market Stall,1,1,1,1,grain,0,food,0,0
+Mason,0,0,1,1,stone,0,room,0,more
+Master Bricklayer,0,1,1,0,room,0,major,0,more
+Master Builder,0,0,1,0,room,0,VP extra_room,0,more
+Master Workman,1,1,0,1,0,0,"wood clay reed
+stone",0,0
 Material Deliveryman,0,0,0,0,0,0,0,0,0
-Merchant,0,0,0,0,0,0,0,0,0
+Merchant,1,1,0,0,0,0,improvement,0,0
 Midwife,0,0,0,0,0,0,0,0,0
-Milk Jug,0,0,0,0,0,0,0,0,0
-Milking Parlor,0,0,0,0,0,0,0,0,0
-Milking Place,0,0,0,0,0,0,0,0,0
-Milking Stool,0,0,0,0,0,0,0,0,0
-Mill Wheel,0,0,0,0,0,0,0,0,0
-Millwright,0,0,0,0,0,0,0,0,0
-Mineral Feeder,0,0,0,0,0,0,0,0,0
-Mineralogist,0,0,0,0,0,0,0,0,0
-Mini Pasture,0,0,0,0,0,0,0,0,0
-Mining Hammer,0,0,0,0,0,0,0,0,0
+Milk Jug,1,1,1,1,0,0,food,cattle,0
+Milking Parlor,0,1,0,0,sheep cattle,0,food,0,0
+Milking Place,1,1,0,0,grain space,0,food,0,0
+Milking Stool,0,1,1,1,cattle,0,food VP,0,0
+Mill Wheel,1,1,1,1,0,0,food,0,0
+Millwright,1,1,1,1,grain,0,grain,0,0
+Mineral Feeder,0,1,1,1,sheep fence wood,0,grain,0,0
+Mineralogist,1,1,1,1,0,0,stone clay,stone clay,0
+Mini Pasture,1,1,1,1,0,0,"build_fence fence
+wood",0,0
+Mining Hammer,1,1,1,1,0,0,food stable,0,0
 Minstrel,0,0,0,0,0,0,0,0,0
-Moldboard Plow,0,0,0,0,0,0,0,0,0
-Mole Plow,0,0,0,0,0,0,0,0,0
-Moral Crusader,0,0,0,0,0,0,0,0,0
-Muck Rake,0,0,0,0,0,0,0,0,0
-Muddy Puddles,0,0,0,0,0,0,0,0,0
-Mushroom Collector,0,0,0,0,0,0,0,0,0
-Nest Site,0,0,0,0,0,0,0,0,0
-New Market,0,0,0,0,0,0,0,0,0
-New Purchase,0,0,0,0,0,0,0,0,0
+Moldboard Plow,1,1,1,1,0,0,field,field,0
+Mole Plow,0,1,1,1,0,0,field,field,0
+Moral Crusader,1,1,0,0,round_all,0,food,0,0
+Muck Rake,1,1,1,0,stable wood,0,VP,0,0
+Muddy Puddles,0,1,1,0,clay,0,sheep pig cattle,0,0
+Mushroom Collector,1,1,0,1,0,0,food,0,0
+Nest Site,1,1,0,1,0,0,food,0,0
+New Market,0,1,1,1,0,0,food,0,0
+New Purchase,1,1,1,1,food,0,grain vegetable,0,0
 Newly-Plowed Field,0,0,0,0,0,0,0,0,0
-Night-School Student,0,0,0,0,0,0,0,0,0
-Nutrition Expert,0,0,0,0,0,0,0,0,0
-Organic Farmer,0,0,0,0,0,0,0,0,0
-Outrider,0,0,0,0,0,0,0,0,0
-Outskirts Director,0,0,0,0,0,0,0,0,0
-Oven Firing Boy,0,0,0,0,0,0,0,0,0
+Night-School Student,0,1,0,1,occupation,0,occupation,0,0
+Nutrition Expert,0,1,1,0,sheep pig grain vegetable,0,food VP,0,0
+Organic Farmer,0,0,1,1,0,0,VP,0,0
+Outrider,1,1,0,1,0,0,grain,0,0
+Outskirts Director,1,1,0,1,0,0,reed,0,more
+Oven Firing Boy,0,1,1,0,grain,0,bake,wood,0
 Oven Site,0,0,0,0,0,0,0,0,0
-Overhaul,0,0,0,0,0,0,0,0,0
-Pan Baker,0,0,0,0,0,0,0,0,0
-Paper Maker,0,0,0,0,0,0,0,0,0
-Party Organizer,0,0,0,0,0,0,0,0,0
-Pastor,0,0,0,0,0,0,0,0,0
-Pasture Master,0,0,0,0,0,0,0,0,0
+Overhaul,0,1,1,1,0,0,"build_fence fence
+wood",0,0
+Pan Baker,1,1,0,1,0,0,wood clay,sow,0
+Paper Maker,0,1,1,1,occupation,0,food,0,0
+Party Organizer,0,0,1,1,0,0,food VP,0,0
+Pastor,0,1,0,1,0,0,"wood clay
+reed stone",0,0
+Pasture Master,0,1,1,0,clay stone,0,"food sheep
+pig cattle",0,0
 Patch Caregiver,0,0,0,0,0,0,0,0,0
 Patch Caretaker,0,0,0,0,0,0,0,0,0
-Patron,0,0,0,0,0,0,0,0,0
-Pattern Maker,0,0,0,0,0,0,0,0,0
-Pavior,0,0,0,0,0,0,0,0,0
-Paymaster,0,0,0,0,0,0,0,0,0
-Pellet Press,0,0,0,0,0,0,0,0,0
+Patron,1,0,0,1,occupation,0,food,0,0
+Pattern Maker,0,1,1,1,0,0,grain VP,0,0
+Pavior,1,0,0,1,0,0,food vegetable,0,0
+Paymaster,0,1,1,0,grain,0,VP,0,0
+Pellet Press,0,1,0,0,reed,0,food,0,0
 Perennial Rye,0,0,0,0,0,0,0,0,0
 Pet Broker,0,0,0,0,0,0,0,0,0
-Pet Lover,0,0,0,0,0,0,0,0,0
-Petrified Wood,0,0,0,0,0,0,0,0,0
-Pig Breeder,0,0,0,0,0,0,0,0,0
-Pig Owner,0,0,0,0,0,0,0,0,0
-Pigswill,0,0,0,0,0,0,0,0,0
+Pet Lover,1,1,1,1,0,0,"grain food
+sheep pig cattle",0,0
+Petrified Wood,0,1,1,1,0,0,stone,0,0
+Pig Breeder,0,1,1,1,0,0,pig,0,0
+Pig Owner,0,0,1,0,pig,0,VP,0,0
+Pigswill,0,1,1,1,0,0,pig,0,0
 Pioneering Spirit,0,0,0,0,0,0,0,0,0
-Pitchfork,0,0,0,0,0,0,0,0,0
+Pitchfork,1,1,1,1,0,0,food,grain,0
 Plant Fertilizer,0,0,0,0,0,0,0,0,0
-Plow Driver,0,0,0,0,0,0,0,0,0
+Plow Driver,0,1,1,1,stone,0,field,0,0
 Plow Hero,0,0,0,0,0,0,0,0,0
-Plow Maker,0,0,0,0,0,0,0,0,0
-Plowman,0,0,0,0,0,0,0,0,0
+Plow Maker,0,1,1,1,0,0,field,field,0
+Plowman,1,1,0,1,0,0,field,0,0
 Plumber,0,0,0,0,0,0,0,0,0
-Pond Hut,0,0,0,0,0,0,0,0,0
-Porter,0,0,0,0,0,0,0,0,0
-Portmonger,0,0,0,0,0,0,0,0,0
-Potato Digger,0,0,0,0,0,0,0,0,0
-Potato Harvester,0,0,0,0,0,0,0,0,0
-Potato Planter,0,0,0,0,0,0,0,0,0
+Pond Hut,1,1,0,1,0,0,food,0,0
+Porter,1,1,0,1,0,0,food wood clay,0,0
+Portmonger,1,1,1,1,0,0,"reed grain
+vegetable",0,0
+Potato Digger,0,1,1,1,field,0,vegetable,0,0
+Potato Harvester,0,1,1,1,vegetable,0,food,0,0
+Potato Planter,1,1,1,1,0,0,vegetable,clay_pit reed,0
 Potato Ridger,0,0,0,0,0,0,0,0,0
-Potter Ceramics,0,0,0,0,0,0,0,0,0
-Potters Market,0,0,0,0,0,0,0,0,0
-Priest,0,0,0,0,0,0,0,0,0
-Private Forest,0,0,0,0,0,0,0,0,0
+Potter Ceramics,1,1,0,1,bake clay,0,food,0,0
+Potters Market,0,1,1,0,clay,0,vegetable,0,0
+Priest,0,1,1,0,clay,0,clay reed stone,0,0
+Private Forest,1,0,0,1,0,0,wood,0,0
 Private Teacher,0,0,0,0,0,0,0,0,0
-Pub Owner,0,0,0,0,0,0,0,0,0
-Puppeteer,0,0,0,0,0,0,0,0,0
+Pub Owner,1,1,0,1,0,0,grain,forest clay_pit reed,0
+Puppeteer,1,1,0,1,occupation,0,occupation,traveling_players,0
 Pure Breeder,0,0,0,0,0,0,0,0,0
-Rammed Clay,0,0,0,0,0,0,0,0,0
-Ranch Provost,0,0,0,0,0,0,0,0,0
-Ravenous Hunger,0,0,0,0,0,0,0,0,0
-Reap Hook,0,0,0,0,0,0,0,0,0
+Rammed Clay,1,1,1,1,clay,0,wood,0,0
+Ranch Provost,1,1,1,1,wood fence stable,0,wood,0,0
+Ravenous Hunger,0,1,1,0,grain,0,sheep pig cattle,0,0
+Reap Hook,1,1,0,1,0,0,grain,0,0
 Recreational Carpenter,0,0,0,0,0,0,0,0,0
-Recycled Brick,0,0,0,0,0,0,0,0,0
-Reed Belt,0,0,0,0,0,0,0,0,0
-Reed Pond,0,0,0,0,0,0,0,0,0
-Reed Roof Renovator,0,0,0,0,0,0,0,0,0
-Reed-Hatted Toad,0,0,0,0,0,0,0,0,0
-Remodeling,0,0,0,0,0,0,0,0,0
-Renovation Company,0,0,0,0,0,0,0,0,0
-Renovation Preparer,0,0,0,0,0,0,0,0,0
-Resource Recycler,0,0,0,0,0,0,0,0,0
+Recycled Brick,0,1,1,1,0,0,clay,0,0
+Reed Belt,1,1,0,1,0,0,reed,0,0
+Reed Pond,0,1,1,1,0,0,reed,0,0
+Reed Roof Renovator,0,1,0,1,0,0,reed,0,0
+Reed-Hatted Toad,1,1,0,1,0,0,round_reed reed,0,0
+Remodeling,0,1,1,1,0,0,clay,0,0
+Renovation Company,1,0,0,0,clay,0,clay,0,0
+Renovation Preparer,1,1,0,1,0,0,clay stone,0,0
+Resource Recycler,0,1,1,1,0,0,room,0,0
 Retail Dealer,0,0,0,0,0,0,0,0,0
 Riparian Builder,0,0,0,0,0,0,0,0,0
-Riverine Shepherd,0,0,0,0,0,0,0,0,0
-Rocky Terrain,0,0,0,0,0,0,0,0,0
-Rolling Pin,0,0,0,0,0,0,0,0,0
-Roof Ballaster,0,0,0,0,0,0,0,0,0
-Roof Examiner,0,0,0,0,0,0,0,0,0
+Riverine Shepherd,1,1,0,1,0,0,sheep reed,sheep reed,0
+Rocky Terrain,1,1,1,1,0,0,stone,0,0
+Rolling Pin,1,1,1,1,0,0,food,0,0
+Roof Ballaster,0,1,1,1,0,0,stone,0,0
+Roof Examiner,0,1,1,1,0,0,reed,0,0
 Roof Ladder,0,0,0,0,0,0,0,0,0
-Ropemaker,0,0,0,0,0,0,0,0,0
-Roughcaster,0,0,0,0,0,0,0,0,0
-Rustic,0,0,0,0,0,0,0,0,0
-Sack Cart,0,0,0,0,0,0,0,0,0
+Ropemaker,1,1,0,1,0,0,reed,0,0
+Roughcaster,1,1,0,0,clay,0,food,0,0
+Rustic,1,1,0,0,clay,0,food VP,0,0
+Sack Cart,0,1,1,1,0,0,grain,0,0
 Salter,0,0,0,0,0,0,0,0,0
-Scales,0,0,0,0,0,0,0,0,0
-Schnapps Distiller,0,0,0,0,0,0,0,0,0
-Schnapps Distillery,0,0,0,0,0,0,0,0,0
-Scholar,0,0,0,0,0,0,0,0,0
-Scullery,0,0,0,0,0,0,0,0,0
-Sculptor,0,0,0,0,0,0,0,0,0
-Sculpture,0,0,0,0,0,0,0,0,0
-Sculpture Course,0,0,0,0,0,0,0,0,0
-Scythe Worker,0,0,0,0,0,0,0,0,0
-Seasonal Worker,0,0,0,0,0,0,0,0,0
+Scales,1,0,0,0,"occupation
+improvement",1,food,0,0
+Schnapps Distiller,0,1,1,1,vegetable,0,food,0,0
+Schnapps Distillery,0,1,1,0,vegetable,0,food VP,0,0
+Scholar,0,1,1,0,stone,0,"occupation
+improvement",0,0
+Scullery,1,1,0,1,0,0,food,0,0
+Sculptor,0,1,1,1,0,0,food grain,clay stone,0
+Sculpture,0,0,1,1,0,0,VP,0,0
+Sculpture Course,1,0,0,0,0,1,food,0,0
+Scythe Worker,1,1,1,1,0,0,grain,0,0
+Seasonal Worker,1,1,1,1,0,0,grain vegetable,day_laborer,0
 Seaweed Fertilizer,0,0,0,0,0,0,0,0,0
 Second Spouse,0,0,0,0,0,0,0,0,0
-Seducer,0,0,0,0,0,0,0,0,0
-Seed Seller,0,0,0,0,0,0,0,0,0
-Seed Trader,0,0,0,0,0,0,0,0,0
+Seducer,0,1,1,1,vegetable,0,growth,0,0
+Seed Seller,1,1,1,1,0,0,grain,0,0
+Seed Trader,0,1,1,1,food,0,grain vegetable,0,0
 Sequestrator,0,0,0,0,0,0,0,0,0
-Sheep Keeper,0,0,0,0,0,0,0,0,0
-Sheep Provider,0,0,0,0,0,0,0,0,0
-Sheep Walker,0,0,0,0,0,0,0,0,0
-Sheep Well,0,0,0,0,0,0,0,0,0
-Sheep Whisperer,0,0,0,0,0,0,0,0,0
-Shepherd's Crook,0,0,0,0,0,0,0,0,0
-Shifting Cultivation,0,0,0,0,0,0,0,0,0
-Shifting Cultivator,0,0,0,0,0,0,0,0,0
-Shoreforester,0,0,0,0,0,0,0,0,0
-Shovel Bearer,0,0,0,0,0,0,0,0,0
-Silokeeper,0,0,0,0,0,0,0,0,0
-Skillful Renovator,0,0,0,0,0,0,0,0,0
-Sleeping Corner,0,0,0,0,0,0,0,0,0
-Small Animal Breeder,0,0,0,0,0,0,0,0,0
-Small Basket,0,0,0,0,0,0,0,0,0
-Small Greenhouse,0,0,0,0,0,0,0,0,0
+Sheep Keeper,0,1,1,0,sheep,0,food VP,0,0
+Sheep Provider,0,1,1,1,0,0,grain,sheep,0
+Sheep Walker,0,1,1,1,sheep,0,pig vegetable,0,0
+Sheep Well,0,1,1,1,sheep,0,food VP,0,0
+Sheep Whisperer,1,1,0,1,0,0,sheep,0,0
+Shepherd's Crook,1,1,0,1,fence wood,0,sheep,0,0
+Shifting Cultivation,1,1,1,1,0,0,field,0,0
+Shifting Cultivator,0,1,1,0,food,0,field,0,0
+Shoreforester,1,1,0,1,0,0,wood,reed,0
+Shovel Bearer,1,1,1,1,0,0,food,clay,0
+Silokeeper,1,1,0,1,0,0,grain,0,0
+Skillful Renovator,1,1,1,1,0,0,wood,0,more
+Sleeping Corner,0,1,1,0,grain,0,growth,0,3
+Small Animal Breeder,1,0,0,0,food,0,food,0,0
+Small Basket,0,1,1,1,0,0,vegetable,reed,0
+Small Greenhouse,1,1,0,1,0,0,vegetable,0,0
 Small Trader,0,0,0,0,0,0,0,0,0
-Small-scale Farmer,0,0,0,0,0,0,0,0,0
+Small-scale Farmer,1,0,0,1,0,0,wood,0,2
 Social Benefits,0,0,0,0,0,0,0,0,0
-Soil Scientist,0,0,0,0,0,0,0,0,0
-Soldier,0,0,0,0,0,0,0,0,0
-Sowing Director,0,0,0,0,0,0,0,0,0
-Stable,0,0,0,0,0,0,0,0,0
-Stable Architect,0,0,0,0,0,0,0,0,0
-Stable Cleaner,0,0,0,0,0,0,0,0,0
-Stable Master,0,0,0,0,0,0,0,0,0
-Stable Planner,0,0,0,0,0,0,0,0,0
+Soil Scientist,0,1,0,1,0,0,grain vegetable,clay stone,0
+Soldier,0,0,1,0,wood stone,0,VP,0,0
+Sowing Director,0,1,1,1,0,0,sow,sow,0
+Stable,1,1,1,1,0,0,stable,0,0
+Stable Architect,0,0,1,1,stable wood,0,VP,0,0
+Stable Cleaner,0,1,1,1,0,0,stable,0,0
+Stable Master,0,1,1,1,0,0,stable space,0,0
+Stable Planner,1,1,0,1,0,0,stable,0,0
 Stable Yard,0,0,0,0,0,0,0,0,0
-Stablehand,0,0,0,0,0,0,0,0,0
-Stagehand,0,0,0,0,0,0,0,0,0
-Stall Holder,0,0,0,0,0,0,0,0,0
-Steam Machine,0,0,0,0,0,0,0,0,0
+Stablehand,0,1,1,0,build_fence,0,stable,0,0
+Stagehand,1,1,0,1,0,0,build build_fence,traveling_players,0
+Stall Holder,0,1,1,0,stable wood grain,0,VP food,0,0
+Steam Machine,0,1,1,1,0,0,bake,0,0
 Steam Plow,0,0,0,0,0,0,0,0,0
-Stew,0,0,0,0,0,0,0,0,0
-Stock Protector,0,0,0,0,0,0,0,0,0
+Stew,1,1,0,1,0,0,round_food food,day_laborer,0
+Stock Protector,0,1,1,1,0,0,build_fence wood,build_fence,0
 Stockman,0,0,0,0,0,0,0,0,0
-Stockyard,0,0,0,0,0,0,0,0,0
-Stone Buyer,0,0,0,0,0,0,0,0,0
-Stone Cart,0,0,0,0,0,0,0,0,0
-Stone Carver,0,0,0,0,0,0,0,0,0
-Stone Clearing,0,0,0,0,0,0,0,0,0
-Stone Tongs,0,0,0,0,0,0,0,0,0
-Stonecutter,0,0,0,0,0,0,0,0,0
-Storage Barn,0,0,0,0,0,0,0,0,0
-Store of Experience,0,0,0,0,0,0,0,0,0
-Storehouse Keeper,0,0,0,0,0,0,0,0,0
-Storehouse Steward,0,0,0,0,0,0,0,0,0
-Storeroom,0,0,0,0,0,0,0,0,0
-Stork's Nest,0,0,0,0,0,0,0,0,0
-Strawberry Patch,0,0,0,0,0,0,0,0,0
-Straw-Thatched Roof,0,0,0,0,0,0,0,0,0
-Sugar Baker,0,0,0,0,0,0,0,0,0
-Supply Boat,0,0,0,0,0,0,0,0,0
+Stockyard,0,1,1,1,0,0,space,0,0
+Stone Buyer,1,1,1,1,0,0,stone,0,0
+Stone Cart,0,1,0,1,0,0,stone,0,0
+Stone Carver,1,1,1,1,stone,0,food,0,0
+Stone Clearing,0,1,1,1,field,0,stone,0,0
+Stone Tongs,1,1,1,1,0,0,stone,stone,0
+Stonecutter,1,1,0,1,0,0,stone,0,0
+Storage Barn,0,1,1,1,major,0,stone clay reed,0,0
+Store of Experience,1,1,0,0,0,0,wood reed,0,0
+Storehouse Keeper,1,1,0,1,0,0,clay grain,rsf,0
+Storehouse Steward,1,1,0,1,0,0,"stone reed clay
+wood",0,0
+Storeroom,0,0,1,0,grain vegetable,0,VP,0,0
+Stork's Nest,0,1,0,0,occupation food,0,growth,0,0
+Strawberry Patch,0,1,1,1,0,0,VP,0,0
+Straw-Thatched Roof,1,1,0,0,grain field,0,reed,0,0
+Sugar Baker,0,1,1,1,0,0,VP,sow,0
+Supply Boat,1,1,1,1,0,0,grain vegetable,fishing,0
 Swagman,0,0,0,0,0,0,0,0,0
-Swimming Class,0,0,0,0,0,0,0,0,0
-Swing Plow,0,0,0,0,0,0,0,0,0
-Task Artisan,0,0,0,0,0,0,0,0,0
-Tasting,0,0,0,0,0,0,0,0,0
-Teacher's Desk,0,0,0,0,0,0,0,0,0
-Thick Forest,0,0,0,0,0,0,0,0,0
-Three-Field Rotation,0,0,0,0,0,0,0,0,0
-Thresher,0,0,0,0,0,0,0,0,0
-Threshing Board,0,0,0,0,0,0,0,0,0
-Throwing Axe,0,0,0,0,0,0,0,0,0
-Transactor,0,0,0,0,0,0,0,0,0
-Trap Builder,0,0,0,0,0,0,0,0,0
+Swimming Class,1,1,0,1,0,0,VP,fishing,0
+Swing Plow,0,1,1,1,0,0,field,farmland,0
+Task Artisan,1,0,0,1,0,0,wood minor,0,0
+Tasting,0,1,1,0,grain,0,food,occupation,0
+Teacher's Desk,1,1,0,1,0,0,"occupation
+improvement",improvement,0
+Thick Forest,0,1,0,1,0,0,round_wood wood,0,0
+Three-Field Rotation,0,1,1,1,0,0,food,0,0
+Thresher,1,1,1,1,0,0,grain,sow field,0
+Threshing Board,0,1,1,1,0,0,bake,field,0
+Throwing Axe,0,1,1,1,0,0,food,pig,0
+Transactor,0,0,1,1,0,0,VP,0,0
+Trap Builder,1,1,0,1,0,0,round_food food pig,day_laborer,0
 Tree Cutter,0,0,0,0,0,0,0,0,0
-Tree Farm Joiner,0,0,0,0,0,0,0,0,0
-Tree Guard,0,0,0,0,0,0,0,0,0
+Tree Farm Joiner,1,1,0,1,0,0,wood minor,0,0
+Tree Guard,1,1,0,1,0,0,stone clay reed grain,0,0
 Tree Inspector,0,0,0,0,0,0,0,0,0
-Treegardener,0,0,0,0,0,0,0,0,0
-Trellis,0,0,0,0,0,0,0,0,0
-Trellises,0,0,0,0,0,0,0,0,0
-Trident,0,0,0,0,0,0,0,0,0
-Trout Pool,0,0,0,0,0,0,0,0,0
-Trowel,0,0,0,0,0,0,0,0,0
-Truffle Searcher,0,0,0,0,0,0,0,0,0
-Truffle Slicer,0,0,0,0,0,0,0,0,0
+Treegardener,1,1,0,1,food,0,wood,0,0
+Trellis,0,1,1,1,0,0,build_fence,pig,0
+Trellises,0,1,0,0,fence wood build_fence,0,round_food food,0,0
+Trident,0,1,1,1,0,0,food,0,0
+Trout Pool,0,1,1,1,0,0,food,fishing,0
+Trowel,1,1,1,1,0,0,reed,0,0
+Truffle Searcher,0,1,1,1,0,0,space,0,0
+Truffle Slicer,0,1,1,1,food pig,0,VP,wood,0
 Tumbrel,0,0,0,0,0,0,0,0,0
-Turnip Farmer,0,0,0,0,0,0,0,0,0
-Turnwrest Plow,0,0,0,0,0,0,0,0,0
-Tutor,0,0,0,0,0,0,0,0,0
-Upscale Lifestyle,0,0,0,0,0,0,0,0,0
-Value Assets,0,0,0,0,0,0,0,0,0
+Turnip Farmer,0,1,1,1,0,0,vegetable,day_laborer grain,0
+Turnwrest Plow,0,1,1,1,0,0,field,field,0
+Tutor,1,1,0,0,occupation,0,VP,0,0
+Upscale Lifestyle,1,1,1,1,0,0,clay,0,0
+Value Assets,1,1,1,1,0,0,wood clay reed stone,0,0
 Village Peasant,0,0,0,0,0,0,0,0,0
-Wage,0,0,0,0,0,0,0,0,0
+Wage,1,1,1,1,0,0,food,0,0
 Wall Builder,0,0,0,0,0,0,0,0,0
-Water Worker,0,0,0,0,0,0,0,0,0
-Wealthy Man,0,0,0,0,0,0,0,0,0
+Water Worker,1,1,1,1,0,0,reed,"day_laborer fishing
+reed",0
+Wealthy Man,0,1,1,0,grain field,0,VP,0,0
 Wheel Plow,0,0,0,0,0,0,0,0,0
-Whisky Distiller,0,0,0,0,0,0,0,0,0
-Wholesale Market,0,0,0,0,0,0,0,0,0
-Wholesaler,0,0,0,0,0,0,0,0,0
-Wildlife Reserve,0,0,0,0,0,0,0,0,0
-Winter Caretaker,0,0,0,0,0,0,0,0,0
-Wood Barterer,0,0,0,0,0,0,0,0,0
-Wood Carrier,0,0,0,0,0,0,0,0,0
-Wood Cart,0,0,0,0,0,0,0,0,0
-Wood Collector,0,0,0,0,0,0,0,0,0
-Wood Cutter,0,0,0,0,0,0,0,0,0
-Wood Expert,0,0,0,0,0,0,0,0,0
-Wood Field,0,0,0,0,0,0,0,0,0
-Wood Harvester,0,0,0,0,0,0,0,0,0
-Wood Pile,0,0,0,0,0,0,0,0,0
+Whisky Distiller,0,1,1,0,grain,0,food,0,0
+Wholesale Market,0,0,1,0,vegetable,0,VP,0,0
+Wholesaler,0,1,1,1,0,0,vegetable pig cattle,0,0
+Wildlife Reserve,0,1,1,1,0,0,space,0,0
+Winter Caretaker,1,1,1,1,0,0,grain vegetable,0,0
+Wood Barterer,1,1,0,1,0,0,wood reed,0,0
+Wood Carrier,0,1,1,1,0,0,wood,0,0
+Wood Cart,0,1,1,1,0,0,wood,wood,0
+Wood Collector,1,1,0,1,0,0,round_wood wood,0,0
+Wood Cutter,1,1,0,1,0,0,wood,wood,0
+Wood Expert,1,1,0,1,0,0,wood,0,0
+Wood Field,1,1,1,1,0,0,wood,0,0
+Wood Harvester,1,1,0,1,0,0,food wood,wood,0
+Wood Pile,0,1,1,1,0,0,wood,0,more
 Wood Rake,0,0,0,0,0,0,0,0,0
-Wood Slide Hammer,0,0,0,0,0,0,0,0,0
-Wood Worker,0,0,0,0,0,0,0,0,0
-Woodcraft,0,0,0,0,0,0,0,0,0
-Wooden Hut Extender,0,0,0,0,0,0,0,0,0
-Wooden Whey Bucket,0,0,0,0,0,0,0,0,0
-Wool Blankets,0,0,0,0,0,0,0,0,0
-Woolgrower,0,0,0,0,0,0,0,0,0
-Writing Boards,0,0,0,0,0,0,0,0,0
-Writing Desk,0,0,0,0,0,0,0,0,0
-Young Animal Market,0,0,0,0,0,0,0,0,0
-Young Farmer,0,0,0,0,0,0,0,0,0
+Wood Slide Hammer,1,1,1,0,wood,0,stone clay,0,more
+Wood Worker,0,1,1,1,0,0,sheep,wood,0
+Woodcraft,1,1,1,1,0,0,food,wood,0
+Wooden Hut Extender,1,1,0,1,0,0,wood reed,0,more
+Wooden Whey Bucket,1,1,1,1,0,0,stable,sheep cattle,0
+Wool Blankets,0,1,1,0,sheep,0,VP,0,0
+Woolgrower,0,1,1,1,0,0,space,0,0
+Writing Boards,0,1,1,1,0,0,wood,0,0
+Writing Desk,0,1,1,1,0,0,occupation,occupation,0
+Young Animal Market,0,1,1,1,0,0,cattle,0,0
+Young Farmer,1,1,1,1,0,0,grain sow,improvement,0
 zz_TEST0,1,0,0,1,0,0,wood,day_laborer,more
 zz_TEST01,1,0,0,0,wood,0,sheep,0,0
 zz_TEST02,0,1,0,0,clay,0,sheep,day_laborer,0
