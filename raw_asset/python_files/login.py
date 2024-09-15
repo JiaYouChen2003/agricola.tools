@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # import time
 import json
+import os
 
 from raw_asset.python_files import const_agricolatools
 
@@ -23,6 +24,9 @@ class LoginMachine():
             login_info_dict = {
                 const_agricolatools.ConstJsonFile().key_login_info_username: username,
                 const_agricolatools.ConstJsonFile().key_login_info_password: password}
+            
+            if not os.path.exists(const_agricolatools.ConstJsonFile().NAME_JSON_SUBDIR):
+                os.makedirs(const_agricolatools.ConstJsonFile().NAME_JSON_SUBDIR)
             with open(const_agricolatools.ConstJsonFile().name_login_info, 'w') as login_info_file:
                 json.dump(login_info_dict, login_info_file)
         
