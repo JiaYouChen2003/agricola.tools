@@ -525,12 +525,17 @@ Writing Boards,0,1,1,1,0,0,wood,0,0
 Writing Desk,0,1,1,1,0,0,occupation,occupation,0
 Young Animal Market,0,1,1,1,0,0,cattle,0,0
 Young Farmer,1,1,1,1,0,0,grain sow,improvement,0
-zz_TEST0,1,0,0,1,0,0,wood,day_laborer,more
-zz_TEST01,1,0,0,0,wood,0,sheep,0,0
-zz_TEST02,0,1,0,0,clay,0,sheep,day_laborer,0
-zz_TEST03,0,0,1,1,0,0,sheep,0,more
-zz_TEST1,1,0,0,0,clay,0,wood,fishing,2
-zz_TEST11,1,0,0,1,0,0,clay,0,0
-zz_TEST12,0,1,0,0,wood,0,sheep,0,0
-zz_TEST13,0,0,1,0,0,0,sheep,fishing,0
-zz_TEST14,0,0,1,0,0,0,sheep,0,2
+zz_TEST0,1,0,0,0,0,1,wood,0,2
+zz_TEST01,0,0,0,0,wood,0,0,0,0
+zz_TEST02,0,0,0,0,clay,0,0,0,0
+zz_TEST03,0,0,0,0,0,1,0,0,0
+zz_TEST04,0,0,0,0,0,0,0,0,0
+zz_TEST1,0,0,0,0,clay,0,wood,fishing,2
+zz_TEST11,1,0,0,1,0,0,0,0,0
+zz_TEST12,0,0,0,1,0,0,clay,0,0
+zz_TEST13,0,0,0,1,0,0,0,fishing,0
+zz_TEST14,0,0,0,1,0,0,0,0,2
+zz_TEST15,0,0,0,1,0,0,0,0,more
+zz_TEST16,0,0,0,0,0,0,0,0,0
+zz_TEST2,1,0,0,1,0,0,stone,,0
+zz_TEST21,1,0,0,1,0,0,0,,0
