@@ -1,5 +1,5 @@
 from PySide2.QtWidgets import *
-from PySide2.QtGui import QIcon
+from PySide2.QtGui import QIcon, QPixmap, QColor
 from PySide2.QtCore import *
 
 import sys
@@ -10,14 +10,7 @@ import json
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import inquiry
 from raw_asset.python_files import analyze
-
-
-class WorkerWaitToShowThings(QObject):
-    finished = Signal()
-    
-    def run(self):
-        time.sleep(0.1)
-        self.finished.emit()
+from raw_asset.python_files import login
 
 
 class WorkerRefresh(QObject):
@@ -46,10 +39,11 @@ class GUI(QWidget):
         self.setWindowTitle('agricola.tools')
         self.setWindowIcon(QIcon(const_agricolatools.ConstPath().window_icon_path))
         
-        self.label_URL_1 = QLabel(const_agricolatools.QLABEL_URL_1)
-        self.label_URL_2 = QLabel(const_agricolatools.QLABEL_URL_2)
-        self.label_result = QLabel(const_agricolatools.QLABEL_RESULT)
-        self.label_print = QLabel('')
+        self.stacked_widget = QStackedWidget()
+        self.login_page = QWidget()
+        self.main_page = QWidget()
+        
+        # login page
         self.label_username = QLabel(const_agricolatools.QLABEL_USERNAME)
         self.label_password = QLabel(const_agricolatools.QLABEL_PASSWORD)
         self.label_auto_refresh = QLabel(const_agricolatools.QLABEL_AUTO_REFRESH)
@@ -64,11 +58,35 @@ class GUI(QWidget):
         else:
             self.line_edit_username = QLineEdit('')
             self.line_edit_password = QLineEdit('')
+        self.line_edit_password.setEchoMode(QLineEdit.Password)
+        
+        self.login_button = QPushButton()
+        self.login_button.setText(const_agricolatools.TEXT_LOGIN_BUTTON)
+        self.login_button.clicked.connect(self.__openMainPage)
+        
+        self.login_page_layout = QGridLayout()
+        self.label_image = QLabel()
+        self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+        self.login_page_layout.setSpacing(10)
+        self.login_page_layout.addWidget(self.label_image, 0, 0, 1, 3)
+        self.login_page_layout.addWidget(self.label_username, 1, 1, 1, 1)
+        self.login_page_layout.addWidget(self.line_edit_username, 2, 1, 1, 1)
+        self.login_page_layout.addWidget(self.label_password, 3, 1, 1, 1)
+        self.login_page_layout.addWidget(self.line_edit_password, 4, 1, 1, 1)
+        self.login_page_layout.addWidget(self.login_button, 5, 2, 1, 1)
+        self.login_page.setLayout(self.login_page_layout)
+        
+        # main page
+        self.label_URL_1 = QLabel(const_agricolatools.QLABEL_URL_1)
+        self.label_URL_2 = QLabel(const_agricolatools.QLABEL_URL_2)
+        self.label_result = QLabel(const_agricolatools.QLABEL_RESULT)
+        self.label_print = QLabel('')
         
         self.table = QTableWidget()
         
-        self.button = QPushButton()
-        self.button.setText(const_agricolatools.TEXT_SEARCH_BUTTON)
+        self.search_button = QPushButton()
+        self.search_button.setText(const_agricolatools.TEXT_SEARCH_BUTTON)
+        self.search_button.clicked.connect(self.startInquiry)
         
         self.cmb1 = QComboBox()
         self.cmb1.setStyle(QStyleFactory.create('Fusion'))
@@ -83,27 +101,57 @@ class GUI(QWidget):
         self.cmb2.addItem(self.auto_refresh_type_list[0])
         self.cmb2.addItem(self.auto_refresh_type_list[1])
         
-        self.grid = QGridLayout()
-        self.grid.setSpacing(10)
-        self.grid.addWidget(self.label_URL_1, 1, 0)
-        self.grid.addWidget(self.label_URL_2, 1, 0, 3, 0)
-        self.grid.addWidget(self.label_result, 5, 0)
+        self.main_page_layout = QGridLayout()
+        self.main_page_layout.setSpacing(10)
+        self.main_page_layout.addWidget(self.label_URL_1, 1, 0)
+        self.main_page_layout.addWidget(self.label_URL_2, 1, 0, 3, 0)
+        self.main_page_layout.addWidget(self.label_result, 5, 0)
         
-        self.grid.addWidget(self.line_edit_URL, 1, 3, 3, 33)
-        self.grid.addWidget(self.table, 4, 1, 30, 35)
+        self.main_page_layout.addWidget(self.line_edit_URL, 1, 3, 3, 33)
+        self.main_page_layout.addWidget(self.table, 4, 1, 30, 35)
         
-        self.grid.addWidget(self.button, 1, 36, 3, 1)
-        self.grid.addWidget(self.label_print, 5, 36)
-        self.grid.addWidget(self.label_username, 25, 36)
-        self.grid.addWidget(self.line_edit_username, 26, 36)
-        self.grid.addWidget(self.label_password, 27, 36)
-        self.grid.addWidget(self.line_edit_password, 28, 36)
-        self.grid.addWidget(self.cmb1, 30, 36)
-        self.grid.addWidget(self.label_auto_refresh, 31, 36)
-        self.grid.addWidget(self.cmb2, 32, 36)
-        self.setLayout(self.grid)
-        self.resize(640, 810)
-        self.button.clicked.connect(self.startInquiry)
+        self.main_page_layout.addWidget(self.search_button, 1, 36, 3, 2)
+        self.main_page_layout.addWidget(self.label_print, 5, 36)
+        self.main_page_layout.addWidget(self.cmb1, 30, 36)
+        self.main_page_layout.addWidget(self.label_auto_refresh, 31, 36)
+        self.main_page_layout.addWidget(self.cmb2, 32, 36)
+        self.main_page.setLayout(self.main_page_layout)
+        
+        self.stacked_widget.addWidget(self.login_page)
+        self.stacked_widget.addWidget(self.main_page)
+        
+        self.main_layout = QGridLayout()
+        self.main_layout.addWidget(self.stacked_widget)
+        self.setLayout(self.main_layout)
+        
+        window_size = self.size()
+        window_width = window_size.width()
+        window_height = window_size.height()
+        
+        screen = QApplication.primaryScreen()
+        screen_geometry = screen.availableGeometry()
+        screen_width = screen_geometry.width()
+        screen_height = screen_geometry.height()
+        
+        x = (screen_width - window_width) * 0.9
+        y = (screen_height - window_height) / 4
+        
+        self.setGeometry(x, y, window_width, window_height)
+    
+    def __openMainPage(self):
+        self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_loading_login_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+        username = self.line_edit_username.text()
+        password = self.line_edit_password.text()
+        
+        def process_login():
+            can_login = login.LoginMachine().checkCanLoginOrNot(driver=None, username=username, password=password)
+            if can_login:
+                self.stacked_widget.setCurrentIndex(1)
+                self.resize(720, 810)
+            else:
+                self.label_image.setPixmap(QPixmap(const_agricolatools.ConstPath().login_page_cannot_login_img_path).scaled(600, 300, Qt.IgnoreAspectRatio, Qt.SmoothTransformation))
+        
+        QTimer.singleShot(1000, process_login)
     
     def __getJsonFileValueByKey(self, json_file_name, key):
         with open(json_file_name, 'r') as json_file:
@@ -123,15 +171,20 @@ class GUI(QWidget):
     def __setTableByArr(self, arr, arr_label, first_set=True, have_card_player=False):
         self.table.setRowCount(len(arr))
         if first_set:
-            if have_card_player:
-                self.table.setColumnCount(len(arr[0]) - 1)
-            else:
-                self.table.setColumnCount(len(arr[0]))
+            self.table.setColumnCount(len(arr_label))
             self.table.setHorizontalHeaderLabels(arr_label)
         
         for i, arr_row in enumerate(arr):
             for j, item in enumerate(arr_row):
-                self.__setTableItem(item, i, j)
+                if str(item).startswith(const_agricolatools.CARD_PLAYER_LABEL):
+                    background_color = QColor(204, 204, 255)
+                elif str(item).startswith(const_agricolatools.CARD_HAND_LABEL):
+                    background_color = QColor(204, 204, 255)
+                elif str(item).startswith(const_agricolatools.CARD_MEAN_LABEL):
+                    background_color = QColor(204, 255, 204)
+                else:
+                    background_color = None
+                self.__setTableItem(item, i, j, background_color=background_color)
         
         if first_set:
             header = self.table.horizontalHeader()
@@ -140,41 +193,29 @@ class GUI(QWidget):
             for i in range(1, self.table.columnCount()):
                 header.setSectionResizeMode(i, QHeaderView.ResizeToContents)
     
-    def __setTableItem(self, item, row, column):
+    def __setTableItem(self, item, row, column, background_color=None):
         item = QTableWidgetItem(item)
         self.table.setItem(row, column, item)
+        if background_color is not None:
+            self.table.item(row, column).setBackground(background_color)
     
     def __getAnalyzeOfCardInfoArr(self, card_info_arr):
+        card_info_arr = self.machine_analyze.getCardSynergyScore(card_info_arr=card_info_arr)
         
         mean_list = []
-        for i in range(card_info_arr[-1][3] + 1):
+        for i in range(card_info_arr[-1][-1] + 1):
             mean_list.append(self.machine_analyze.getCardRankMean(card_info_arr=card_info_arr, player_num=i))
         
         card_info_arr.insert(0, [const_agricolatools.CARD_PLAYER_LABEL + const_agricolatools.CARD_PLAYER_LABEL_ALL, None, None, None])
         card_info_arr.insert(1, [const_agricolatools.CARD_MEAN_LABEL, str(mean_list[0]), None, None])
         player_num = 1
         for card_num, card_info in enumerate(card_info_arr):
-            if card_info[3] == player_num:
+            if card_info[-1] == player_num:
                 card_info_arr.insert(card_num + 1, [const_agricolatools.CARD_MEAN_LABEL, str(mean_list[player_num]), None, None])
                 player_num += 1
             else:
                 continue
         return card_info_arr
-    
-    def __startThreadToWaitThenInquiryByUrl(self):
-        # initial thread and what to run while thread running
-        self.thread_wait = QThread()
-        self.worker_wait = WorkerWaitToShowThings()
-        self.worker_wait.moveToThread(self.thread_wait)
-        self.thread_wait.started.connect(self.worker_wait.run)
-        
-        # finish wait thread, start inquiry
-        self.worker_wait.finished.connect(self.startInquiryByUrl())
-        # delete thread
-        self.worker_wait.finished.connect(self.thread_wait.quit)
-        self.worker_wait.finished.connect(self.worker_wait.deleteLater)
-        self.thread_wait.finished.connect(self.thread_wait.deleteLater)
-        self.thread_wait.start()
     
     def __startThreadRefresh(self):
         self.label_print.setText('Start Auto Refresh')
@@ -227,12 +268,10 @@ class GUI(QWidget):
     def startInquiry(self):
         if self.line_edit_URL.text()[0:5] == 'https':
             self.label_print.setText(const_agricolatools.TEXT_SEARCHING_WEBSITE)
-            # use thread so that label print can be shown, not required
-            # when thread end, start inquiry
-            self.__startThreadToWaitThenInquiryByUrl()
+            QTimer.singleShot(1000, self.startInquiryByUrl)
         else:
             self.label_print.setText(const_agricolatools.TEXT_SEARCHING_CARD)
-            self.startInquiryByCardName(card_name=self.line_edit_URL.text())
+            QTimer.singleShot(1000, lambda: self.startInquiryByCardName(card_name=self.line_edit_URL.text()))
     
     def startInquiryByUrl(self):
         # if auto refresh is off but refresh thread is start, interrupt thread
@@ -252,6 +291,8 @@ class GUI(QWidget):
         
         if self.__isLoginFailed(card_info_arr):
             return
+        
+        # card_info_arr = sorted(card_info_arr, key=lambda x: int(x[1]))
         
         # if auto refresh is on but refresh thread did not start, start thread
         if self.need_auto_refresh and not self.start_thread_refresh:

@@ -1,8 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-import time
+# import time
 import json
 
 from raw_asset.python_files import const_agricolatools
@@ -23,7 +26,19 @@ class LoginMachine():
             with open(const_agricolatools.ConstJsonFile().name_login_info, 'w') as login_info_file:
                 json.dump(login_info_dict, login_info_file)
         
-        driver.get('https://en.boardgamearena.com/account')
+        return self.checkCanLoginOrNot(driver=driver, username=username, password=password)
+    
+    def checkCanLoginOrNot(self, driver, username, password):
+        if driver is None:
+            # selenium webdriver setting
+            chrome_options = Options()
+            chrome_options.add_argument("--headless")
+            driver = webdriver.Chrome(options=chrome_options)
+            need_save_driver = False
+        else:
+            need_save_driver = True
+        
+        driver.get(const_agricolatools.URL_LOGIN_PAGE)
         username_input = driver.find_element(By.ID, 'username_input')
         password_input = driver.find_element(By.ID, 'password_input')
         
@@ -33,11 +48,22 @@ class LoginMachine():
         login_button = driver.find_element(By.ID, 'submit_login_button')
         login_button.send_keys(Keys.ENTER)
         
-        time.sleep(1)
+        try:
+            WebDriverWait(driver, 10).until(EC.url_changes(const_agricolatools.URL_LOGIN_PAGE))
+            
+            if driver.current_url == const_agricolatools.URL_LOGIN_PAGE:
+                raise Exception
+        except Exception as e:
+            print(e, 'cannot login')
+            if not need_save_driver:
+                driver.quit()
+            return False
         
-        have_login_button = []
-        have_login_button = driver.find_elements(By.ID, 'submit_login_button')
-        if have_login_button == []:
+        website_url = driver.current_url
+        if not need_save_driver:
+            driver.quit()
+        
+        if website_url == const_agricolatools.URL_HAVE_LOGIN:
             self.have_login = True
             return True
         else:

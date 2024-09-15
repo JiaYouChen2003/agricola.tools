@@ -2,6 +2,7 @@ import openpyxl
 
 from raw_asset.python_files import const_agricolatools
 from raw_asset.python_files import scrape
+from raw_asset.python_files import save
 
 
 class SearchMachine():
@@ -52,6 +53,15 @@ class SearchMachine():
         # may get a fake card that has some message
         card_list = self.machine_scrape.getCardListFromBGA(url=url, username=username, password=password, save_login_info=save_login_info)
         
+        if card_list[0] == const_agricolatools.ConstMessage().draftphase and len(card_list) == 3:
+            _, card_list, hand_list = card_list
+            card_info_arr = self.getCardInfoArrFromCardNameList(card_list=card_list, game_type=game_type)
+            hand_info_arr = self.getCardInfoArrFromCardNameList(card_list=hand_list, game_type=game_type)
+            card_info_arr.append([const_agricolatools.CARD_HAND_LABEL, None, None, 0])
+            if len(hand_info_arr) != 0:
+                card_info_arr.extend(hand_info_arr)
+            return card_info_arr
+        
         return self.getCardInfoArrFromCardNameList(card_list=card_list, game_type=game_type)
     
     def getCardInfoArrFromCardNameList(self, card_list, game_type=const_agricolatools.GAME_TYPE_LIST[0]):
@@ -66,6 +76,11 @@ class SearchMachine():
             card_name, card_player_num = self.__getCardNameAndPlayerNum(card=card)
             card_rank = self.getCardRank(card_name=card_name, game_type=game_type)
             card_diff = self.getCardDiff(card_name=card_name)
+            
+            if (card == card_list[0]):
+                save.saveCardToJSON(card_name, card_rank, card_diff, new_file=True)
+            else:
+                save.saveCardToJSON(card_name, card_rank, card_diff)
             
             card_info = [card_name, card_rank, card_diff, card_player_num]
             card_info_arr.append(card_info)

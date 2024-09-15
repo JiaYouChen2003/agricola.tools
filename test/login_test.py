@@ -56,3 +56,39 @@ def test_loginWebsiteBGA_IfCannotLoginReturnFalse_noUsername_False():
     
     assert machine_login.loginWebsiteBGA_IfCannotLoginReturnFalse(
         driver, '', 'password', save_login_info=False) is False
+
+
+@pytest.mark.login
+def test_checkCanLoginOrNot_loginInfoJson_True():
+    const_json_file = ConstJsonFile()
+    machine_login = LoginMachine()
+    
+    if os.path.isfile(const_json_file.name_login_info):
+        with open(const_json_file.name_login_info, 'r') as json_file:
+            json_dict = json.load(json_file)
+            
+            assert machine_login.checkCanLoginOrNot(
+                None,
+                json_dict[const_json_file.key_login_info_username],
+                json_dict[const_json_file.key_login_info_password]) is True
+            
+            assert machine_login.checkCanLoginOrNot(
+                None, '', '') is True
+
+
+@pytest.mark.false
+@pytest.mark.login
+def test_checkCanLoginOrNot_noPassword_False():
+    machine_login = LoginMachine()
+    
+    assert machine_login.checkCanLoginOrNot(
+        None, 'username', '') is False
+
+
+@pytest.mark.false
+@pytest.mark.login
+def test_checkCanLoginOrNot_noUsername_False():
+    machine_login = LoginMachine()
+    
+    assert machine_login.checkCanLoginOrNot(
+        None, '', 'password') is False

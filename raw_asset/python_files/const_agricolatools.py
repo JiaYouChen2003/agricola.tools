@@ -3,7 +3,8 @@ import os
 # Const that can an be translate
 AUTO_REFRESH_LIST = ['off', 'on']
 
-CARD_INFO_LABEL = ['Card Name', 'Card Rank', 'Card Diff']
+CARD_HAND_LABEL = 'Hand'
+CARD_INFO_LABEL = ['Card Name', 'Card Rank', 'Card Diff', 'Synergy Score']
 CARD_MEAN_LABEL = 'Mean: '
 CARD_PLAYER_LABEL = 'Player: '
 CARD_PLAYER_LABEL_ALL = 'All'
@@ -28,12 +29,15 @@ TEXT_CARD_CANNOT_FIND = 'Cannot Found Card :('
 TEXT_CARD_SEARCHED = 'Card Searched!'
 TEXT_END_AUTO_REFRESH = 'End Auto Refresh'
 TEXT_INTERRUPT_AUTO_REFRESH = 'Interrupt Refresh!'
+TEXT_LOGIN_BUTTON = 'login'
 TEXT_SEARCH_BUTTON = 'search'
 TEXT_SEARCHING_CARD = 'Searching Card...'
 TEXT_SEARCHING_DONE = 'Searching Done!'
 TEXT_SEARCHING_WEBSITE = 'Searching Website...'
 
+URL_HAVE_LOGIN = 'https://boardgamearena.com/welcome'
 URL_LANGUAGE_PREFIX = 'https://en.'
+URL_LOGIN_PAGE = 'https://en.boardgamearena.com/account'
 URL_REQUIRE_HINT = 'Enter the URL:'
 
 
@@ -58,13 +62,18 @@ class ConstMessage():
 class ConstPath():
     def __init__(self):
         # Seen as in the same file with main.py
+        self.login_page_cannot_login_img_path = os.path.abspath('./raw_asset/login_fail.png')
+        self.login_page_img_path = os.path.abspath('./raw_asset/login.png')
+        self.login_page_loading_login_img_path = os.path.abspath('./raw_asset/login_loading.png')
         self.window_icon_path = os.path.abspath('./raw_asset/agricola-en.jpg')
+        self.synergy_path = os.path.abspath('./raw_asset/card_statistic/card_synergy.csv')
         self.xlsx_path = os.path.abspath('./raw_asset/card_statistic/Jul_2023/agricola_statistic.xlsx')
         self.xlsx_workbook_diff_name = 'Diff'
 
 
 class ConstJsonFile():
     def __init__(self):
-        self.name_login_info = 'login_info.json'
+        self.name_login_info = 'json/login_info.json'
+        self.name_card_details = 'json/card_details.json'
         self.key_login_info_username = 'username'
         self.key_login_info_password = 'password'
